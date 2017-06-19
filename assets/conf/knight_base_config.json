@@ -141,7 +141,7 @@
       {  
          "key":"stone",
          "image":"assets/images/knight/background/block-stone.png",
-         "count":30,
+         "count":5,
          "random":true,
          "coordinates":[  
 

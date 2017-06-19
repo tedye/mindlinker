@@ -3,46 +3,64 @@
  */
 import Phaser from 'phaser'
 import Knight from '../sprites/Knight'
+import KnightAnimationPlayer from '../animation/KnightAnimationPlayer'
 
 export default class extends Phaser.State {
-  calculateAndSetCharacterStartingPositionAndStepSizesResponsively (gameContext, windowWidth, windowHeight) {
-    this.step_width_in_pixel = Math.round(windowWidth * gameContext.step_x_percentage)
-    this.step_height_in_pixel = Math.round(windowHeight * gameContext.step_y_percentage)
+  calculateAndSetCharacterStartingPositionAndStepSizesResponsively () {
+    this.step_width_in_pixel = Math.round(this.game.width * this.gameContext.step_x_percentage)
+    this.step_height_in_pixel = Math.round(this.game.height * this.gameContext.step_y_percentage)
+  }
+
+  getCurrentAnimationContext () {
+    return {
+      sprite: this.knight,
+      gridWidth: this.gameContext.grid_x_size,
+      gridHeight: this.gameContext.grid_y_size,
+      step_width_in_pixel: this.step_width_in_pixel,
+      step_height_in_pixel: this.step_height_in_pixel,
+      maxSteps: this.gameContext.maxSteps,
+      passCondition: this.gameContext.passCondition,
+      items: this.gameContext.items,
+      instruction: '[{"name":"RepeatStart","count":2},{"name":"RunDown"},{"name":"RepeatEnd"},{"name":"RepeatStart","count":8}, {"name":"RunRight"},{"name":"RepeatEnd"}]'
+    }
   }
 
   play () {
-    console.log('play')
+    console.log('play blocks')
+    let animationContext = this.getCurrentAnimationContext(this.gameContext)
+    KnightAnimationPlayer(animationContext)
   }
+
   drawBackground () {
     this.game.add.sprite(0, 0, 'background')
     let startButton = this.game.add.button(0, 0, 'start', this.play, this)
     startButton.scale.setTo(0.5, 0.5)
   }
 
-  drawMainCharacterAtStartingPosition (gameContext) {
-    const cWidth = gameContext.character_width_in_pixel
-    const cHeight = gameContext.character_height_in_pixel
-    const cStartingX = Math.round(this.game.width * gameContext.character_start_x_percentage) + Math.round(this.step_width_in_pixel / 2) - Math.round(cWidth / 2)
-    const cStartingY = Math.round(this.game.height * gameContext.character_start_y_percentage) - cHeight
+  drawMainCharacterAtStartingPosition () {
+    const cWidth = this.gameContext.character_width_in_pixel
+    const cHeight = this.gameContext.character_height_in_pixel
+    const cStartingX = Math.round(this.game.width * this.gameContext.character_start_x_percentage) + Math.round(this.step_width_in_pixel / 2) - Math.round(cWidth / 2)
+    const cStartingY = Math.round(this.game.height * this.gameContext.character_start_y_percentage) - cHeight
     console.log('Draw main character at location: x = ' + cStartingX + ' and y = ' + cStartingY + ' image size: width = ' + cWidth + ' height = ' + cHeight)
     let sprite = new Knight({
       game: this.game,
       x: cStartingX,
       y: cStartingY,
-      asset: gameContext.spritesheets[0].key,
+      asset: this.gameContext.spritesheets[0].key,
       frame: 0
     })
     this.knight = this.game.add.existing(sprite)
   }
 
-  drawItems (gameContext) {
-    let items = gameContext.items
-    let dGridX = gameContext.passCondition.destinationXGrid
-    let dGridY = gameContext.passCondition.destinationYGrid
+  drawItems () {
+    let items = this.gameContext.items
+    let dGridX = this.gameContext.passCondition.destinationXGrid
+    let dGridY = this.gameContext.passCondition.destinationYGrid
     let gridWidth = this.step_width_in_pixel
     let gridHeight = this.step_height_in_pixel
-    let gridStartX = Math.round(this.game.width * gameContext.grid_board_top_left_x_percentage)
-    let gridStartY = Math.round(this.game.height * gameContext.grid_board_top_left_y_percentage)
+    let gridStartX = Math.round(this.game.width * this.gameContext.grid_board_top_left_x_percentage)
+    let gridStartY = Math.round(this.game.height * this.gameContext.grid_board_top_left_y_percentage)
     console.log('Background width = ' + this.game.width + ' Background height = ' + this.game.height + ' GridStartX: ' + gridStartX + ' GridStartY = ' + gridStartY + ' GridWidth = ' + gridWidth + ' GridHeight = ' + gridHeight)
     if (items.length > 0) {
       let checkValid = function (coordinates, xGridSize, yGridSize, dGridX, dGridY) {
@@ -81,8 +99,8 @@ export default class extends Phaser.State {
         if (item.random === true) {
           let iCount = item.count
           let solvable = false
-          let xSize = gameContext.grid_x_size
-          let ySize = gameContext.grid_y_size
+          let xSize = this.gameContext.grid_x_size
+          let ySize = this.gameContext.grid_y_size
           console.log('grid x size = ' + xSize + ' grid y size = ' + ySize + ' destination x = ' + dGridX + ' destination y = ' + dGridY)
           while (!solvable) {
             item.coordinates = []
@@ -119,20 +137,20 @@ export default class extends Phaser.State {
     }
   }
 
-  drawForeGround (gameContext) {
+  drawForeGround () {
     let fWidth = this.game.width
     let fHeight = this.game.height
     console.log('Draw front ground image with size width = ' + fWidth + ' height = ' + fHeight)
     this.game.add.sprite(0, 0, 'foreground')
   }
 
-  drawGridBoard (gameContext) {
+  drawGridBoard () {
     let gridWidth = this.step_width_in_pixel
     let gridHeight = this.step_height_in_pixel
-    let gridStartX = Math.round(this.game.width * gameContext.grid_board_top_left_x_percentage)
-    let gridStartY = Math.round(this.game.height * gameContext.grid_board_top_left_y_percentage)
-    let gridXSize = gameContext.grid_x_size
-    let gridYSize = gameContext.grid_y_size
+    let gridStartX = Math.round(this.game.width * this.gameContext.grid_board_top_left_x_percentage)
+    let gridStartY = Math.round(this.game.height * this.gameContext.grid_board_top_left_y_percentage)
+    let gridXSize = this.gameContext.grid_x_size
+    let gridYSize = this.gameContext.grid_y_size
     console.log('Background width = ' + this.game.width + ' Background height = ' + this.game.height + ' GridStartX: ' + gridStartX + ' GridStartY = ' + gridStartY + ' GridWidth = ' + gridWidth + ' GridHeight = ' + gridHeight)
     console.log('Draw grid images.')
     for (let r = 0; r < gridYSize; r++) {
@@ -146,34 +164,34 @@ export default class extends Phaser.State {
     }
   }
 
-  preloadImages (gameContext) {
-    for (let i = 0; i < gameContext.spritesheets.length; i++) {
-      let spriteSheet = gameContext.spritesheets[i]
+  preloadImages () {
+    for (let i = 0; i < this.gameContext.spritesheets.length; i++) {
+      let spriteSheet = this.gameContext.spritesheets[i]
       console.log('Load spritesheet: ' + spriteSheet.spritesheet + ' as ' + spriteSheet.key + ' with data file: ' + spriteSheet.datafile)
       this.game.load.atlasJSONArray(spriteSheet.key, spriteSheet.spritesheet, spriteSheet.datafile)
     }
 
-    this.game.load.image('background', gameContext.background_image)
-    this.game.load.image('foreground', gameContext.foreground_image)
-    this.game.load.image('grid', gameContext.grid_image)
-    this.game.load.image('shadow', gameContext.shadow_image)
+    this.game.load.image('background', this.gameContext.background_image)
+    this.game.load.image('foreground', this.gameContext.foreground_image)
+    this.game.load.image('grid', this.gameContext.grid_image)
+    this.game.load.image('shadow', this.gameContext.shadow_image)
     this.game.load.image('start', 'assets/images/knight/background/start.png')
 
-    for (let i = 0; i < gameContext.items.length; i++) {
-      let item = gameContext.items[i]
+    for (let i = 0; i < this.gameContext.items.length; i++) {
+      let item = this.gameContext.items[i]
       this.game.load.image(item.key, item.image)
     }
   }
 
-  getGameContext () {
-    return JSON.parse(this.game.cache.getText('gameContext'))
+  setCurrentGameContext () {
+    this.gameContext = JSON.parse(this.game.cache.getText('gameContext'))
   }
 
-  addAnimations (gameContext) {
-    for (let i = 0; i < gameContext.animations.length; i++) {
-      let animation = gameContext.animations[i]
+  addAnimations () {
+    for (let i = 0; i < this.gameContext.animations.length; i++) {
+      let animation = this.gameContext.animations[i]
       console.log('Add animation: ' + animation.name)
-      this.knight.animations.add(animation.name, animation.frames, animation.rate, false)
+      this.knight.animations.add(animation.name, animation.frames, animation.rate, false, false)
     }
   }
 
@@ -181,18 +199,17 @@ export default class extends Phaser.State {
   }
 
   preload () {
-    let gameContext = this.getGameContext()
-    this.calculateAndSetCharacterStartingPositionAndStepSizesResponsively(gameContext, this.game.width, this.game.height)
-    this.preloadImages(gameContext)
+    this.setCurrentGameContext()
+    this.calculateAndSetCharacterStartingPositionAndStepSizesResponsively()
+    this.preloadImages()
   }
 
   create () {
-    let gameContext = this.getGameContext()
     this.drawBackground()
-    this.drawGridBoard(gameContext)
-    this.drawItems(gameContext)
-    this.drawMainCharacterAtStartingPosition(gameContext)
-    this.drawForeGround(gameContext)
-    this.addAnimations(gameContext)
+    this.drawGridBoard()
+    this.drawItems()
+    this.drawMainCharacterAtStartingPosition()
+    this.drawForeGround()
+    this.addAnimations()
   }
 }

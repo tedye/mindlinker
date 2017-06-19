@@ -1,28 +1,31 @@
 /**
  * Created by kfang on 6/16/17.
  */
-/**
- * Created by kfang on 6/2/17.
- */
 import SupportedBlocks from './SupportedBlocks'
 
 export default function play (animationContext) {
+  console.log(animationContext)
   let stepCount = 0
   let sprite = animationContext.sprite
-  const imageStreamSize = animationContext.image_stream_size
-  const stepX = animationContext.step_width_in_pixel
-  const stepY = animationContext.step_height_in_pixel
+  const gridWidth = animationContext.gridWidth
+  const gridHeight = animationContext.gridHeight
+  const xDistPerStep = animationContext.step_width_in_pixel
+  const yDistPerStep = animationContext.step_height_in_pixel
   const maxSteps = animationContext.maxSteps
   const passCondition = animationContext.passCondition
   let items = animationContext.items
   let currentGridX = 0
   let currentGridY = 0
   let faceRight = true
-  let blockQueue = []
+  let failed = false
 
   let isBlocked = function (xOffset, yOffset) {
     let xP = currentGridX + xOffset
     let yP = currentGridY + yOffset
+    console.log(xP + ' , ' + yP + ' , ' + gridWidth + ' , ' + gridHeight)
+    if (xP >= gridWidth || yP >= gridHeight) {
+      return true
+    }
     for (let i = 0; i < items.length; i++) {
       let item = items[i]
       if (item.blocker === true) {
@@ -37,12 +40,21 @@ export default function play (animationContext) {
     return false
   }
 
+  let addNewActionToSpriteActionQueue = function (name, xOffset, yOffset) {
+    console.log('Add action to queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
+    sprite.actionQueue.push({
+      name: name,
+      xOffset: xOffset,
+      yOffset: yOffset
+    })
+  }
+
   let MakeATurn = function () {
     console.log('Animation Played: Turn')
     if (faceRight) {
-      sprite.play('TurnToLeft')
+      addNewActionToSpriteActionQueue('TurnToLeft', 0, 0)
     } else {
-      sprite.play('TurnToRight')
+      addNewActionToSpriteActionQueue('TurnToRight', 0, 0)
     }
     faceRight = !faceRight
   }
@@ -50,141 +62,128 @@ export default function play (animationContext) {
   let WalkRight = function (step) {
     console.log('Animation Played: Move Right')
     if (isBlocked(1, 0)) {
-      playFailure(true)
+      playFailure()
     } else {
-      sprite.xOffset = step / imageStreamSize
-      sprite.yOffset = 0
-      sprite.play('Walk')
+      addNewActionToSpriteActionQueue('Walk', step, 0)
     }
   }
 
   let WalkLeft = function (step) {
     console.log('Animation Played: Move Left')
     if (isBlocked(-1, 0)) {
-      playFailure(true)
+      playFailure()
     } else {
-      sprite.xOffset = -step / imageStreamSize
-      sprite.yOffset = 0
-      sprite.play('Walk')
+      addNewActionToSpriteActionQueue('Walk', -step, 0)
     }
   }
 
   let WalkUp = function (step) {
     console.log('Animation Played: Move Up')
     if (isBlocked(0, -1)) {
-      playFailure(true)
+      playFailure()
     } else {
-      sprite.xOffset = 0
-      sprite.yOffset = -step / imageStreamSize
-      sprite.play('Walk')
+      addNewActionToSpriteActionQueue('Walk', 0, -step)
     }
   }
 
   let WalkDown = function (step) {
     console.log('Animation Played: Move Down')
     if (isBlocked(0, 1)) {
-      playFailure(true)
+      playFailure()
     } else {
-      sprite.xOffset = 0
-      sprite.yOffset = step / imageStreamSize
-      sprite.play('Walk')
+      addNewActionToSpriteActionQueue('Walk', 0, step)
     }
   }
 
   let RunRight = function (step) {
-    console.log('Animation Played: Move Right')
+    console.log('Animation Played: Move Right' + ' step: ' + step)
     if (isBlocked(1, 0)) {
-      playFailure(true)
+      playFailure()
     } else {
-      sprite.xOffset = step / imageStreamSize
-      sprite.yOffset = 0
-      sprite.play('Walk')
+      addNewActionToSpriteActionQueue('Walk', step, 0)
     }
   }
 
   let RunLeft = function (step) {
     console.log('Animation Played: Move Left')
     if (isBlocked(-1, 0)) {
-      playFailure(true)
+      playFailure()
     } else {
-      sprite.xOffset = -step / imageStreamSize
-      sprite.yOffset = 0
-      sprite.play('Walk')
+      addNewActionToSpriteActionQueue('Walk', -step, 0)
     }
   }
 
   let RunUp = function (step) {
     console.log('Animation Played: Move Up')
     if (isBlocked(0, -1)) {
-      playFailure(true)
+      playFailure()
     } else {
-      sprite.xOffset = 0
-      sprite.yOffset = -step / imageStreamSize
-      sprite.play('Walk')
+      addNewActionToSpriteActionQueue('Walk', 0, -step)
     }
   }
+
   let RunDown = function (step) {
     console.log('Animation Played: Move Down')
     if (isBlocked(0, 1)) {
-      playFailure(true)
+      playFailure()
     } else {
-      sprite.xOffset = 0
-      sprite.yOffset = step / imageStreamSize
-      sprite.play('Walk')
+      addNewActionToSpriteActionQueue('Walk', 0, step)
     }
   }
 
   let attack = function () {
     console.log('Animation Played: Attack')
-    sprite.xOffset = 0
-    sprite.yOffset = 0
-    sprite.play('Attack')
+    addNewActionToSpriteActionQueue('Attack', 0, 0)
   }
 
   let victory = function () {
     console.log('Animation Played: Victory')
-    sprite.xOffset = 0
-    sprite.yOffset = 0
-    sprite.play('Victory')
+    addNewActionToSpriteActionQueue('Victory', 0, 0)
   }
 
   let playFailure = function () {
     console.log('Animation Played: Fail')
-    sprite.xOffset = 0
-    sprite.yOffset = 0
-    sprite.play('Fail')
+    failed = true
+    addNewActionToSpriteActionQueue('Fail', 0, 0)
   }
 
   /**
    * Execute the animation given an action JSON object.
    */
-  let playAnimation = function () {
-    let name = blockQueue.shift()
+  let playAnimation = function (name) {
     console.log('Play animation for ' + name)
     switch (name) {
       case SupportedBlocks.WalkLeft:
-        WalkLeft(stepX)
+        WalkLeft(xDistPerStep)
+        currentGridX--
         break
       case SupportedBlocks.WalkDown:
-        WalkDown(stepY)
+        WalkDown(yDistPerStep)
+        currentGridY++
         break
       case SupportedBlocks.WalkUp:
-        WalkUp(stepY)
+        WalkUp(yDistPerStep)
+        currentGridY--
         break
       case SupportedBlocks.WalkRight:
-        WalkRight(stepX)
+        WalkRight(xDistPerStep)
+        currentGridX++
         break
       case SupportedBlocks.RunLeft:
-        RunLeft(stepX)
+        RunLeft(xDistPerStep)
+        currentGridX--
         break
       case SupportedBlocks.RunDown:
-        RunDown(stepY)
+        RunDown(yDistPerStep)
+        currentGridY++
         break
       case SupportedBlocks.RunUp:
-        RunUp(stepY)
+        RunUp(yDistPerStep)
+        currentGridY--
         break
       case SupportedBlocks.RunRight:
-        RunRight(stepX)
+        RunRight(xDistPerStep)
+        currentGridX++
         break
       case SupportedBlocks.Attack:
         attack()
@@ -195,7 +194,6 @@ export default function play (animationContext) {
       case SupportedBlocks.Jump:
         break
     }
-    stepCount++
   }
   /**
    * Execute if block and return the next index to handle.
@@ -252,6 +250,9 @@ export default function play (animationContext) {
     let i = index
     let len = stream.length
     while (i < len) {
+      if (failed) {
+        break
+      }
       let block = stream[i]
       switch (block.name) {
         case SupportedBlocks.WalkLeft:
@@ -266,8 +267,7 @@ export default function play (animationContext) {
         case SupportedBlocks.Turn:
         case SupportedBlocks.Attack:
           console.log('Play Block: ' + block.name)
-          blockQueue.push(block.name)
-          playAnimation()
+          playAnimation(block.name)
           i++
           break
         case SupportedBlocks.Else:
@@ -305,6 +305,8 @@ export default function play (animationContext) {
   let inStream = JSON.parse(animationContext.instruction)
   if (inStream.length > 0) {
     executeInStream(inStream, 0)
-    checkPassOrFail()
+    if (!failed) {
+      checkPassOrFail()
+    }
   }
 }
