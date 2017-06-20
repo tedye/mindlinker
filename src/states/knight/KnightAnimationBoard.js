@@ -2,8 +2,8 @@
  * Created by kfang on 6/15/17.
  */
 import Phaser from 'phaser'
-import Knight from '../sprites/Knight'
-import KnightAnimationPlayer from '../animation/KnightAnimationPlayer'
+import Knight from '../../sprites/Knight'
+import KnightAnimationPlayer from '../../animation/KnightAnimationPlayer'
 
 export default class extends Phaser.State {
   calculateAndSetCharacterStartingPositionAndStepSizesResponsively () {
@@ -32,9 +32,21 @@ export default class extends Phaser.State {
   }
 
   drawBackground () {
-    this.game.add.sprite(0, 0, 'background')
+    this.game.add.sprite(0, 0, 'background').scale.setTo(1, 0.75)
+    this.drawStartButton();
+  }
+
+  drawStartButton() {
+    let showStartTooltip = function () {
+      this.tooltip = this.game.add.text(100, 50, 'Start to run.')
+    }
+    let destroyStartTooltip = function () {
+      this.tooltip.destroy()
+    }
     let startButton = this.game.add.button(0, 0, 'start', this.play, this)
-    startButton.scale.setTo(0.5, 0.5)
+    startButton.scale.setTo(0.3, 0.3)
+    startButton.events.onInputOver.add(showStartTooltip, this)
+    startButton.events.onInputOut.add(destroyStartTooltip, this)
   }
 
   drawMainCharacterAtStartingPosition () {
@@ -141,7 +153,7 @@ export default class extends Phaser.State {
     let fWidth = this.game.width
     let fHeight = this.game.height
     console.log('Draw front ground image with size width = ' + fWidth + ' height = ' + fHeight)
-    this.game.add.sprite(0, 0, 'foreground')
+    this.game.add.sprite(0, 0, 'foreground').scale.setTo(1, 0.75)
   }
 
   drawGridBoard () {
@@ -176,6 +188,8 @@ export default class extends Phaser.State {
     this.game.load.image('grid', this.gameContext.grid_image)
     this.game.load.image('shadow', this.gameContext.shadow_image)
     this.game.load.image('start', 'assets/images/knight/background/start.png')
+    this.game.load.image('restart', 'assets/images/knight/background/restart.png')
+    this.game.load.image('next', 'assets/images/knight/background/next.png')
 
     for (let i = 0; i < this.gameContext.items.length; i++) {
       let item = this.gameContext.items[i]
@@ -185,13 +199,14 @@ export default class extends Phaser.State {
 
   setCurrentGameContext () {
     this.gameContext = JSON.parse(this.game.cache.getText('gameContext'))
+    this.game.global = {}
   }
 
   addAnimations () {
     for (let i = 0; i < this.gameContext.animations.length; i++) {
       let animation = this.gameContext.animations[i]
       console.log('Add animation: ' + animation.name)
-      this.knight.animations.add(animation.name, animation.frames, animation.rate, false, false)
+      this.knight.animations.add(animation.name, animation.frames, animation.rate, animation.loop, false)
     }
   }
 

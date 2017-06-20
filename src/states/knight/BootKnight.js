@@ -5,10 +5,10 @@ export default class extends Phaser.State {
   }
 
   preload () {
-    this.game.load.text('gameContext', 'assets/conf/knight_base_config.json')
+    this.game.load.text('gameContext', this.game.global.currentGameConfig)
   }
 
   render () {
-    this.state.start('AnimationBoard')
+    this.state.start('KnightAnimationBoard')
   }
 }

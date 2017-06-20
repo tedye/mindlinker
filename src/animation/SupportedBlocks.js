@@ -17,5 +17,7 @@ export default {
   RepeatEnd: 'RepeatEnd',
   Jump: 'Jump',
   Turn: 'Turn',
-  Attack: 'Attack'
+  Attack: 'Attack',
+  Standby: 'Standby',
+  Defense: 'Defense'
 }

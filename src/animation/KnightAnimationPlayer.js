@@ -4,7 +4,6 @@
 import SupportedBlocks from './SupportedBlocks'
 
 export default function play (animationContext) {
-  console.log(animationContext)
   let stepCount = 0
   let sprite = animationContext.sprite
   const gridWidth = animationContext.gridWidth
@@ -22,7 +21,7 @@ export default function play (animationContext) {
   let isBlocked = function (xOffset, yOffset) {
     let xP = currentGridX + xOffset
     let yP = currentGridY + yOffset
-    console.log(xP + ' , ' + yP + ' , ' + gridWidth + ' , ' + gridHeight)
+    console.log('Check valid step: ' + xP + ' , ' + yP + ' , ' + gridWidth + ' , ' + gridHeight)
     if (xP >= gridWidth || yP >= gridHeight) {
       return true
     }
@@ -65,6 +64,7 @@ export default function play (animationContext) {
       playFailure()
     } else {
       addNewActionToSpriteActionQueue('Walk', step, 0)
+      addNewActionToSpriteActionQueue('Pause', 0, 0)
     }
   }
 
@@ -74,6 +74,7 @@ export default function play (animationContext) {
       playFailure()
     } else {
       addNewActionToSpriteActionQueue('Walk', -step, 0)
+      addNewActionToSpriteActionQueue('Pause', 0, 0)
     }
   }
 
@@ -83,6 +84,7 @@ export default function play (animationContext) {
       playFailure()
     } else {
       addNewActionToSpriteActionQueue('Walk', 0, -step)
+      addNewActionToSpriteActionQueue('Pause', 0, 0)
     }
   }
 
@@ -92,6 +94,7 @@ export default function play (animationContext) {
       playFailure()
     } else {
       addNewActionToSpriteActionQueue('Walk', 0, step)
+      addNewActionToSpriteActionQueue('Pause', 0, 0)
     }
   }
 
@@ -101,6 +104,7 @@ export default function play (animationContext) {
       playFailure()
     } else {
       addNewActionToSpriteActionQueue('Walk', step, 0)
+      addNewActionToSpriteActionQueue('Pause', 0, 0)
     }
   }
 
@@ -110,6 +114,7 @@ export default function play (animationContext) {
       playFailure()
     } else {
       addNewActionToSpriteActionQueue('Walk', -step, 0)
+      addNewActionToSpriteActionQueue('Pause', 0, 0)
     }
   }
 
@@ -119,6 +124,7 @@ export default function play (animationContext) {
       playFailure()
     } else {
       addNewActionToSpriteActionQueue('Walk', 0, -step)
+      addNewActionToSpriteActionQueue('Pause', 0, 0)
     }
   }
 
@@ -128,6 +134,7 @@ export default function play (animationContext) {
       playFailure()
     } else {
       addNewActionToSpriteActionQueue('Walk', 0, step)
+      addNewActionToSpriteActionQueue('Pause', 0, 0)
     }
   }
 
@@ -147,6 +154,20 @@ export default function play (animationContext) {
     addNewActionToSpriteActionQueue('Fail', 0, 0)
   }
 
+  let Jump = function () {
+    console.log('Animation Played: Jump')
+    addNewActionToSpriteActionQueue('Jump', 0, 0)
+  }
+
+  let Standby = function () {
+    console.log('Animation Played: Standby')
+    addNewActionToSpriteActionQueue('Standby', 0, 0)
+  }
+
+  let Defense = function () {
+    console.log('Animation Played: Defense')
+    addNewActionToSpriteActionQueue('Defense', 0, 0)
+  }
   /**
    * Execute the animation given an action JSON object.
    */
@@ -192,6 +213,13 @@ export default function play (animationContext) {
         MakeATurn()
         break
       case SupportedBlocks.Jump:
+        Jump()
+        break
+      case SupportedBlocks.Defense:
+        Defense()
+        break
+      case SupportedBlocks.Standby:
+        Standby()
         break
     }
   }
@@ -251,7 +279,7 @@ export default function play (animationContext) {
     let len = stream.length
     while (i < len) {
       if (failed) {
-        break
+        return
       }
       let block = stream[i]
       switch (block.name) {
@@ -266,6 +294,8 @@ export default function play (animationContext) {
         case SupportedBlocks.Jump:
         case SupportedBlocks.Turn:
         case SupportedBlocks.Attack:
+        case SupportedBlocks.Defense:
+        case SupportedBlocks.Standby:
           console.log('Play Block: ' + block.name)
           playAnimation(block.name)
           i++
