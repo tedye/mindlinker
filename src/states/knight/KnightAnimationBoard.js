@@ -14,6 +14,8 @@ export default class extends Phaser.State {
   getCurrentAnimationContext () {
     return {
       sprite: this.knight,
+      forwardSpriteKey: this.gameContext.spritesheets[0].key,
+      backwardSpriteKey: this.gameContext.spritesheets[1].key,
       gridWidth: this.gameContext.grid_x_size,
       gridHeight: this.gameContext.grid_y_size,
       step_width_in_pixel: this.step_width_in_pixel,
@@ -21,7 +23,7 @@ export default class extends Phaser.State {
       maxSteps: this.gameContext.maxSteps,
       passCondition: this.gameContext.passCondition,
       items: this.gameContext.items,
-      instruction: '[{"name":"RepeatStart","count":2},{"name":"RunDown"},{"name":"RepeatEnd"},{"name":"RepeatStart","count":8}, {"name":"RunRight"},{"name":"RepeatEnd"}]'
+      instruction: '[{"name":"RepeatStart","count":3},{"name":"RunRight"},{"name":"RepeatEnd"},{"name":"Turn"}, {"name":"RunLeft"},{"name":"Turn"}, {"name":"RunRight"},{"name":"Attack"},{"name":"Jump"},{"name":"Defense"}, {"name":"Turn"}, {"name":"Attack"},{"name":"Jump"},{"name":"Defense"}]'
     }
   }
 
@@ -203,10 +205,28 @@ export default class extends Phaser.State {
   }
 
   addAnimations () {
-    for (let i = 0; i < this.gameContext.animations.length; i++) {
-      let animation = this.gameContext.animations[i]
-      console.log('Add animation: ' + animation.name)
-      this.knight.animations.add(animation.name, animation.frames, animation.rate, animation.loop, false)
+    for (let i = this.gameContext.spritesheets.length - 1; i >= 0 ; i--) {
+      let spritesheet = this.gameContext.spritesheets[i]
+      this.knight.loadTexture(spritesheet.key)
+      for (let j = 0; j < spritesheet.animations.length; j++) {
+        let animation = spritesheet.animations[j]
+        console.log('Add animation: ' + animation.name)
+        this.knight.animations.add(animation.name, animation.frames, animation.rate, animation.loop, false)
+      }
+    }
+  }
+
+  preloadAudios () {
+    for (let i = 0; i < this.gameContext.audios.length; i++) {
+      let audio = this.gameContext.audios[i]
+      this.game.load.audio(audio.key, audio.file)
+    }
+  }
+
+  addAudios () {
+    for (let i = 0; i < this.gameContext.audios.length; i++) {
+      let audio = this.gameContext.audios[i]
+      this.game.sound.add(audio.key)
     }
   }
 
@@ -217,6 +237,7 @@ export default class extends Phaser.State {
     this.setCurrentGameContext()
     this.calculateAndSetCharacterStartingPositionAndStepSizesResponsively()
     this.preloadImages()
+    this.preloadAudios()
   }
 
   create () {
@@ -226,5 +247,6 @@ export default class extends Phaser.State {
     this.drawMainCharacterAtStartingPosition()
     this.drawForeGround()
     this.addAnimations()
+    this.addAudios()
   }
 }

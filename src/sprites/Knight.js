@@ -32,10 +32,16 @@ export default class extends Phaser.Sprite {
 
   playNextAction () {
     let nextAction = this.actionQueue.shift()
-    console.log('Update: play animation ' + nextAction.name + ' with xOffset: ' + nextAction.xOffset + ' and yOffset: ' + nextAction.yOffset)
+    console.log('Update: play animation ' + nextAction.name + ' with xOffset: ' + nextAction.xOffset + ' and yOffset: ' + nextAction.yOffset + ' with sprite key: ' + nextAction.spriteKey)
     let newX = this.x + nextAction.xOffset
     let newY = this.y + nextAction.yOffset
+    if (nextAction.spriteKey !== this.key) {
+      this.loadTexture(nextAction.spriteKey, 0)
+    }
     this.playingAnimation = this.animations.play(nextAction.name)
+    if (nextAction.audio !== null) {
+      this.game.sound.play(nextAction.audio)
+    }
     this.game.add.tween(this).to({x: newX, y: newY}, 1000, null, true)
   }
 

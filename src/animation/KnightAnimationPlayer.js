@@ -6,6 +6,8 @@ import SupportedBlocks from './SupportedBlocks'
 export default function play (animationContext) {
   let stepCount = 0
   let sprite = animationContext.sprite
+  const forwardSpriteKey = animationContext.forwardSpriteKey
+  const backwardSpriteKey = animationContext.backwardSpriteKey
   const gridWidth = animationContext.gridWidth
   const gridHeight = animationContext.gridHeight
   const xDistPerStep = animationContext.step_width_in_pixel
@@ -39,23 +41,30 @@ export default function play (animationContext) {
     return false
   }
 
-  let addNewActionToSpriteActionQueue = function (name, xOffset, yOffset) {
+  let addNewActionToSpriteActionQueue = function (name, xOffset, yOffset, spriteKey, audio) {
     console.log('Add action to queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
     sprite.actionQueue.push({
       name: name,
       xOffset: xOffset,
-      yOffset: yOffset
+      yOffset: yOffset,
+      spriteKey: spriteKey,
+      audio: audio
     })
+  }
+
+  let Pause = function () {
+    addNewActionToSpriteActionQueue(faceRight ? 'Pause' : 'PauseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
   }
 
   let MakeATurn = function () {
     console.log('Animation Played: Turn')
     if (faceRight) {
-      addNewActionToSpriteActionQueue('TurnToLeft', 0, 0)
+      addNewActionToSpriteActionQueue('TurnToLeft', 0, 0, forwardSpriteKey, 'turn')
     } else {
-      addNewActionToSpriteActionQueue('TurnToRight', 0, 0)
+      addNewActionToSpriteActionQueue('TurnToRight', 0, 0, forwardSpriteKey, 'turn')
     }
     faceRight = !faceRight
+    Pause()
   }
 
   let WalkRight = function (step) {
@@ -63,8 +72,8 @@ export default function play (animationContext) {
     if (isBlocked(1, 0)) {
       playFailure()
     } else {
-      addNewActionToSpriteActionQueue('Walk', step, 0)
-      addNewActionToSpriteActionQueue('Pause', 0, 0)
+      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+      Pause()
     }
   }
 
@@ -73,8 +82,8 @@ export default function play (animationContext) {
     if (isBlocked(-1, 0)) {
       playFailure()
     } else {
-      addNewActionToSpriteActionQueue('Walk', -step, 0)
-      addNewActionToSpriteActionQueue('Pause', 0, 0)
+      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+      Pause()
     }
   }
 
@@ -83,8 +92,8 @@ export default function play (animationContext) {
     if (isBlocked(0, -1)) {
       playFailure()
     } else {
-      addNewActionToSpriteActionQueue('Walk', 0, -step)
-      addNewActionToSpriteActionQueue('Pause', 0, 0)
+      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+      Pause()
     }
   }
 
@@ -93,8 +102,8 @@ export default function play (animationContext) {
     if (isBlocked(0, 1)) {
       playFailure()
     } else {
-      addNewActionToSpriteActionQueue('Walk', 0, step)
-      addNewActionToSpriteActionQueue('Pause', 0, 0)
+      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+      Pause()
     }
   }
 
@@ -103,8 +112,8 @@ export default function play (animationContext) {
     if (isBlocked(1, 0)) {
       playFailure()
     } else {
-      addNewActionToSpriteActionQueue('Walk', step, 0)
-      addNewActionToSpriteActionQueue('Pause', 0, 0)
+      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+      Pause()
     }
   }
 
@@ -113,8 +122,8 @@ export default function play (animationContext) {
     if (isBlocked(-1, 0)) {
       playFailure()
     } else {
-      addNewActionToSpriteActionQueue('Walk', -step, 0)
-      addNewActionToSpriteActionQueue('Pause', 0, 0)
+      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+      Pause()
     }
   }
 
@@ -123,8 +132,8 @@ export default function play (animationContext) {
     if (isBlocked(0, -1)) {
       playFailure()
     } else {
-      addNewActionToSpriteActionQueue('Walk', 0, -step)
-      addNewActionToSpriteActionQueue('Pause', 0, 0)
+      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+      Pause()
     }
   }
 
@@ -133,40 +142,43 @@ export default function play (animationContext) {
     if (isBlocked(0, 1)) {
       playFailure()
     } else {
-      addNewActionToSpriteActionQueue('Walk', 0, step)
-      addNewActionToSpriteActionQueue('Pause', 0, 0)
+      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+      Pause()
     }
   }
 
   let attack = function () {
     console.log('Animation Played: Attack')
-    addNewActionToSpriteActionQueue('Attack', 0, 0)
+    addNewActionToSpriteActionQueue(faceRight ? 'Attack' : 'AttackBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'attack')
+    Pause()
   }
 
   let victory = function () {
     console.log('Animation Played: Victory')
-    addNewActionToSpriteActionQueue('Victory', 0, 0)
+    addNewActionToSpriteActionQueue(faceRight ? 'Victory' : 'VictoryBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
   }
 
   let playFailure = function () {
     console.log('Animation Played: Fail')
     failed = true
-    addNewActionToSpriteActionQueue('Fail', 0, 0)
+    addNewActionToSpriteActionQueue(faceRight ? 'Fail' : 'FailBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
   }
 
   let Jump = function () {
     console.log('Animation Played: Jump')
-    addNewActionToSpriteActionQueue('Jump', 0, 0)
+    addNewActionToSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+    Pause()
   }
 
   let Standby = function () {
     console.log('Animation Played: Standby')
-    addNewActionToSpriteActionQueue('Standby', 0, 0)
+    addNewActionToSpriteActionQueue(faceRight ? 'Standby' : 'StandbyBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
   }
 
   let Defense = function () {
     console.log('Animation Played: Defense')
-    addNewActionToSpriteActionQueue('Defense', 0, 0)
+    addNewActionToSpriteActionQueue(faceRight ? 'Defense' : 'DefenseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'defense')
+    Pause()
   }
   /**
    * Execute the animation given an action JSON object.
