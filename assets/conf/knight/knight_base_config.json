@@ -1,14 +1,14 @@
 {  
    "grid_x_size":10,
    "grid_y_size":5,
-   "character_start_x_percentage":0,
-   "character_start_y_percentage":0.56,
+   "grid_image_width":120,
+   "grid_image_height":60,
    "grid_board_top_left_x_percentage":0,
    "grid_board_top_left_y_percentage":0.4,
    "step_x_percentage":0.1,
    "step_y_percentage":0.08,
-   "character_width_in_pixel":300,
-   "character_height_in_pixel":300,
+   "character_width_in_pixel":143,
+   "character_height_in_pixel":173,
    "spritesheets":[  
       {  
          "key":"KnightAnimation",
@@ -389,41 +389,6 @@
    "foreground_image":"assets/images/knight/background/foreground.png",
    "shadow_image":"assets/images/knight/background/shadow.png",
    "grid_image":"assets/images/knight/background/grid.png",
-   "items":[  
-      {  
-         "key":"stone",
-         "image":"assets/images/knight/background/block-stone.png",
-         "count":5,
-         "random":true,
-         "coordinates":[  
-
-         ],
-         "blocker":true,
-         "width":163,
-         "height":73,
-         "gridWidth":1,
-         "gridHeight":1
-      },
-      {  
-         "key":"victory",
-         "image":"assets/images/knight/background/victory-flag.png",
-         "count":1,
-         "random":false,
-         "coordinates":[  
-            {  
-               "x":8,
-               "y":2,
-               "xOffset":0,
-               "yOffset":-20
-            }
-         ],
-         "blocker":false,
-         "width":102,
-         "height":222,
-         "gridWidth":1,
-         "gridHeight":1
-      }
-   ],
    "audios": [
       {
          "key":"walk",
@@ -446,12 +411,16 @@
          "file":"assets/sound/knight/turn/turn.mp3"
       }
    ],
-   "maxSteps":20,
-   "failCondition":{  
-
-   },
-   "passCondition":{  
-      "destinationXGrid":8,
-      "destinationYGrid":2
-   }
+   "task_configs": [
+      "assets/conf/knight/knight_task_config_1.json",
+      "assets/conf/knight/knight_task_config_2.json",
+      "assets/conf/knight/knight_task_config_3.json",
+      "assets/conf/knight/knight_task_config_4.json",
+      "assets/conf/knight/knight_task_config_5.json",
+      "assets/conf/knight/knight_task_config_6.json",
+      "assets/conf/knight/knight_task_config_7.json",
+      "assets/conf/knight/knight_task_config_8.json",
+      "assets/conf/knight/knight_task_config_9.json",
+      "assets/conf/knight/knight_task_config_10.json"
+   ]
 }

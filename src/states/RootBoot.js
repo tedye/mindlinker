@@ -4,16 +4,19 @@
 import Phaser from 'phaser'
 
 export default class extends Phaser.State {
-  init () {
-  }
+    init() {
+        console.log('Root Boot Init.')
+    }
 
-  preload () {
-    this.game.global = {}
-    this.game.global.currentGameConfig = 'assets/conf/knight_base_config.json'
-    this.game.global.currentGameIndex = 0
-  }
+    preload() {
+        console.log('Root Boot Preload.')
+        this.game.global = {}
+        this.game.global.currentStoryConfig = 'assets/conf/knight/knight_base_config.json'
+        this.game.global.currentTaskIndex = 0
+    }
 
-  render () {
-    this.state.start('KnightBoot')
-  }
+    render() {
+        console.log('Root Boot Render.')
+        this.state.start('KnightBoot')
+    }
 }

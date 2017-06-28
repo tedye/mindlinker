@@ -3,352 +3,375 @@
  */
 import SupportedBlocks from './SupportedBlocks'
 
-export default function play (animationContext) {
-  let stepCount = 0
-  let sprite = animationContext.sprite
-  const forwardSpriteKey = animationContext.forwardSpriteKey
-  const backwardSpriteKey = animationContext.backwardSpriteKey
-  const gridWidth = animationContext.gridWidth
-  const gridHeight = animationContext.gridHeight
-  const xDistPerStep = animationContext.step_width_in_pixel
-  const yDistPerStep = animationContext.step_height_in_pixel
-  const maxSteps = animationContext.maxSteps
-  const passCondition = animationContext.passCondition
-  let items = animationContext.items
-  let currentGridX = 0
-  let currentGridY = 0
-  let faceRight = true
-  let failed = false
+export default function play(animationContext) {
+    let stepCount = 0
+    let sprite = animationContext.sprite
+    const forwardSpriteKey = animationContext.forwardSpriteKey
+    const backwardSpriteKey = animationContext.backwardSpriteKey
+    const gridWidth = animationContext.gridWidth
+    const gridHeight = animationContext.gridHeight
+    const xDistPerStep = animationContext.step_width_in_pixel
+    const yDistPerStep = animationContext.step_height_in_pixel
+    const maxSteps = animationContext.maxSteps
+    const passCondition = animationContext.passCondition
+    let items = animationContext.items
+    let currentGridX = animationContext.startGridX
+    let currentGridY = animationContext.startGridY
+    let faceRight = true
+    let failed = false
+    let path = []
 
-  let isBlocked = function (xOffset, yOffset) {
-    let xP = currentGridX + xOffset
-    let yP = currentGridY + yOffset
-    console.log('Check valid step: ' + xP + ' , ' + yP + ' , ' + gridWidth + ' , ' + gridHeight)
-    if (xP >= gridWidth || yP >= gridHeight) {
-      return true
-    }
-    for (let i = 0; i < items.length; i++) {
-      let item = items[i]
-      if (item.blocker === true) {
-        for (let j = 0; j < item.coordinates.length; j++) {
-          let bP = item.coordinates[j]
-          if (bP.x === xP && bP.y === yP) {
+    let isBlocked = function (xOffset, yOffset) {
+        let xP = currentGridX + xOffset
+        let yP = currentGridY + yOffset
+        console.log('Check valid step: ' + xP + ' , ' + yP + ' , ' + gridWidth + ' , ' + gridHeight)
+        if (xP >= gridWidth || yP >= gridHeight) {
             return true
-          }
         }
-      }
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i]
+            if (item.blocker === true) {
+                for (let j = 0; j < item.coordinates.length; j++) {
+                    let bP = item.coordinates[j]
+                    if (bP.x === xP && bP.y === yP) {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
     }
-    return false
-  }
 
-  let addNewActionToSpriteActionQueue = function (name, xOffset, yOffset, spriteKey, audio) {
-    console.log('Add action to queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
-    sprite.actionQueue.push({
-      name: name,
-      xOffset: xOffset,
-      yOffset: yOffset,
-      spriteKey: spriteKey,
-      audio: audio
-    })
-  }
-
-  let Pause = function () {
-    addNewActionToSpriteActionQueue(faceRight ? 'Pause' : 'PauseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
-  }
-
-  let MakeATurn = function () {
-    console.log('Animation Played: Turn')
-    if (faceRight) {
-      addNewActionToSpriteActionQueue('TurnToLeft', 0, 0, forwardSpriteKey, 'turn')
-    } else {
-      addNewActionToSpriteActionQueue('TurnToRight', 0, 0, forwardSpriteKey, 'turn')
+    let addNewActionToSpriteActionQueue = function (name, xOffset, yOffset, spriteKey, audio) {
+        console.log('Add action to queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
+        sprite.actionQueue.push({
+            name: name,
+            xOffset: xOffset,
+            yOffset: yOffset,
+            spriteKey: spriteKey,
+            audio: audio
+        })
     }
-    faceRight = !faceRight
-    Pause()
-  }
 
-  let WalkRight = function (step) {
-    console.log('Animation Played: Move Right')
-    if (isBlocked(1, 0)) {
-      playFailure()
-    } else {
-      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
-      Pause()
+    let Pause = function () {
+        addNewActionToSpriteActionQueue(faceRight ? 'Pause' : 'PauseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
     }
-  }
 
-  let WalkLeft = function (step) {
-    console.log('Animation Played: Move Left')
-    if (isBlocked(-1, 0)) {
-      playFailure()
-    } else {
-      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
-      Pause()
+    let MakeATurn = function () {
+        console.log('Animation Played: Turn')
+        if (faceRight) {
+            addNewActionToSpriteActionQueue('TurnToLeft', 0, 0, forwardSpriteKey, 'turn')
+        } else {
+            addNewActionToSpriteActionQueue('TurnToRight', 0, 0, forwardSpriteKey, 'turn')
+        }
+        faceRight = !faceRight
+        Pause()
     }
-  }
 
-  let WalkUp = function (step) {
-    console.log('Animation Played: Move Up')
-    if (isBlocked(0, -1)) {
-      playFailure()
-    } else {
-      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
-      Pause()
+    let WalkRight = function (step) {
+        console.log('Animation Played: Move Right')
+        if (isBlocked(1, 0)) {
+            playFailure()
+        } else {
+            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+            Pause()
+        }
     }
-  }
 
-  let WalkDown = function (step) {
-    console.log('Animation Played: Move Down')
-    if (isBlocked(0, 1)) {
-      playFailure()
-    } else {
-      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
-      Pause()
+    let WalkLeft = function (step) {
+        console.log('Animation Played: Move Left')
+        if (isBlocked(-1, 0)) {
+            playFailure()
+        } else {
+            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+            Pause()
+        }
     }
-  }
 
-  let RunRight = function (step) {
-    console.log('Animation Played: Move Right' + ' step: ' + step)
-    if (isBlocked(1, 0)) {
-      playFailure()
-    } else {
-      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
-      Pause()
+    let WalkUp = function (step) {
+        console.log('Animation Played: Move Up')
+        if (isBlocked(0, -1)) {
+            playFailure()
+        } else {
+            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+            Pause()
+        }
     }
-  }
 
-  let RunLeft = function (step) {
-    console.log('Animation Played: Move Left')
-    if (isBlocked(-1, 0)) {
-      playFailure()
-    } else {
-      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
-      Pause()
+    let WalkDown = function (step) {
+        console.log('Animation Played: Move Down')
+        if (isBlocked(0, 1)) {
+            playFailure()
+        } else {
+            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+            Pause()
+        }
     }
-  }
 
-  let RunUp = function (step) {
-    console.log('Animation Played: Move Up')
-    if (isBlocked(0, -1)) {
-      playFailure()
-    } else {
-      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
-      Pause()
+    let RunRight = function (step) {
+        console.log('Animation Played: Move Right' + ' step: ' + step)
+        if (isBlocked(1, 0)) {
+            playFailure()
+        } else {
+            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+            Pause()
+        }
     }
-  }
 
-  let RunDown = function (step) {
-    console.log('Animation Played: Move Down')
-    if (isBlocked(0, 1)) {
-      playFailure()
-    } else {
-      addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
-      Pause()
+    let RunLeft = function (step) {
+        console.log('Animation Played: Move Left')
+        if (isBlocked(-1, 0)) {
+            playFailure()
+        } else {
+            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+            Pause()
+        }
     }
-  }
 
-  let attack = function () {
-    console.log('Animation Played: Attack')
-    addNewActionToSpriteActionQueue(faceRight ? 'Attack' : 'AttackBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'attack')
-    Pause()
-  }
-
-  let victory = function () {
-    console.log('Animation Played: Victory')
-    addNewActionToSpriteActionQueue(faceRight ? 'Victory' : 'VictoryBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
-  }
-
-  let playFailure = function () {
-    console.log('Animation Played: Fail')
-    failed = true
-    addNewActionToSpriteActionQueue(faceRight ? 'Fail' : 'FailBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
-  }
-
-  let Jump = function () {
-    console.log('Animation Played: Jump')
-    addNewActionToSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
-    Pause()
-  }
-
-  let Standby = function () {
-    console.log('Animation Played: Standby')
-    addNewActionToSpriteActionQueue(faceRight ? 'Standby' : 'StandbyBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
-  }
-
-  let Defense = function () {
-    console.log('Animation Played: Defense')
-    addNewActionToSpriteActionQueue(faceRight ? 'Defense' : 'DefenseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'defense')
-    Pause()
-  }
-  /**
-   * Execute the animation given an action JSON object.
-   */
-  let playAnimation = function (name) {
-    console.log('Play animation for ' + name)
-    switch (name) {
-      case SupportedBlocks.WalkLeft:
-        WalkLeft(xDistPerStep)
-        currentGridX--
-        break
-      case SupportedBlocks.WalkDown:
-        WalkDown(yDistPerStep)
-        currentGridY++
-        break
-      case SupportedBlocks.WalkUp:
-        WalkUp(yDistPerStep)
-        currentGridY--
-        break
-      case SupportedBlocks.WalkRight:
-        WalkRight(xDistPerStep)
-        currentGridX++
-        break
-      case SupportedBlocks.RunLeft:
-        RunLeft(xDistPerStep)
-        currentGridX--
-        break
-      case SupportedBlocks.RunDown:
-        RunDown(yDistPerStep)
-        currentGridY++
-        break
-      case SupportedBlocks.RunUp:
-        RunUp(yDistPerStep)
-        currentGridY--
-        break
-      case SupportedBlocks.RunRight:
-        RunRight(xDistPerStep)
-        currentGridX++
-        break
-      case SupportedBlocks.Attack:
-        attack()
-        break
-      case SupportedBlocks.Turn:
-        MakeATurn()
-        break
-      case SupportedBlocks.Jump:
-        Jump()
-        break
-      case SupportedBlocks.Defense:
-        Defense()
-        break
-      case SupportedBlocks.Standby:
-        Standby()
-        break
+    let RunUp = function (step) {
+        console.log('Animation Played: Move Up')
+        if (isBlocked(0, -1)) {
+            playFailure()
+        } else {
+            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+            Pause()
+        }
     }
-  }
-  /**
-   * Execute if block and return the next index to handle.
-   **/
-  let executeIfBlock = function (inStream, index) {
+
+    let RunDown = function (step) {
+        console.log('Animation Played: Move Down')
+        if (isBlocked(0, 1)) {
+            playFailure()
+        } else {
+            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+            Pause()
+        }
+    }
+
+    let attack = function () {
+        console.log('Animation Played: Attack')
+        addNewActionToSpriteActionQueue(faceRight ? 'Attack' : 'AttackBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'attack')
+        Pause()
+    }
+
+    let victory = function () {
+        console.log('Animation Played: Victory')
+        sprite.taskCompleted = true
+        addNewActionToSpriteActionQueue(faceRight ? 'Victory' : 'VictoryBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+    }
+
+    let playFailure = function () {
+        console.log('Animation Played: Fail')
+        failed = true
+        sprite.taskCompleted = false
+        addNewActionToSpriteActionQueue(faceRight ? 'Fail' : 'FailBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+    }
+
+    let Jump = function () {
+        console.log('Animation Played: Jump')
+        addNewActionToSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+        Pause()
+    }
+
+    let Standby = function () {
+        console.log('Animation Played: Standby')
+        addNewActionToSpriteActionQueue(faceRight ? 'Standby' : 'StandbyBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+    }
+
+    let Defense = function () {
+        console.log('Animation Played: Defense')
+        addNewActionToSpriteActionQueue(faceRight ? 'Defense' : 'DefenseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'defense')
+        Pause()
+    }
     /**
-     * Evaluate the condition in a if block.
+     * Execute the animation given an action JSON object.
      */
-    let evaluateConditionForIfBlock = function (block) {
-      return block.condition
-    }
-    let block = inStream[index]
-    if (evaluateConditionForIfBlock(block)) {
-      return executeInStream(inStream, index + 1)
-    } else {
-      let count = 1
-      let i = index + 1
-      while (count > 0 && i < inStream.length) {
-        let cur = inStream[i]
-        switch (cur.name) {
-          case SupportedBlocks.Else:
-          case SupportedBlocks.IfEnd:
-            count--
-            break
-          case SupportedBlocks.IfStart:
-            count++
-            break
+    let playAnimation = function (name) {
+        console.log('Play animation for ' + name)
+        switch (name) {
+            case SupportedBlocks.WalkLeft:
+                WalkLeft(xDistPerStep)
+                currentGridX--
+                path.push('-1_0')
+                break
+            case SupportedBlocks.WalkDown:
+                WalkDown(yDistPerStep)
+                currentGridY++
+                path.push('0_1')
+                break
+            case SupportedBlocks.WalkUp:
+                WalkUp(yDistPerStep)
+                currentGridY--
+                path.push('0_-1')
+                break
+            case SupportedBlocks.WalkRight:
+                WalkRight(xDistPerStep)
+                currentGridX++
+                path.push('1_0')
+                break
+            case SupportedBlocks.RunLeft:
+                RunLeft(xDistPerStep)
+                currentGridX--
+                path.push('-1_0')
+                break
+            case SupportedBlocks.RunDown:
+                RunDown(yDistPerStep)
+                currentGridY++
+                path.push('0_1')
+                break
+            case SupportedBlocks.RunUp:
+                RunUp(yDistPerStep)
+                currentGridY--
+                path.push('0_-1')
+                break
+            case SupportedBlocks.RunRight:
+                RunRight(xDistPerStep)
+                currentGridX++
+                path.push('1_0')
+                break
+            case SupportedBlocks.Attack:
+                attack()
+                break
+            case SupportedBlocks.Turn:
+                MakeATurn()
+                break
+            case SupportedBlocks.Jump:
+                Jump()
+                break
+            case SupportedBlocks.Defense:
+                Defense()
+                break
+            case SupportedBlocks.Standby:
+                Standby()
+                break
         }
-        i++
-        if (count === 0 && cur.name === SupportedBlocks.Else) {
-          return executeInStream(inStream, i)
+    }
+    /**
+     * Execute if block and return the next index to handle.
+     **/
+    let executeIfBlock = function (inStream, index) {
+        /**
+         * Evaluate the condition in a if block.
+         */
+        let evaluateConditionForIfBlock = function (block) {
+            return block.condition
         }
-      }
-      return i
+        let block = inStream[index]
+        if (evaluateConditionForIfBlock(block)) {
+            return executeInStream(inStream, index + 1)
+        } else {
+            let count = 1
+            let i = index + 1
+            while (count > 0 && i < inStream.length) {
+                let cur = inStream[i]
+                switch (cur.name) {
+                    case SupportedBlocks.Else:
+                    case SupportedBlocks.IfEnd:
+                        count--
+                        break
+                    case SupportedBlocks.IfStart:
+                        count++
+                        break
+                }
+                i++
+                if (count === 0 && cur.name === SupportedBlocks.Else) {
+                    return executeInStream(inStream, i)
+                }
+            }
+            return i
+        }
     }
-  }
-  /**
-   * Execute looping block and return the next index to handle.
-   */
-  let executeLoopingBlock = function (inStream, index) {
-    let block = inStream[index]
-    let count = block.count
-    let nextIndex = index
-    for (let i = 0; i < count; i++) {
-      nextIndex = executeInStream(inStream, index + 1)
+    /**
+     * Execute looping block and return the next index to handle.
+     */
+    let executeLoopingBlock = function (inStream, index) {
+        let block = inStream[index]
+        let count = block.count
+        let nextIndex = index
+        for (let i = 0; i < count; i++) {
+            nextIndex = executeInStream(inStream, index + 1)
+        }
+        return nextIndex
     }
-    return nextIndex
-  }
 
-  /**
-   * Execute the animation given an array of instructions and a starting index.
-   */
-  let executeInStream = function (stream, index) {
-    let i = index
-    let len = stream.length
-    while (i < len) {
-      if (failed) {
-        return
-      }
-      let block = stream[i]
-      switch (block.name) {
-        case SupportedBlocks.WalkLeft:
-        case SupportedBlocks.WalkDown:
-        case SupportedBlocks.WalkUp:
-        case SupportedBlocks.WalkRight:
-        case SupportedBlocks.RunLeft:
-        case SupportedBlocks.RunDown:
-        case SupportedBlocks.RunUp:
-        case SupportedBlocks.RunRight:
-        case SupportedBlocks.Jump:
-        case SupportedBlocks.Turn:
-        case SupportedBlocks.Attack:
-        case SupportedBlocks.Defense:
-        case SupportedBlocks.Standby:
-          console.log('Play Block: ' + block.name)
-          playAnimation(block.name)
-          i++
-          break
-        case SupportedBlocks.Else:
-          i++
-          break
-        case SupportedBlocks.IfEnd:
-        case SupportedBlocks.RepeatEnd:
-          return i + 1
-        case SupportedBlocks.IfStart:
-          i = executeIfBlock(inStream, i)
-          break
-        case SupportedBlocks.RepeatStart:
-          i = executeLoopingBlock(inStream, i)
-          break
-        default:
-          alert('Unsupported Block Type: ' + block.name)
-          break
-      }
+    /**
+     * Execute the animation given an array of instructions and a starting index.
+     */
+    let executeInStream = function (stream, index) {
+        let i = index
+        let len = stream.length
+        while (i < len) {
+            if (failed) {
+                return
+            }
+            let block = stream[i]
+            switch (block.name) {
+                case SupportedBlocks.WalkLeft:
+                case SupportedBlocks.WalkDown:
+                case SupportedBlocks.WalkUp:
+                case SupportedBlocks.WalkRight:
+                case SupportedBlocks.RunLeft:
+                case SupportedBlocks.RunDown:
+                case SupportedBlocks.RunUp:
+                case SupportedBlocks.RunRight:
+                case SupportedBlocks.Jump:
+                case SupportedBlocks.Turn:
+                case SupportedBlocks.Attack:
+                case SupportedBlocks.Defense:
+                case SupportedBlocks.Standby:
+                    console.log('Play Block: ' + block.name)
+                    playAnimation(block.name)
+                    i++
+                    break
+                case SupportedBlocks.Else:
+                    i++
+                    break
+                case SupportedBlocks.IfEnd:
+                case SupportedBlocks.RepeatEnd:
+                    return i + 1
+                case SupportedBlocks.IfStart:
+                    i = executeIfBlock(inStream, i)
+                    break
+                case SupportedBlocks.RepeatStart:
+                    i = executeLoopingBlock(inStream, i)
+                    break
+                default:
+                    alert('Unsupported Block Type: ' + block.name)
+                    break
+            }
+        }
     }
-  }
 
-  let passConditionMatched = function () {
-    return stepCount < maxSteps && currentGridX + '_' + currentGridY === passCondition.destinationXGrid + '_' + passCondition.destinationYGrid
-  }
-  let checkPassOrFail = function () {
-    if (passConditionMatched()) {
-      victory()
-      animationContext.finalStatus = 'Congratulations!'
-    } else {
-      animationContext.finalStatus = 'Try Again!'
-      playFailure()
+    let passConditionMatched = function () {
+        console.log('Check final condition at position x = ' + currentGridX + ' y = ' + currentGridY + ' victory x = ' + passCondition.destinationXGrid + ' y = ' + passCondition.destinationYGrid)
+        let stepCheck = stepCount < maxSteps
+        let positionCheck = currentGridX + '_' + currentGridY === passCondition.destinationXGrid + '_' + passCondition.destinationYGrid
+        if (passCondition.pathMatched) {
+            console.log(path.toString())
+            let targetPath = passCondition.path
+            for (let i = 0; i < targetPath.length; i++) {
+                let offset = targetPath[i]
+                if (i >= path.length || offset !== path[i]) {
+                    return false
+                }
+            }
+        }
+        return stepCheck && positionCheck
     }
-  }
+
+    let checkPassOrFail = function () {
+        if (passConditionMatched()) {
+            victory()
+        } else {
+            playFailure()
+        }
+    }
 // Main logic for runProgram
-  let inStream = JSON.parse(animationContext.instruction)
-  if (inStream.length > 0) {
-    executeInStream(inStream, 0)
-    if (!failed) {
-      checkPassOrFail()
+    let inStream = JSON.parse(animationContext.instruction)
+    if (inStream.length > 0) {
+        executeInStream(inStream, 0)
+        if (!failed) {
+            checkPassOrFail()
+        }
     }
-  }
 }
