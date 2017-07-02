@@ -3,17 +3,41 @@
     "character_starting_grid_y": 2,
     "items":[  
       {  
-         "key":"stone",
-         "image":"assets/images/knight/background/block-stone.png",
-         "count":1,
+         "key":"stump",
+         "image":"assets/images/knight/background/block-stump.png",
+         "count":5,
          "random":false,
          "coordinates":[  
-           {
-            "x": 3,
-            "y": 2,
-            "xOffset":0,
-            "yOffset":0
-           }
+            {  
+               "x":3,
+               "y":0,
+               "xOffset":0,
+               "yOffset":0
+            },
+            {  
+               "x":3,
+               "y":1,
+               "xOffset":0,
+               "yOffset":0
+            },
+                        {  
+               "x":3,
+               "y":2,
+               "xOffset":0,
+               "yOffset":0
+            },
+                        {  
+               "x":3,
+               "y":3,
+               "xOffset":0,
+               "yOffset":0
+            },
+                        {  
+               "x":3,
+               "y":4,
+               "xOffset":0,
+               "yOffset":0
+            }
          ],
          "blocker":true,
          "width":163,
@@ -53,5 +77,5 @@
       "path":[],
       "interactions": []
    },
-   "testScript": "[{\"name\":\"WalkDown\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkUp\"}]"
+   "testScript": "[{\"name\":\"JumpRight\"}]"
 }

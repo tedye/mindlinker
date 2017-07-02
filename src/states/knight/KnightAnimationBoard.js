@@ -3,6 +3,7 @@
  */
 import Phaser from 'phaser'
 import Knight from '../../sprites/Knight'
+import InteractiveItem from '../../sprites/InteractiveItem'
 import KnightAnimationPlayer from '../../animation/KnightAnimationPlayer'
 
 export default class extends Phaser.State {
@@ -28,6 +29,8 @@ export default class extends Phaser.State {
             maxSteps: this.taskContext.maxSteps,
             passCondition: this.taskContext.passCondition,
             items: this.taskContext.items,
+            interactiveItems: this.taskContext.interactionItems,
+            interactiveItemSprites: this.interactiveItemSprites,
             instruction: this.taskContext.testScript
         }
     }
@@ -66,12 +69,39 @@ export default class extends Phaser.State {
         console.log('Draw main character at location: x = ' + targetGridXMid + ' and y = ' + targetGridYMid)
         let sprite = new Knight({
             game: this.game,
+            name: 'knight',
             x: targetGridXMid,
             y: targetGridYMid,
             asset: this.gameContext.spritesheets[0].key,
             frame: 0
         })
         this.knight = this.game.add.existing(sprite)
+    }
+
+    drawInteractionItems() {
+        this.interactiveItemSprites = []
+        let interactionItems = this.taskContext.interactionItems
+        if (interactionItems.length > 0) {
+            let gridWidth = this.step_width_in_pixel
+            let gridHeight = this.step_height_in_pixel
+            for (let i = 0; i < interactionItems.length; i++) {
+                let item = interactionItems[i]
+                let position = item.coordinate
+                let ix = this.gridStartX + Math.round((position.x + 0.5) * gridWidth)
+                let iy = this.gridStartY + Math.round((position.y + 0.5) * gridHeight) - Math.round(item.height / 2)
+                let sprite = new InteractiveItem({
+                    game: this.game,
+                    name: item.spriteKey,
+                    x: ix,
+                    y: iy,
+                    asset: item.spriteSheetKey,
+                    frame: 0
+                })
+                this.interactiveItemSprites.push(sprite)
+                this.game.add.existing(sprite)
+                this.addAnimationsForSprite(sprite, item.spritesheets)
+            }
+        }
     }
 
     drawItems() {
@@ -191,6 +221,14 @@ export default class extends Phaser.State {
             let item = this.taskContext.items[i]
             this.game.load.image(item.key, item.image)
         }
+        for (let i = 0; i < this.taskContext.interactionItems.length; i++) {
+            let item = this.taskContext.interactionItems[i]
+            for (let j = 0; j < item.spritesheets.length; j++) {
+                let spriteSheet = item.spritesheets[j]
+                console.log('Load spritesheet: ' + spriteSheet.spritesheet + ' as ' + spriteSheet.key + ' with data file: ' + spriteSheet.datafile)
+                this.game.load.atlasJSONArray(spriteSheet.key, spriteSheet.spritesheet, spriteSheet.datafile)
+            }
+        }
     }
 
     setCurrentGameContexts() {
@@ -201,14 +239,14 @@ export default class extends Phaser.State {
         this.taskContext = JSON.parse(this.game.cache.getText('taskContext'))
     }
 
-    addAnimations() {
-        for (let i = this.gameContext.spritesheets.length - 1; i >= 0; i--) {
-            let spritesheet = this.gameContext.spritesheets[i]
-            this.knight.loadTexture(spritesheet.key)
+    addAnimationsForSprite(sprite, spritesheets) {
+        for (let i = spritesheets.length - 1; i >= 0; i--) {
+            let spritesheet = spritesheets[i]
+            sprite.loadTexture(spritesheet.key)
             for (let j = 0; j < spritesheet.animations.length; j++) {
                 let animation = spritesheet.animations[j]
-                console.log('Add animation: ' + animation.name)
-                this.knight.animations.add(animation.name, animation.frames, animation.rate, animation.loop, false)
+                console.log('Add animation: ' + animation.name + ' for sprite: ' + sprite.name)
+                sprite.animations.add(animation.name, animation.frames, animation.rate, animation.loop, false)
             }
         }
     }
@@ -237,9 +275,10 @@ export default class extends Phaser.State {
         this.drawBackground()
         this.drawGridBoard()
         this.drawItems()
+        this.drawInteractionItems()
         this.drawMainCharacterAtStartingPosition()
         this.drawForeGround()
-        this.addAnimations()
+        this.addAnimationsForSprite(this.knight, this.gameContext.spritesheets)
         this.addAudios()
     }
 }

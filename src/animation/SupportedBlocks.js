@@ -16,6 +16,8 @@ export default {
     RepeatStart: 'RepeatStart',
     RepeatEnd: 'RepeatEnd',
     Jump: 'Jump',
+    JumpRight: 'JumpRight',
+    JumpLeft: 'JumpLeft',
     Turn: 'Turn',
     Attack: 'Attack',
     Standby: 'Standby',

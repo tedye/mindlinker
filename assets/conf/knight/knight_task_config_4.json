@@ -42,6 +42,7 @@
          "gridHeight":1
       }
    ],
+   "interactionItems":[],
    "maxSteps":30,
    "failCondition":{  
 
@@ -75,7 +76,8 @@
          "-1_0",
          "-1_0",
          "-1_0"
-      ]
+      ],
+      "interactions": []
    },
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":3}, {\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkLeft\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatEnd\"}]"
 }

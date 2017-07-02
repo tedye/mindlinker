@@ -40,29 +40,37 @@ The Animation Framework will expect a JSON array of commands. Here is a list of 
 
 {"name":"Jump"}
 
-11. Turn
+11. JumpRight
+
+{"name":"JumpRight"}
+
+12. JumpLeft
+
+{"name":"JumpLeft"}
+
+13. Turn
 
 {"name":"Turn"}
 
-12. RepeatStart
+14. RepeatStart
 
 {"name":"RepeatStart",
  "count":2}
 
-13. RepeatEnd
+15. RepeatEnd
 
 {"name":"RepeatEnd"}
 
-14. IfStart
+16. IfStart
 
 {"name":"IfStart",
  "condition":false}
 
-15. Else
+17. Else
 
 {"name":"Else"}
 
-16. IfEnd
+18. IfEnd
 
 {"name":"IfEnd"}
 

@@ -4,8 +4,9 @@
 import Phaser from 'phaser'
 
 export default class extends Phaser.Sprite {
-    constructor({game, x, y, asset, frame}) {
+    constructor({game, name, x, y, asset, frame}) {
         super(game, x, y, asset, frame)
+        this.name = name
         this.anchor.setTo(0.5, 0.5)
         this.actionQueue = []
         this.playingAnimation = null
@@ -26,13 +27,13 @@ export default class extends Phaser.Sprite {
         this.restartButton.anchor.setTo(0.5, 0.5)
         this.restartButton.events.onInputOver.add(this.showRestartTooltip, this)
         this.restartButton.events.onInputOut.add(this.destroyTooltip, this)
-        if (this.taskCompleted) {
+        //if (this.taskCompleted) {
             this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'next', this.nextGame, this)
             this.nextButton.scale.setTo(0.3, 0.3)
             this.nextButton.anchor.setTo(0.5, 0.5)
             this.nextButton.events.onInputOver.add(this.showNextTaskTooltip, this)
             this.nextButton.events.onInputOut.add(this.destroyTooltip, this)
-        }
+        //}
     }
 
     playNextAction() {
@@ -48,6 +49,9 @@ export default class extends Phaser.Sprite {
             this.game.sound.play(nextAction.audio)
         }
         this.game.add.tween(this).to({x: newX, y: newY}, 1000, null, true)
+        if (nextAction.spriteToActivate !== null) {
+            nextAction.spriteToActivate.activated = true
+        }
     }
 
     destroyAllButtons() {

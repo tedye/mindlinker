@@ -15,6 +15,8 @@ export default function play(animationContext) {
     const maxSteps = animationContext.maxSteps
     const passCondition = animationContext.passCondition
     let items = animationContext.items
+    let interactiveItems = animationContext.interactiveItems
+    let interactiveItemSprites = animationContext.interactiveItemSprites
     let currentGridX = animationContext.startGridX
     let currentGridY = animationContext.startGridY
     let faceRight = true
@@ -42,27 +44,28 @@ export default function play(animationContext) {
         return false
     }
 
-    let addNewActionToSpriteActionQueue = function (name, xOffset, yOffset, spriteKey, audio) {
-        console.log('Add action to queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
+    let addNewActionToMainSpriteActionQueue = function (name, xOffset, yOffset, spriteKey, audio, spriteToActivate) {
+        console.log('Add action to main sprite action queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
         sprite.actionQueue.push({
             name: name,
             xOffset: xOffset,
             yOffset: yOffset,
             spriteKey: spriteKey,
-            audio: audio
+            audio: audio,
+            spriteToActivate: spriteToActivate
         })
     }
 
     let Pause = function () {
-        addNewActionToSpriteActionQueue(faceRight ? 'Pause' : 'PauseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Pause' : 'PauseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
     }
 
     let MakeATurn = function () {
         console.log('Animation Played: Turn')
         if (faceRight) {
-            addNewActionToSpriteActionQueue('TurnToLeft', 0, 0, forwardSpriteKey, 'turn')
+            addNewActionToMainSpriteActionQueue('TurnToLeft', 0, 0, forwardSpriteKey, 'turn', null)
         } else {
-            addNewActionToSpriteActionQueue('TurnToRight', 0, 0, forwardSpriteKey, 'turn')
+            addNewActionToMainSpriteActionQueue('TurnToRight', 0, 0, forwardSpriteKey, 'turn', null)
         }
         faceRight = !faceRight
         Pause()
@@ -73,7 +76,7 @@ export default function play(animationContext) {
         if (isBlocked(1, 0)) {
             playFailure()
         } else {
-            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk', null)
             Pause()
         }
     }
@@ -83,7 +86,7 @@ export default function play(animationContext) {
         if (isBlocked(-1, 0)) {
             playFailure()
         } else {
-            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk', null)
             Pause()
         }
     }
@@ -93,7 +96,7 @@ export default function play(animationContext) {
         if (isBlocked(0, -1)) {
             playFailure()
         } else {
-            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk', null)
             Pause()
         }
     }
@@ -103,7 +106,7 @@ export default function play(animationContext) {
         if (isBlocked(0, 1)) {
             playFailure()
         } else {
-            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk')
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'walk', null)
             Pause()
         }
     }
@@ -113,7 +116,7 @@ export default function play(animationContext) {
         if (isBlocked(1, 0)) {
             playFailure()
         } else {
-            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
             Pause()
         }
     }
@@ -123,7 +126,7 @@ export default function play(animationContext) {
         if (isBlocked(-1, 0)) {
             playFailure()
         } else {
-            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
             Pause()
         }
     }
@@ -133,7 +136,7 @@ export default function play(animationContext) {
         if (isBlocked(0, -1)) {
             playFailure()
         } else {
-            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
             Pause()
         }
     }
@@ -143,44 +146,91 @@ export default function play(animationContext) {
         if (isBlocked(0, 1)) {
             playFailure()
         } else {
-            addNewActionToSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run')
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
             Pause()
         }
     }
 
+    let findItemSpriteDefinitionByPositionOffset = function (xOffset, yOffset) {
+        let xP = currentGridX + xOffset
+        let yP = currentGridY + yOffset
+        for (let i = 0; i < interactiveItems.length; i++) {
+            let itemDef = interactiveItems[i]
+            if (itemDef.coordinate.x + '_' + itemDef.coordinate.y === xP + '_' + yP) {
+                return itemDef
+            }
+        }
+        return null
+    }
+
     let attack = function () {
         console.log('Animation Played: Attack')
-        addNewActionToSpriteActionQueue(faceRight ? 'Attack' : 'AttackBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'attack')
+        let interactiveSpriteDef = findItemSpriteDefinitionByPositionOffset(faceRight ? 1 : -1, 0)
+        let spriteToActivate = null
+        if (interactiveSpriteDef !== null) {
+            let interactiveSprite = findItemSpriteBySpriteName(interactiveSpriteDef.spriteKey)
+            console.log('Add action to sprite: ' + interactiveSprite.name)
+            interactiveSprite.actionQueue.push({
+                name: interactiveSpriteDef.animationKey,
+                xOffset: 0,
+                yOffset: 0,
+                spriteKey: interactiveSpriteDef.spriteSheetKey,
+                audio: null,
+            })
+            interactiveSprite.status = interactiveSpriteDef.statusPostAnimation
+            spriteToActivate = interactiveSprite
+        }
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Attack' : 'AttackBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'attack', spriteToActivate)
         Pause()
     }
 
     let victory = function () {
         console.log('Animation Played: Victory')
         sprite.taskCompleted = true
-        addNewActionToSpriteActionQueue(faceRight ? 'Victory' : 'VictoryBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Victory' : 'VictoryBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
     }
 
     let playFailure = function () {
         console.log('Animation Played: Fail')
         failed = true
         sprite.taskCompleted = false
-        addNewActionToSpriteActionQueue(faceRight ? 'Fail' : 'FailBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Fail' : 'FailBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
     }
 
     let Jump = function () {
         console.log('Animation Played: Jump')
-        addNewActionToSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
         Pause()
+    }
+
+    let JumpRight = function (step) {
+        console.log('Animation Played: Jump Right')
+        if (isBlocked(2, 0)) {
+            playFailure()
+        } else {
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
+            Pause()
+        }
+    }
+
+    let JumpLeft = function (step) {
+        console.log('Animation Played: Jump Left')
+        if (isBlocked(-2, 0)) {
+            playFailure()
+        } else {
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
+            Pause()
+        }
     }
 
     let Standby = function () {
         console.log('Animation Played: Standby')
-        addNewActionToSpriteActionQueue(faceRight ? 'Standby' : 'StandbyBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null)
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Standby' : 'StandbyBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
     }
 
     let Defense = function () {
         console.log('Animation Played: Defense')
-        addNewActionToSpriteActionQueue(faceRight ? 'Defense' : 'DefenseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'defense')
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Defense' : 'DefenseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'defense', null)
         Pause()
     }
     /**
@@ -237,6 +287,16 @@ export default function play(animationContext) {
                 break
             case SupportedBlocks.Jump:
                 Jump()
+                break
+            case SupportedBlocks.JumpRight:
+                JumpRight(Math.round(xDistPerStep*2))
+                path.push('2_0')
+                currentGridX += 2
+                break
+            case SupportedBlocks.JumpLeft:
+                JumpLeft(Math.round(xDistPerStep*2))
+                path.push('-2_0')
+                currentGridX -= 2
                 break
             case SupportedBlocks.Defense:
                 Defense()
@@ -319,6 +379,8 @@ export default function play(animationContext) {
                 case SupportedBlocks.Attack:
                 case SupportedBlocks.Defense:
                 case SupportedBlocks.Standby:
+                case SupportedBlocks.JumpRight:
+                case SupportedBlocks.JumpLeft:
                     console.log('Play Block: ' + block.name)
                     playAnimation(block.name)
                     i++
@@ -342,6 +404,18 @@ export default function play(animationContext) {
         }
     }
 
+    let findItemSpriteBySpriteName = function (name) {
+        console.log('Locating interactive sprite ' + name)
+        for (let i = 0; i < interactiveItemSprites.length; i++) {
+            let itemSprite = interactiveItemSprites[i]
+            console.log('Checking interactive sprite ' + itemSprite.name)
+            if (itemSprite.name === name) {
+                return itemSprite
+            }
+        }
+        return null
+    }
+
     let passConditionMatched = function () {
         console.log('Check final condition at position x = ' + currentGridX + ' y = ' + currentGridY + ' victory x = ' + passCondition.destinationXGrid + ' y = ' + passCondition.destinationYGrid)
         let stepCheck = stepCount < maxSteps
@@ -352,6 +426,15 @@ export default function play(animationContext) {
             for (let i = 0; i < targetPath.length; i++) {
                 let offset = targetPath[i]
                 if (i >= path.length || offset !== path[i]) {
+                    return false
+                }
+            }
+        }
+        if (passCondition.interactions.length > 0) {
+            for (let i = 0; i < passCondition.interactions.length; i++) {
+                let interaction = passCondition.interactions[i]
+                let sprite = findItemSpriteBySpriteName(interaction.sprite)
+                if (sprite !== null && sprite.status !== interaction.status) {
                     return false
                 }
             }

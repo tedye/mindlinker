@@ -36,6 +36,7 @@
          "gridHeight":1
       }
    ],
+   "interactionItems":[],
    "maxSteps":20,
    "failCondition":{  
 
@@ -44,7 +45,8 @@
       "destinationXGrid":8,
       "destinationYGrid":2,
       "pathMatched": false,
-      "path":[]
+      "path":[],
+      "interactions": []
    },
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":8},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkDown\"},{\"name\":\"RepeatEnd\"}]"
 }
