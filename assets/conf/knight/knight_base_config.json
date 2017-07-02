@@ -383,12 +383,23 @@
                ]
             }
          ]
+      },
+      {  
+               "key":"KnightAnimationItems",
+               "spritesheet":"assets/images/knight/animation/knight_animation_items.png",
+               "datafile":"assets/images/knight/animation/knight_animation_items.json",
+               "animations":[
+               ]
       }
    ],
    "background_image":"assets/images/knight/background/background.jpg",
    "foreground_image":"assets/images/knight/background/foreground.png",
    "shadow_image":"assets/images/knight/background/shadow.png",
    "grid_image":"assets/images/knight/background/grid.png",
+   "start_button_image":"assets/images/knight/background/start.png",
+   "pause_button_image":"assets/images/knight/background/pause.png",
+   "restart_button_image":"assets/images/knight/background/restart.png",
+   "next_button_image":"assets/images/knight/background/next.png",
    "audios": [
       {
          "key":"walk",

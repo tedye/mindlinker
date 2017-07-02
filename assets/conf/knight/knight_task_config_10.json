@@ -39,8 +39,8 @@
                "yOffset":0
             },
             {  
-               "x":6,
-               "y":2,
+               "x":7,
+               "y":1,
                "xOffset":0,
                "yOffset":0
             },
@@ -142,8 +142,6 @@
          "spritesheets":[  
             {  
                "key":"KnightAnimationItems",
-               "spritesheet":"assets/images/knight/animation/knight_animation_items.png",
-               "datafile":"assets/images/knight/animation/knight_animation_items.json",
                "animations":[  
                   {  
                      "name":"AttackTrainingStump",
@@ -175,7 +173,7 @@
          "animationKey":"AttackTrainingStump",
          "statusPostAnimation":"Attacked",
          "coordinate":{  
-            "x":8,
+            "x":7,
             "y":0
          },
          "blocker":true,
@@ -184,8 +182,6 @@
          "spritesheets":[  
             {  
                "key":"KnightAnimationItems",
-               "spritesheet":"assets/images/knight/animation/knight_animation_items.png",
-               "datafile":"assets/images/knight/animation/knight_animation_items.json",
                "animations":[  
                   {  
                      "name":"AttackTrainingStump",
@@ -234,5 +230,5 @@
          }
       ]
    },
-   "testScript":"[{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkDown\"},{\"name\":\"RepeatEnd\"},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Attack\"},{\"name\":\"WalkUp\"},{\"name\":\"WalkRight\"},{\"name\":\"JumpRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkUp\"},{\"name\":\"Attack\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkDown\"}]"
+   "testScript":"[{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkDown\"},{\"name\":\"RepeatEnd\"},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Attack\"},{\"name\":\"WalkUp\"},{\"name\":\"WalkRight\"},{\"name\":\"JumpRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkUp\"},{\"name\":\"Attack\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"}]"
 }

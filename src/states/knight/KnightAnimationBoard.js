@@ -37,26 +37,51 @@ export default class extends Phaser.State {
 
     play() {
         console.log('play blocks')
-        let animationContext = this.getCurrentAnimationContext(this.gameContext)
-        KnightAnimationPlayer(animationContext)
+        if (this.knight.animations.paused) {
+            this.knight.animations.paused = false
+        } else {
+            let animationContext = this.getCurrentAnimationContext(this.gameContext)
+            KnightAnimationPlayer(animationContext)
+        }
+        this.startButton.visible = false
+        this.pauseButton.visible = true
+        this.tooltip.destroy()
+    }
+
+    pause() {
+        console.log('pause blocks')
+        this.knight.animations.paused = true
+        this.startButton.visible = true
+        this.pauseButton.visible = false
+        this.tooltip.destroy()
     }
 
     drawBackground() {
         this.game.add.sprite(0, 0, 'background').scale.setTo(1, 0.75)
-        this.drawStartButton();
     }
 
-    drawStartButton() {
+    drawBoardButtons() {
         let showStartTooltip = function () {
-            this.tooltip = this.game.add.text(100, 50, 'Start to run.')
+            this.tooltip = this.game.add.text(100, 50, '开始')
         }
         let destroyStartTooltip = function () {
             this.tooltip.destroy()
         }
-        let startButton = this.game.add.button(0, 0, 'start', this.play, this)
-        startButton.scale.setTo(0.3, 0.3)
-        startButton.events.onInputOver.add(showStartTooltip, this)
-        startButton.events.onInputOut.add(destroyStartTooltip, this)
+        let showPauseTooltip = function () {
+            this.tooltip = this.game.add.text(100, 50, '暂停')
+        }
+        let destroyPauseTooltip = function () {
+            this.tooltip.destroy()
+        }
+        this.startButton = this.game.add.button(0, 0, 'start', this.play, this)
+        this.startButton.scale.setTo(0.3, 0.3)
+        this.startButton.events.onInputOver.add(showStartTooltip, this)
+        this.startButton.events.onInputOut.add(destroyStartTooltip, this)
+        this.pauseButton = this.game.add.button(0, 0, 'pause', this.pause, this)
+        this.pauseButton.scale.setTo(0.3, 0.3)
+        this.pauseButton.events.onInputOver.add(showPauseTooltip, this)
+        this.pauseButton.events.onInputOut.add(destroyPauseTooltip, this)
+        this.pauseButton.visible = false
     }
 
     drawMainCharacterAtStartingPosition() {
@@ -273,10 +298,11 @@ export default class extends Phaser.State {
         console.log('KnightAnimationBoard Create.')
         this.calculateAndSetGridPositionAndStepSizesResponsively()
         this.drawBackground()
+        this.drawBoardButtons()
         this.drawGridBoard()
         this.drawItems()
-        this.drawInteractionItems()
         this.drawMainCharacterAtStartingPosition()
+        this.drawInteractionItems()
         this.drawForeGround()
         this.addAnimationsForSprite(this.knight, this.gameContext.spritesheets)
         this.addAudios()

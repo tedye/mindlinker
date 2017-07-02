@@ -1,5 +1,5 @@
 {  
-   "character_starting_grid_x":2,
+   "character_starting_grid_x":4,
    "character_starting_grid_y":2,
    "items":[  
 
@@ -11,7 +11,7 @@
          "animationKey":"AttackTrainingStump",
          "statusPostAnimation":"Attacked",
          "coordinate":{  
-            "x":3,
+            "x":5,
             "y":2
          },
          "blocker":true,
@@ -20,8 +20,6 @@
          "spritesheets":[  
             {  
                "key":"KnightAnimationItems",
-               "spritesheet":"assets/images/knight/animation/knight_animation_items.png",
-               "datafile":"assets/images/knight/animation/knight_animation_items.json",
                "animations":[  
                   {  
                      "name":"AttackTrainingStump",
@@ -53,7 +51,7 @@
 
    },
    "passCondition":{  
-      "destinationXGrid":2,
+      "destinationXGrid":4,
       "destinationYGrid":2,
       "pathMatched":false,
       "path":[  
