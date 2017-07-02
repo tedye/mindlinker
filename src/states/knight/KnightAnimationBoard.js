@@ -31,7 +31,7 @@ export default class extends Phaser.State {
             items: this.taskContext.items,
             interactiveItems: this.taskContext.interactionItems,
             interactiveItemSprites: this.interactiveItemSprites,
-            instruction: this.taskContext.testScript
+            instruction: Blockly.JavaScript.workspaceToCode(this.game.workspace)
         }
     }
 
@@ -283,6 +283,32 @@ export default class extends Phaser.State {
         }
     }
 
+    addBlocks() {
+        let toolbox = '<xml>'
+        toolbox += '<block type="logic_compare"></block>'
+        toolbox += '<block type="statement_start"></block>'
+        toolbox += '<block type="statement_end"></block>'
+        toolbox += '<block type="statement_walk_right"></block>'
+        toolbox += '<block type="statement_walk_left"></block>'
+        toolbox += '<block type="statement_walk_up"></block>'
+        toolbox += '<block type="statement_walk_down"></block>'
+        toolbox += '<block type="statement_run_right"></block>'
+        toolbox += '<block type="statement_run_left"></block>'
+        toolbox += '<block type="statement_run_up"></block>'
+        toolbox += '<block type="statement_run_down"></block>'
+        toolbox += '<block type="statement_attack"></block>'
+        toolbox += '<block type="statement_jump"></block>'
+        toolbox += '<block type="statement_turn"></block>'
+        toolbox += '<block type="statement_repeat"></block>'
+        toolbox += '<block type="statement_condition_if"></block>'
+        toolbox += '</xml>'
+        let options = {
+            horizontalLayout : true,
+            toolbox : toolbox
+        }
+        this.game.workspace = Blockly.inject('block', options);
+    }
+
     init() {
         console.log('KnightAnimationBoard Init.')
     }
@@ -292,6 +318,11 @@ export default class extends Phaser.State {
         this.setCurrentGameContexts()
         this.setCurrentTaskContext()
         this.preloadImages()
+        console.log(typeof this.game.workspace)
+        if (typeof this.game.workspace == "undefined"){
+            // Only create blocks once
+            this.addBlocks()
+        }
     }
 
     create() {

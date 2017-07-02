@@ -2,16 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdcceba8-8fe8-459d-b70f-1a120b76c6a4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/knight/knight_base_config.json" afterPath="$PROJECT_DIR$/assets/conf/knight/knight_base_config.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/knight/knight_task_config_10.json" afterPath="$PROJECT_DIR$/assets/conf/knight/knight_task_config_10.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/knight/knight_task_config_9.json" afterPath="$PROJECT_DIR$/assets/conf/knight/knight_task_config_9.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/attack.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/condition.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/jump.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/repeat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/run_down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/run_left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/run_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/run_up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/start.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/turn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/walk_down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/walk_left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/walk_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/walk_up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/images/yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/js/blockly_compressed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/js/blocks_compressed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/js/custom_block_defs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/js/custom_code_generators.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/js/javascript_compressed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/blocks/js/zh-hans.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bundle.js" afterPath="$PROJECT_DIR$/dist/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bundle.js.map" afterPath="$PROJECT_DIR$/dist/bundle.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vendor.bundle.js.map" afterPath="$PROJECT_DIR$/dist/vendor.bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/RootBoot.js" afterPath="$PROJECT_DIR$/src/states/RootBoot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/knight/KnightAnimationBoard.js" afterPath="$PROJECT_DIR$/src/states/knight/KnightAnimationBoard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/knight/KnightStoryBoard.js" afterPath="$PROJECT_DIR$/src/states/knight/KnightStoryBoard.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,15 +55,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KnightAnimationBoard.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="KnightAnimationBoard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/states/knight/KnightAnimationBoard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3885">
-              <caret line="288" column="0" lean-forward="true" selection-start-line="288" selection-start-column="0" selection-end-line="288" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#40#67#0" expanded="true" />
-                <element signature="e#6361#7777#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -75,14 +93,16 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="405">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding>
+                <marker date="1499025726000" expanded="true" signature="941:1050" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -229,6 +249,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -387,8 +409,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -525,16 +545,18 @@
       <workItem from="1498953046339" duration="6759000" />
       <workItem from="1499021517479" duration="1827000" />
       <workItem from="1499024591696" duration="521000" />
+      <workItem from="1499025760947" duration="87000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41068000" />
+    <option name="totallyTimeSpent" value="41155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -588,7 +610,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#40#67#0" expanded="true" />
-            <element signature="e#6361#7777#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -672,7 +693,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#40#67#0" expanded="true" />
-            <element signature="e#6361#7777#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -756,7 +776,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#40#67#0" expanded="true" />
-            <element signature="e#6361#7777#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -842,7 +861,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#40#67#0" expanded="true" />
-            <element signature="e#6361#7777#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -861,7 +879,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#40#67#0" expanded="true" />
-            <element signature="e#6361#7777#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -967,18 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/states/knight/KnightAnimationBoard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3885">
-          <caret line="288" column="0" lean-forward="true" selection-start-line="288" selection-start-column="0" selection-end-line="288" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#40#67#0" expanded="true" />
-            <element signature="e#6361#7777#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/states/RootBoot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -989,9 +994,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <marker date="1499025726000" expanded="true" signature="941:1050" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1000,6 +1007,17 @@
         <state relative-caret-position="330">
           <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/states/knight/KnightAnimationBoard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#40#67#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
