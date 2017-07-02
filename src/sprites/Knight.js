@@ -2,6 +2,7 @@
  * Created by kfang on 6/16/17.
  */
 import Phaser from 'phaser'
+import TooltipBuilder from '../util/TooltipBuilder'
 
 export default class extends Phaser.Sprite {
     constructor({game, name, x, y, asset, frame}) {
@@ -25,15 +26,13 @@ export default class extends Phaser.Sprite {
         this.restartButton = this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY, 'restart', this.restart, this)
         this.restartButton.scale.setTo(0.3, 0.3)
         this.restartButton.anchor.setTo(0.5, 0.5)
-        this.restartButton.events.onInputOver.add(this.showRestartTooltip, this)
-        this.restartButton.events.onInputOut.add(this.destroyTooltip, this)
-        //if (this.taskCompleted) {
+        TooltipBuilder(this.game, this.restartButton, '重新开始', 'bottom')
+        if (this.taskCompleted) {
             this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'next', this.nextGame, this)
             this.nextButton.scale.setTo(0.3, 0.3)
             this.nextButton.anchor.setTo(0.5, 0.5)
-            this.nextButton.events.onInputOver.add(this.showNextTaskTooltip, this)
-            this.nextButton.events.onInputOut.add(this.destroyTooltip, this)
-        //}
+        TooltipBuilder(this.game, this.nextButton, '开始下一关', 'bottom')
+        }
     }
 
     playNextAction() {
@@ -70,17 +69,5 @@ export default class extends Phaser.Sprite {
         this.destroyAllButtons()
         this.game.global.currentTaskIndex = this.game.global.currentTaskIndex + 1
         this.game.state.start('KnightSwitchTaskBoot')
-    }
-
-    showRestartTooltip() {
-        this.tooltip = this.game.add.text(this.game.world.centerX - 60, this.game.world.centerY - 100, 'Restart the game.')
-    }
-
-    showNextTaskTooltip() {
-        this.tooltip = this.game.add.text(this.game.world.centerX + 60, this.game.world.centerY - 100, 'Start next game.')
-    }
-
-    destroyTooltip() {
-        this.tooltip.destroy()
     }
 }

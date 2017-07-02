@@ -48,5 +48,6 @@
       "path":[],
       "interactions": []
    },
+   "hint":"控制骑士避开石头行走至战旗处。",
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":8},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkDown\"},{\"name\":\"RepeatEnd\"}]"
 }

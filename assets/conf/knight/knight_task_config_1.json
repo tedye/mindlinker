@@ -48,5 +48,6 @@
       "path":[],
       "interactions": []
    },
+   "hint":"控制骑士行走至战旗位置。",
    "testScript": "[{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"}]"
 }

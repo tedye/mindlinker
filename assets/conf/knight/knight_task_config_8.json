@@ -107,5 +107,6 @@
       "path":[],
       "interactions": []
    },
+   "hint":"控制骑士跳开障碍物并行走至战旗位置。",
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"JumpRight\"},{\"name\":\"RepeatEnd\"}]"
 }

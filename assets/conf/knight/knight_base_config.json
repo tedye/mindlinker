@@ -400,6 +400,7 @@
    "pause_button_image":"assets/images/knight/background/pause.png",
    "restart_button_image":"assets/images/knight/background/restart.png",
    "next_button_image":"assets/images/knight/background/next.png",
+   "task_hint_image":"assets/images/knight/background/taskhint.png",
    "audios": [
       {
          "key":"walk",

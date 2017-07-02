@@ -230,5 +230,6 @@
          }
       ]
    },
+   "hint":"控制骑士避开石头，跳过障碍物，攻击两个木桩并行走至战旗位置。",
    "testScript":"[{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkDown\"},{\"name\":\"RepeatEnd\"},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Attack\"},{\"name\":\"WalkUp\"},{\"name\":\"WalkRight\"},{\"name\":\"JumpRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkUp\"},{\"name\":\"Attack\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"}]"
 }

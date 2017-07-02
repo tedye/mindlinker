@@ -64,5 +64,6 @@
          }
       ]
    },
+   "hint":"控制骑士攻击木桩。",
    "testScript":"[{\"name\":\"Attack\"}]"
 }

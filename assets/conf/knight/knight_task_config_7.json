@@ -77,5 +77,6 @@
       "path":[],
       "interactions": []
    },
+   "hint":"控制骑士跳过障碍物。",
    "testScript": "[{\"name\":\"JumpRight\"}]"
 }

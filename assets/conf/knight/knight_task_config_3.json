@@ -48,5 +48,6 @@
       "path":[],
       "interactions": []
    },
+   "hint":"运用循环模块控制骑士行走至战旗位置。",
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":6},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"}]"
 }

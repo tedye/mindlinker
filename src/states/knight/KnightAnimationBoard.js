@@ -5,6 +5,7 @@ import Phaser from 'phaser'
 import Knight from '../../sprites/Knight'
 import InteractiveItem from '../../sprites/InteractiveItem'
 import KnightAnimationPlayer from '../../animation/KnightAnimationPlayer'
+import TooltipBuilder from '../../util/TooltipBuilder'
 
 export default class extends Phaser.State {
     calculateAndSetGridPositionAndStepSizesResponsively() {
@@ -45,7 +46,6 @@ export default class extends Phaser.State {
         }
         this.startButton.visible = false
         this.pauseButton.visible = true
-        this.tooltip.destroy()
     }
 
     pause() {
@@ -53,7 +53,6 @@ export default class extends Phaser.State {
         this.knight.animations.paused = true
         this.startButton.visible = true
         this.pauseButton.visible = false
-        this.tooltip.destroy()
     }
 
     drawBackground() {
@@ -61,27 +60,16 @@ export default class extends Phaser.State {
     }
 
     drawBoardButtons() {
-        let showStartTooltip = function () {
-            this.tooltip = this.game.add.text(100, 50, '开始')
-        }
-        let destroyStartTooltip = function () {
-            this.tooltip.destroy()
-        }
-        let showPauseTooltip = function () {
-            this.tooltip = this.game.add.text(100, 50, '暂停')
-        }
-        let destroyPauseTooltip = function () {
-            this.tooltip.destroy()
-        }
         this.startButton = this.game.add.button(0, 0, 'start', this.play, this)
         this.startButton.scale.setTo(0.3, 0.3)
-        this.startButton.events.onInputOver.add(showStartTooltip, this)
-        this.startButton.events.onInputOut.add(destroyStartTooltip, this)
         this.pauseButton = this.game.add.button(0, 0, 'pause', this.pause, this)
         this.pauseButton.scale.setTo(0.3, 0.3)
-        this.pauseButton.events.onInputOver.add(showPauseTooltip, this)
-        this.pauseButton.events.onInputOut.add(destroyPauseTooltip, this)
         this.pauseButton.visible = false
+        this.hintButton = this.game.add.button(this.startButton.width + 20, 0, 'taskhint', null, this)
+        this.hintButton.scale.setTo(0.3, 0.3)
+        TooltipBuilder(this.game, this.startButton, '开始', 'right')
+        TooltipBuilder(this.game, this.pauseButton, '暂停', 'right')
+        TooltipBuilder(this.game, this.hintButton, this.taskContext.hint, 'right')
     }
 
     drawMainCharacterAtStartingPosition() {

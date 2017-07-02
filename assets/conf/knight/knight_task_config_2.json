@@ -53,5 +53,6 @@
       "path":[],
       "interactions": []
    },
+   "hint":"控制骑士绕过石头行走至战旗位置。",
    "testScript": "[{\"name\":\"WalkDown\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkUp\"}]"
 }

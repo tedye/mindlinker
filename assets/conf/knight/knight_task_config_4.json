@@ -79,5 +79,6 @@
       ],
       "interactions": []
    },
+   "hint":"控制骑士在两面战旗之间来回走3次。",
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":3}, {\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkLeft\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatEnd\"}]"
 }

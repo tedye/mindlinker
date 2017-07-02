@@ -12,7 +12,7 @@ export default class extends Phaser.State {
         console.log('Root Boot Preload.')
         this.game.global = {}
         this.game.global.currentStoryConfig = 'assets/conf/knight/knight_base_config.json'
-        this.game.global.currentTaskIndex = 9
+        this.game.global.currentTaskIndex = 0
     }
 
     render() {
