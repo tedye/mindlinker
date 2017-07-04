@@ -3,6 +3,7 @@
  */
 import Phaser from 'phaser'
 import TooltipBuilder from '../util/TooltipBuilder'
+import config from '../config'
 
 export default class extends Phaser.Sprite {
     constructor({game, name, x, y, asset, frame}) {
@@ -47,7 +48,7 @@ export default class extends Phaser.Sprite {
         if (nextAction.audio !== null) {
             this.game.sound.play(nextAction.audio)
         }
-        this.game.add.tween(this).to({x: newX, y: newY}, 1000, null, true)
+        this.game.add.tween(this).to({x: newX, y: newY}, config.animationDuration, null, true)
         if (nextAction.spriteToActivate !== null) {
             nextAction.spriteToActivate.activated = true
         }

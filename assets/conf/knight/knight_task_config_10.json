@@ -60,8 +60,8 @@
          "blocker":true,
          "width":163,
          "height":73,
-         "gridWidth":1,
-         "gridHeight":1
+         "gridWidth":1.1,
+         "gridHeight":1.1
       },
       {  
          "key":"stump",
@@ -116,14 +116,14 @@
                "x":8,
                "y":3,
                "xOffset":0,
-               "yOffset":-20
+               "yOffset":-0.5
             }
          ],
          "blocker":false,
          "width":102,
          "height":222,
          "gridWidth":1,
-         "gridHeight":1
+         "gridHeight":2
       }
    ],
    "interactionItems":[  
@@ -134,11 +134,15 @@
          "statusPostAnimation":"Attacked",
          "coordinate":{  
             "x":3,
-            "y":2
+            "y":2,
+            "xOffset":0,
+            "yOffset":-0.5 
          },
          "blocker":true,
          "width":95,
          "height":214,
+         "gridWidth":1,
+         "gridHeight":3,
          "spritesheets":[  
             {  
                "key":"KnightAnimationItems",
@@ -174,11 +178,15 @@
          "statusPostAnimation":"Attacked",
          "coordinate":{  
             "x":7,
-            "y":0
+            "y":0,
+            "xOffset":0,
+            "yOffset":-0.5 
          },
          "blocker":true,
          "width":95,
          "height":214,
+         "gridWidth":1,
+         "gridHeight":3,
          "spritesheets":[  
             {  
                "key":"KnightAnimationItems",

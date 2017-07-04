@@ -3,10 +3,10 @@
    "grid_y_size":5,
    "grid_image_width":120,
    "grid_image_height":60,
-   "grid_board_top_left_x_percentage":0,
+   "grid_board_top_left_x_percentage":0.15,
    "grid_board_top_left_y_percentage":0.4,
-   "step_x_percentage":0.1,
-   "step_y_percentage":0.08,
+   "step_x_percentage":0.08,
+   "step_y_percentage":0.067,
    "character_width_in_pixel":143,
    "character_height_in_pixel":173,
    "spritesheets":[  

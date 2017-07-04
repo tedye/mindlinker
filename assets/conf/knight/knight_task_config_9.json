@@ -12,12 +12,16 @@
          "statusPostAnimation":"Attacked",
          "coordinate":{  
             "x":5,
-            "y":2
+            "y":2,
+            "xOffset":0,
+            "yOffset":-0.5            
          },
          "blocker":true,
          "width":95,
          "height":214,
-         "spritesheets":[  
+         "gridWidth":1,
+         "gridHeight":3,
+         "spritesheets": [  
             {  
                "key":"KnightAnimationItems",
                "animations":[  

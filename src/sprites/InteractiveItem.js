@@ -8,7 +8,6 @@ export default class extends Phaser.Sprite {
         console.log('Create interactive item sprite ' + name + ' at x = ' + x + ' y = ' + y)
         super(game, x, y, asset, frame)
         this.name = name
-        this.anchor.setTo(0.5, 0.5)
         this.actionQueue = []
         this.playingAnimation = null
         this.status = null

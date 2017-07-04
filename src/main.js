@@ -10,7 +10,7 @@ import KnightSwitchTaskBootState from './states/knight/KnightSwitchTaskBoot'
 
 class Game extends Phaser.Game {
     constructor() {
-        super(window.screen.availWidth, window.screen.availHeight * 0.7, Phaser.CANVAS, 'content', null)
+        super(window.screen.availWidth, window.screen.availHeight * 0.83, Phaser.CANVAS, 'content', null)
 
         this.state.add('RootBoot', RootBootState, false)
         this.state.add('KnightBoot', KnightBootState, false)

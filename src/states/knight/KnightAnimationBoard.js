@@ -2,13 +2,15 @@
  * Created by kfang on 6/15/17.
  */
 import Phaser from 'phaser'
+import config from '../../config'
 import Knight from '../../sprites/Knight'
 import InteractiveItem from '../../sprites/InteractiveItem'
 import KnightAnimationPlayer from '../../animation/KnightAnimationPlayer'
 import TooltipBuilder from '../../util/TooltipBuilder'
 
 export default class extends Phaser.State {
-    calculateAndSetGridPositionAndStepSizesResponsively() {
+    calculateAndSetGridPositionAndStepSizesResponsively(){
+        console.log('Game width: ' + this.game.width + ' height: ' + this.game.height)
         this.step_width_in_pixel = Math.round(this.game.width * this.gameContext.step_x_percentage)
         this.step_height_in_pixel = Math.round(this.game.height * this.gameContext.step_y_percentage)
 
@@ -56,7 +58,7 @@ export default class extends Phaser.State {
     }
 
     drawBackground() {
-        this.game.add.sprite(0, 0, 'background').scale.setTo(1, 0.75)
+        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width/config.backgroundWidth, this.game.height/config.backgroundHeight)
     }
 
     drawBoardButtons() {
@@ -100,8 +102,8 @@ export default class extends Phaser.State {
             for (let i = 0; i < interactionItems.length; i++) {
                 let item = interactionItems[i]
                 let position = item.coordinate
-                let ix = this.gridStartX + Math.round((position.x + 0.5) * gridWidth)
-                let iy = this.gridStartY + Math.round((position.y + 0.5) * gridHeight) - Math.round(item.height / 2)
+                let ix = this.gridStartX + Math.round((position.x + position.xOffset) * gridWidth)
+                let iy = this.gridStartY + Math.round((position.y + 1 + position.yOffset - item.gridHeight) * gridHeight)
                 let sprite = new InteractiveItem({
                     game: this.game,
                     name: item.spriteKey,
@@ -110,6 +112,7 @@ export default class extends Phaser.State {
                     asset: item.spriteSheetKey,
                     frame: 0
                 })
+                sprite.scale.setTo(gridWidth * item.gridWidth / item.width, gridHeight * item.gridHeight / item.height)
                 this.interactiveItemSprites.push(sprite)
                 this.game.add.existing(sprite)
                 this.addAnimationsForSprite(sprite, item.spritesheets)
@@ -190,12 +193,12 @@ export default class extends Phaser.State {
                 }
                 for (let j = 0; j < item.coordinates.length; j++) {
                     let position = item.coordinates[j]
-                    let ix = Math.round(this.gridStartX + position.x * gridWidth) + position.xOffset
-                    let iy = Math.round(this.gridStartY + position.y * gridHeight) + position.yOffset
+                    let ix = this.gridStartX + Math.round((position.x + position.xOffset) * gridWidth)
+                    let iy = this.gridStartY + Math.round((position.y + 1 + position.yOffset - item.gridHeight) * gridHeight)
                     console.log('Draw item ' + i + ' at gx = ' + position.x + ' gy = ' + position.y + ' x = ' + ix + ' y = ' + iy)
                     let itemImage = this.game.add.sprite(ix, iy, item.key)
-                    console.log('Scale item to x = ' + this.step_width_in_pixel * item.gridWidth / item.width + ' y = ' + this.step_height_in_pixel * item.gridHeight / item.height)
-                    itemImage.scale.setTo(this.step_width_in_pixel * item.gridWidth / item.width, this.step_height_in_pixel * item.gridHeight / item.height)
+                    console.log('Scale item to x = ' + gridWidth * item.gridWidth / item.width + ' y = ' + gridHeight * item.gridHeight / item.height)
+                    itemImage.scale.setTo(gridWidth * item.gridWidth / item.width, gridHeight * item.gridHeight / item.height)
                 }
             }
         }
@@ -205,7 +208,7 @@ export default class extends Phaser.State {
         let fWidth = this.game.width
         let fHeight = this.game.height
         console.log('Draw front ground image with size width = ' + fWidth + ' height = ' + fHeight)
-        this.game.add.sprite(0, 0, 'foreground').scale.setTo(1, 0.75)
+        this.game.add.sprite(0, 0, 'foreground').scale.setTo(this.game.width/config.backgroundWidth, this.game.height/config.backgroundHeight)
     }
 
     drawGridBoard() {
