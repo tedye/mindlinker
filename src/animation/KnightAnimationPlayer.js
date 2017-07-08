@@ -116,7 +116,7 @@ export default function play(animationContext) {
         if (isBlocked(1, 0)) {
             playFailure()
         } else {
-            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Run' : 'RunBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
             Pause()
         }
     }
@@ -126,7 +126,7 @@ export default function play(animationContext) {
         if (isBlocked(-1, 0)) {
             playFailure()
         } else {
-            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Run' : 'RunBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
             Pause()
         }
     }
@@ -136,7 +136,7 @@ export default function play(animationContext) {
         if (isBlocked(0, -1)) {
             playFailure()
         } else {
-            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Run' : 'RunBack', 0, -step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
             Pause()
         }
     }
@@ -146,7 +146,7 @@ export default function play(animationContext) {
         if (isBlocked(0, 1)) {
             playFailure()
         } else {
-            addNewActionToMainSpriteActionQueue(faceRight ? 'Walk' : 'WalkBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Run' : 'RunBack', 0, step, faceRight ? forwardSpriteKey : backwardSpriteKey, 'run', null)
             Pause()
         }
     }
@@ -187,19 +187,19 @@ export default function play(animationContext) {
     let victory = function () {
         console.log('Animation Played: Victory')
         sprite.taskCompleted = true
-        addNewActionToMainSpriteActionQueue(faceRight ? 'Victory' : 'VictoryBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Victory' : 'VictoryBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'victory', null)
     }
 
     let playFailure = function () {
         console.log('Animation Played: Fail')
         failed = true
         sprite.taskCompleted = false
-        addNewActionToMainSpriteActionQueue(faceRight ? 'Fail' : 'FailBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Fail' : 'FailBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'fail', null)
     }
 
     let Jump = function () {
         console.log('Animation Played: Jump')
-        addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
+        addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'jump', null)
         Pause()
     }
 
@@ -208,7 +208,7 @@ export default function play(animationContext) {
         if (isBlocked(2, 0)) {
             playFailure()
         } else {
-            addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'jump', null)
             Pause()
         }
     }
@@ -218,7 +218,7 @@ export default function play(animationContext) {
         if (isBlocked(-2, 0)) {
             playFailure()
         } else {
-            addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
+            addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', -step, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'jump', null)
             Pause()
         }
     }

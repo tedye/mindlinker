@@ -37,9 +37,42 @@
             },
             {  
                "name":"Walk",
-               "rate":12,
+               "rate":15,
                "loop":false,
                "frames":[  
+                  "animation/walk/walk_0000",
+                  "animation/walk/walk_0004",
+                  "animation/walk/walk_0008",
+                  "animation/walk/walk_0012",
+                  "animation/walk/walk_0016",
+                  "animation/walk/walk_0020",
+                  "animation/walk/walk_0024",
+                  "animation/walk/walk_0028",
+                  "animation/walk/walk_0032",
+                  "animation/walk/walk_0036",
+                  "animation/walk/walk_0040",
+                  "animation/walk/walk_0044",
+                  "animation/walk/walk_0048"
+               ]
+            },
+            {  
+               "name":"Run",
+               "rate":32,
+               "loop":false,
+               "frames":[  
+                  "animation/walk/walk_0000",
+                  "animation/walk/walk_0004",
+                  "animation/walk/walk_0008",
+                  "animation/walk/walk_0012",
+                  "animation/walk/walk_0016",
+                  "animation/walk/walk_0020",
+                  "animation/walk/walk_0024",
+                  "animation/walk/walk_0028",
+                  "animation/walk/walk_0032",
+                  "animation/walk/walk_0036",
+                  "animation/walk/walk_0040",
+                  "animation/walk/walk_0044",
+                  "animation/walk/walk_0048",
                   "animation/walk/walk_0000",
                   "animation/walk/walk_0004",
                   "animation/walk/walk_0008",
@@ -244,9 +277,42 @@
             },
             {  
                "name":"WalkBack",
-               "rate":12,
+               "rate":15,
                "loop":false,
                "frames":[  
+                  "animation/walk-backward/walk-backward_0000",
+                  "animation/walk-backward/walk-backward_0004",
+                  "animation/walk-backward/walk-backward_0008",
+                  "animation/walk-backward/walk-backward_0012",
+                  "animation/walk-backward/walk-backward_0016",
+                  "animation/walk-backward/walk-backward_0020",
+                  "animation/walk-backward/walk-backward_0024",
+                  "animation/walk-backward/walk-backward_0028",
+                  "animation/walk-backward/walk-backward_0032",
+                  "animation/walk-backward/walk-backward_0036",
+                  "animation/walk-backward/walk-backward_0040",
+                  "animation/walk-backward/walk-backward_0044",
+                  "animation/walk-backward/walk-backward_0048"
+               ]
+            },
+            {  
+               "name":"RunBack",
+               "rate":32,
+               "loop":false,
+               "frames":[  
+                  "animation/walk-backward/walk-backward_0000",
+                  "animation/walk-backward/walk-backward_0004",
+                  "animation/walk-backward/walk-backward_0008",
+                  "animation/walk-backward/walk-backward_0012",
+                  "animation/walk-backward/walk-backward_0016",
+                  "animation/walk-backward/walk-backward_0020",
+                  "animation/walk-backward/walk-backward_0024",
+                  "animation/walk-backward/walk-backward_0028",
+                  "animation/walk-backward/walk-backward_0032",
+                  "animation/walk-backward/walk-backward_0036",
+                  "animation/walk-backward/walk-backward_0040",
+                  "animation/walk-backward/walk-backward_0044",
+                  "animation/walk-backward/walk-backward_0048",
                   "animation/walk-backward/walk-backward_0000",
                   "animation/walk-backward/walk-backward_0004",
                   "animation/walk-backward/walk-backward_0008",
@@ -397,30 +463,45 @@
    "shadow_image":"assets/images/knight/background/shadow.png",
    "grid_image":"assets/images/knight/background/grid.png",
    "start_button_image":"assets/images/knight/background/start.png",
-   "pause_button_image":"assets/images/knight/background/pause.png",
    "restart_button_image":"assets/images/knight/background/restart.png",
    "next_button_image":"assets/images/knight/background/next.png",
    "task_hint_image":"assets/images/knight/background/taskhint.png",
    "audios": [
       {
          "key":"walk",
-         "file":"assets/sound/knight/walk/walk.mp3"
+         "file":"assets/sound/knight/walk.mp3"
       },
       {
          "key":"run",
-         "file":"assets/sound/knight/walk/run.mp3"
+         "file":"assets/sound/knight/run.mp3"
       },
       {
          "key":"attack",
-         "file":"assets/sound/knight/blade/attack.mp3"
+         "file":"assets/sound/knight/attack.mp3"
       },
       {
          "key":"defense",
-         "file":"assets/sound/knight/blade/defense.mp3"
+         "file":"assets/sound/knight/defense.mp3"
       },
       {
          "key":"turn",
-         "file":"assets/sound/knight/turn/turn.mp3"
+         "file":"assets/sound/knight/turn.mp3"
+      },
+      {
+         "key":"jump",
+         "file":"assets/sound/knight/jump.mp3"
+      },
+      {
+         "key":"victory",
+         "file":"assets/sound/knight/victory.mp3"
+      },
+      {
+         "key":"fail",
+         "file":"assets/sound/knight/fail.mp3"
+      },
+      {
+         "key":"press",
+         "file":"assets/sound/knight/press.mp3"
       }
    ],
    "task_configs": [

@@ -62,11 +62,13 @@ export default class extends Phaser.Sprite {
     }
 
     restart() {
+        this.game.sound.play('press')
         this.destroyAllButtons()
         this.game.state.start('KnightSwitchTaskBoot')
     }
 
     nextGame() {
+        this.game.sound.play('press')
         this.destroyAllButtons()
         this.game.global.currentTaskIndex = this.game.global.currentTaskIndex + 1
         this.game.state.start('KnightSwitchTaskBoot')

@@ -19,6 +19,7 @@ export default class extends Phaser.State {
     }
 
     getCurrentAnimationContext() {
+        console.log('Blockly Instruction: ' + Blockly.JavaScript.workspaceToCode(this.game.workspace))
         return {
             sprite: this.knight,
             startGridX: this.taskContext.character_starting_grid_x,
@@ -40,21 +41,10 @@ export default class extends Phaser.State {
 
     play() {
         console.log('play blocks')
-        if (this.knight.animations.paused) {
-            this.knight.animations.paused = false
-        } else {
-            let animationContext = this.getCurrentAnimationContext(this.gameContext)
-            KnightAnimationPlayer(animationContext)
-        }
+        this.game.sound.play('press')
+        let animationContext = this.getCurrentAnimationContext(this.gameContext)
+        KnightAnimationPlayer(animationContext)
         this.startButton.visible = false
-        this.pauseButton.visible = true
-    }
-
-    pause() {
-        console.log('pause blocks')
-        this.knight.animations.paused = true
-        this.startButton.visible = true
-        this.pauseButton.visible = false
     }
 
     drawBackground() {
@@ -64,13 +54,9 @@ export default class extends Phaser.State {
     drawBoardButtons() {
         this.startButton = this.game.add.button(0, 0, 'start', this.play, this)
         this.startButton.scale.setTo(0.3, 0.3)
-        this.pauseButton = this.game.add.button(0, 0, 'pause', this.pause, this)
-        this.pauseButton.scale.setTo(0.3, 0.3)
-        this.pauseButton.visible = false
         this.hintButton = this.game.add.button(this.startButton.width + 20, 0, 'taskhint', null, this)
         this.hintButton.scale.setTo(0.3, 0.3)
         TooltipBuilder(this.game, this.startButton, '开始', 'right')
-        TooltipBuilder(this.game, this.pauseButton, '暂停', 'right')
         TooltipBuilder(this.game, this.hintButton, this.taskContext.hint, 'right')
     }
 
@@ -309,7 +295,6 @@ export default class extends Phaser.State {
         this.setCurrentGameContexts()
         this.setCurrentTaskContext()
         this.preloadImages()
-        console.log(typeof this.game.workspace)
         if (typeof this.game.workspace == "undefined"){
             // Only create blocks once
             this.addBlocks()
