@@ -2,10 +2,16 @@
  * Created by kfang on 6/25/17.
  */
 import Phaser from 'phaser'
+import KnightAnimationBoardState from './KnightAnimationBoard'
+import KnightTaskBootState from './KnightTaskBoot'
+import TooltipBuilder from '../../util/TooltipBuilder'
+import {setScaleAndAnchorForObject} from '../../UIUtil'
+import config from '../../config'
 
 export default class extends Phaser.State {
     init() {
         console.log('KnightStoryBoard Init.')
+        this.startIndex = 0
     }
 
     loadStoryImages() {
@@ -23,6 +29,11 @@ export default class extends Phaser.State {
         this.game.load.image('restart', this.gameContext.restart_button_image)
         this.game.load.image('next', this.gameContext.next_button_image)
         this.game.load.image('taskhint', this.gameContext.task_hint_image)
+
+        for (let i = 0; i < this.gameContext.task_configs.tasks.length; i++) {
+            let task = this.gameContext.task_configs.tasks[i]
+            this.game.load.image(task.taskImageKey, task.taskImage)
+        }
     }
 
     loadStoryAudios() {
@@ -32,15 +43,9 @@ export default class extends Phaser.State {
         }
     }
 
-    loadCurrrentTaskConfig() {
-        let taskIndex = this.game.global.currentTaskIndex
-        console.log('Current task index: ' + taskIndex)
-        console.log('Current task conf: ' + this.gameContext.task_configs[taskIndex])
-        this.game.load.text('taskContext', this.gameContext.task_configs[taskIndex])
-    }
-
     setCurrentGameContext() {
         this.gameContext = JSON.parse(this.game.cache.getText('gameContext'))
+        this.taskCount = this.gameContext.task_configs.tasks.length
     }
 
     preload() {
@@ -48,11 +53,52 @@ export default class extends Phaser.State {
         this.setCurrentGameContext()
         this.loadStoryImages()
         this.loadStoryAudios()
-        this.loadCurrrentTaskConfig()
+    }
+
+    create() {
+        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width/config.backgroundWidth, this.game.height/config.backgroundHeight)
     }
 
     render() {
         console.log('KnightStoryBoard Render.')
-        this.state.start('KnightAnimationBoard')
+        let tasks = this.gameContext.task_configs.tasks
+        let padding = Math.round((this.game.width - 600) / 2)
+        let x = padding + 75
+        let y = Math.round(this.game.height * 0.5)
+        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
+        setScaleAndAnchorForObject(prevButton, -0.5, 0.5, 0.5, 0.5)
+        TooltipBuilder(this.game, prevButton, '上一个任务', 'bottom')
+        x += 150
+        for (let i = 0; i < 2; i++) {
+            let task = tasks[this.startIndex + i]
+            let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, {game: this.game, task: task, index: this.startIndex + i})
+            setScaleAndAnchorForObject(taskButton, 0.5, 0.5, 0.5, 0.5)
+            TooltipBuilder(this.game, taskButton, task.taskName, 'bottom')
+            x += 150
+        }
+        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
+        setScaleAndAnchorForObject(nextButton, 0.5, 0.5, 0.5, 0.5)
+        TooltipBuilder(this.game, nextButton, '下一个任务', 'bottom')
+    }
+
+    onClickPrevious() {
+        this.startIndex--
+        if (this.startIndex < 0)
+            this.startIndex = 0
+    }
+
+    onClickNext() {
+        this.startIndex++
+        if (this.storyCount >= this.taskCount)
+            this.startIndex = this.taskCount - 1
+
+    }
+    
+    onClickTask() {
+        console.log('On Click A Task: ' + this.task.taskName)
+        this.game.state.add('KnightAnimationBoard', KnightAnimationBoardState, false)
+        this.game.state.add('KnightTaskBoot', KnightTaskBootState, false)
+        this.game.global.currentTaskIndex = this.index
+        this.game.state.start('KnightTaskBoot')
     }
 }

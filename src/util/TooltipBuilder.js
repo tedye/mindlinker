@@ -8,6 +8,6 @@ export default function addTooltip(gameInstance, targetObject, msg, position) {
         targetObject: targetObject,
         context: msg,
         position: position,
-        backgroundColor: 0xA1F991
+        backgroundColor: 0x33BBFF
 })
 }

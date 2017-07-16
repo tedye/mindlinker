@@ -150,7 +150,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 319);
+/******/ 	return __webpack_require__(__webpack_require__.s = 321);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -185,7 +185,7 @@ g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d))}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<
 
 /***/ }),
 
-/***/ 24:
+/***/ 21:
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -193,12 +193,12 @@ g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d))}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<
   \**************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Phaser"] = __webpack_require__(/*! -!./phaser-split.js */ 314);
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Phaser"] = __webpack_require__(/*! -!./phaser-split.js */ 316);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 49)))
 
 /***/ }),
 
-/***/ 313:
+/***/ 315:
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -13847,7 +13847,7 @@ World.prototype.raycast = function(result, ray){
 
 /***/ }),
 
-/***/ 314:
+/***/ 316:
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -98063,11 +98063,11 @@ PIXI.TextureSilentFail = true;
 * "What matters in this life is not what we do but what we do for others, the legacy we leave and the imprint we make." - Eric Meyer
 */
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 316)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 318)))
 
 /***/ }),
 
-/***/ 315:
+/***/ 317:
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -105620,7 +105620,7 @@ PIXI.TextureUvs = function()
 
 /***/ }),
 
-/***/ 316:
+/***/ 318:
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -105816,7 +105816,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 319:
+/***/ 321:
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -105824,9 +105824,9 @@ process.umask = function() { return 0; };
   \******************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! pixi */87);
-__webpack_require__(/*! p2 */88);
-__webpack_require__(/*! phaser */24);
+__webpack_require__(/*! pixi */89);
+__webpack_require__(/*! p2 */90);
+__webpack_require__(/*! phaser */21);
 module.exports = __webpack_require__(/*! webfontloader */121);
 
 
@@ -105865,7 +105865,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 87:
+/***/ 89:
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -105873,12 +105873,12 @@ module.exports = g;
   \******************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["PIXI"] = __webpack_require__(/*! -!./pixi.js */ 315);
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["PIXI"] = __webpack_require__(/*! -!./pixi.js */ 317);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 49)))
 
 /***/ }),
 
-/***/ 88:
+/***/ 90:
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -105886,7 +105886,7 @@ module.exports = g;
   \****************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["p2"] = __webpack_require__(/*! -!./p2.js */ 313);
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["p2"] = __webpack_require__(/*! -!./p2.js */ 315);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 49)))
 
 /***/ })

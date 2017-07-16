@@ -1,0 +1,19 @@
+
+{
+	"stories": [
+	    {
+	        "storyName": "骑士",
+            "storyConf": "assets/conf/knight/knight_base_config.json",
+            "storyImage": "assets/images/knight/knight_story_image.png",
+            "storyImageKey": "knightStory",
+            "storyState":"KnightBoot"
+	    },
+	    {
+	        "storyName": "公主",
+            "storyConf": "assets/conf/princess/princess_base_config.json",
+            "storyImage": "assets/images/princess/princess_story_image.png",
+            "storyImageKey": "princessStory",
+            "storyState": "PrincessBoot"
+	    }
+	]
+}

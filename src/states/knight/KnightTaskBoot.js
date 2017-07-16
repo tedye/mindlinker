@@ -15,9 +15,8 @@ export default class extends Phaser.State {
 
     loadCurrentTaskConfig() {
         let taskIndex = this.game.global.currentTaskIndex
-        console.log('Current task index: ' + taskIndex)
-        console.log('Current task conf: ' + this.gameContext.task_configs[taskIndex])
-        this.game.load.text('taskContext', this.gameContext.task_configs[taskIndex])
+        console.log('Current task conf: ' + this.gameContext.task_configs.tasks[taskIndex].taskConf)
+        this.game.load.text('taskContext', this.gameContext.task_configs.tasks[taskIndex].taskConf)
     }
 
     preload() {
