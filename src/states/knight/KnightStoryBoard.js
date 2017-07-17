@@ -62,14 +62,14 @@ export default class extends Phaser.State {
     render() {
         console.log('KnightStoryBoard Render.')
         let tasks = this.gameContext.task_configs.tasks
-        let padding = Math.round((this.game.width - 600) / 2)
+        let padding = Math.round((this.game.width - 750) / 2)
         let x = padding + 75
         let y = Math.round(this.game.height * 0.5)
         let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
         setScaleAndAnchorForObject(prevButton, -0.5, 0.5, 0.5, 0.5)
         TooltipBuilder(this.game, prevButton, '上一个任务', 'bottom')
         x += 150
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 3; i++) {
             let task = tasks[this.startIndex + i]
             let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, {game: this.game, task: task, index: this.startIndex + i})
             setScaleAndAnchorForObject(taskButton, 0.5, 0.5, 0.5, 0.5)
@@ -82,13 +82,13 @@ export default class extends Phaser.State {
     }
 
     onClickPrevious() {
-        this.startIndex--
+        this.startIndex -= 3
         if (this.startIndex < 0)
             this.startIndex = 0
     }
 
     onClickNext() {
-        this.startIndex++
+        this.startIndex += 3
         if (this.storyCount >= this.taskCount)
             this.startIndex = this.taskCount - 1
 

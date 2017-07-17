@@ -155,7 +155,7 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 121:
+/***/ 122:
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -105827,7 +105827,7 @@ process.umask = function() { return 0; };
 __webpack_require__(/*! pixi */89);
 __webpack_require__(/*! p2 */90);
 __webpack_require__(/*! phaser */21);
-module.exports = __webpack_require__(/*! webfontloader */121);
+module.exports = __webpack_require__(/*! webfontloader */122);
 
 
 /***/ }),
