@@ -11,7 +11,7 @@ import config from '../../config'
 export default class extends Phaser.State {
     init() {
         console.log('KnightStoryBoard Init.')
-        this.startIndex = 0
+        this.endIndex = 2
     }
 
     loadStoryImages() {
@@ -55,43 +55,46 @@ export default class extends Phaser.State {
         this.loadStoryAudios()
     }
 
-    create() {
-        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width/config.backgroundWidth, this.game.height/config.backgroundHeight)
-    }
-
-    render() {
-        console.log('KnightStoryBoard Render.')
+    renderTaskList() {
         let tasks = this.gameContext.task_configs.tasks
-        let padding = Math.round((this.game.width - 750) / 2)
-        let x = padding + 75
+        let padding = this.game.width - Math.round((this.game.width - 750) / 2)
+        let x = padding - 75
         let y = Math.round(this.game.height * 0.5)
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
-        setScaleAndAnchorForObject(prevButton, -0.5, 0.5, 0.5, 0.5)
-        TooltipBuilder(this.game, prevButton, '上一个任务', 'bottom')
-        x += 150
-        for (let i = 0; i < 3; i++) {
-            let task = tasks[this.startIndex + i]
-            let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, {game: this.game, task: task, index: this.startIndex + i})
-            setScaleAndAnchorForObject(taskButton, 0.5, 0.5, 0.5, 0.5)
-            TooltipBuilder(this.game, taskButton, task.taskName, 'bottom')
-            x += 150
-        }
         let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
         setScaleAndAnchorForObject(nextButton, 0.5, 0.5, 0.5, 0.5)
-        TooltipBuilder(this.game, nextButton, '下一个任务', 'bottom')
+        TooltipBuilder(this.game, nextButton, '下一页', 'bottom')
+        x -= 150
+        for (let i = 0; i < 3; i++) {
+            let task = tasks[this.endIndex - i]
+            let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, {game: this.game, task: task, index: this.endIndex - i})
+            setScaleAndAnchorForObject(taskButton, 0.5, 0.5, 0.5, 0.5)
+            TooltipBuilder(this.game, taskButton, task.taskName, 'bottom')
+            x -= 150
+        }
+        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
+        setScaleAndAnchorForObject(prevButton, -0.5, 0.5, 0.5, 0.5)
+        TooltipBuilder(this.game, prevButton, '上一页', 'bottom')
+    }
+
+    create() {
+        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width/config.backgroundWidth, this.game.height/config.backgroundHeight)
+        this.renderTaskList()
     }
 
     onClickPrevious() {
-        this.startIndex -= 3
-        if (this.startIndex < 0)
-            this.startIndex = 0
+        this.endIndex -= 3
+        if (this.endIndex < 2) {
+            this.endIndex = 2
+        }
+        this.renderTaskList()
     }
 
     onClickNext() {
-        this.startIndex += 3
-        if (this.storyCount >= this.taskCount)
-            this.startIndex = this.taskCount - 1
-
+        this.endIndex += 3
+        if (this.endIndex >= this.taskCount) {
+            this.endIndex = this.taskCount - 1
+        }
+        this.renderTaskList()
     }
     
     onClickTask() {

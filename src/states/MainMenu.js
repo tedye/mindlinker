@@ -9,7 +9,7 @@ import {setScaleAndAnchorForObject} from '../UIUtil'
 export default class extends Phaser.State {
     init() {
         console.log('Main Menu Init.')
-        this.startIndex = 0
+        this.endIndex = 1
     }
 
     preload() {
@@ -25,39 +25,45 @@ export default class extends Phaser.State {
         this.game.load.image('nextImage', 'assets/images/knight/next.png')
     }
 
-    render() {
-        console.log('Main Menu Render.')
+    renderMenu() {
         let stories = this.rootContext.stories
-        let padding = Math.round((this.game.width - 600) / 2)
-        let x = padding + 75
+        let padding = this.game.width - Math.round((this.game.width - 600) / 2)
+        let x = padding - 75
         let y = Math.round(this.game.height * 0.5)
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
-        setScaleAndAnchorForObject(prevButton, -0.5, 0.5, 0.5, 0.5)
-        TooltipBuilder(this.game, prevButton, '上一个故事', 'bottom')
-        x += 150
+        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
+        setScaleAndAnchorForObject(nextButton, 0.5, 0.5, 0.5, 0.5)
+        TooltipBuilder(this.game, nextButton, '下一页', 'bottom')
+        x -= 150
         for (let i = 0; i < 2; i++) {
-            let story = stories[this.startIndex + i]
+            let story = stories[this.endIndex - i]
             let storyButton = this.game.add.button(x, y, story.storyImageKey, this.onClickStory, {game: this.game, story: story})
             setScaleAndAnchorForObject(storyButton, 0.5, 0.5, 0.5, 0.5)
             TooltipBuilder(this.game, storyButton, story.storyName, 'bottom')
-            x += 150
+            x -= 150
         }
-        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
-        setScaleAndAnchorForObject(nextButton, 0.5, 0.5, 0.5, 0.5)
-        TooltipBuilder(this.game, nextButton, '下一个故事', 'bottom')
+        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
+        setScaleAndAnchorForObject(prevButton, -0.5, 0.5, 0.5, 0.5)
+        TooltipBuilder(this.game, prevButton, '上一页', 'bottom')
+    }
+
+    create() {
+        this.renderMenu()
     }
 
     onClickPrevious() {
-        this.startIndex--
-        if (this.startIndex < 0)
-            this.startIndex = 0
+        this.endIndex -= 2
+        if (this.endIndex < 1) {
+            this.endIndex = 1
+        }
+        this.renderMenu()
     }
 
     onClickNext() {
-        this.startIndex++
-        if (this.storyCount >= this.storyCount)
-            this.startIndex = this.storyCount - 1
-
+        this.endIndex += 2
+        if (this.endIndex >= this.storyCount) {
+            this.endIndex = this.storyCount - 1
+        }
+        this.renderMenu()
     }
 
     onClickStory() {

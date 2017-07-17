@@ -4595,7 +4595,7 @@ function play(animationContext) {
 /* harmony default export */ __webpack_exports__["a"] = (class extends __WEBPACK_IMPORTED_MODULE_0_phaser___default.a.State {
     init() {
         console.log('Main Menu Init.');
-        this.startIndex = 0;
+        this.endIndex = 1;
     }
 
     preload() {
@@ -4611,36 +4611,45 @@ function play(animationContext) {
         this.game.load.image('nextImage', 'assets/images/knight/next.png');
     }
 
-    render() {
-        console.log('Main Menu Render.');
+    renderMenu() {
         let stories = this.rootContext.stories;
-        let padding = Math.round((this.game.width - 600) / 2);
-        let x = padding + 75;
+        let padding = this.game.width - Math.round((this.game.width - 600) / 2);
+        let x = padding - 75;
         let y = Math.round(this.game.height * 0.5);
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, -0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一个故事', 'bottom');
-        x += 150;
+        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, 0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一页', 'bottom');
+        x -= 150;
         for (let i = 0; i < 2; i++) {
-            let story = stories[this.startIndex + i];
+            let story = stories[this.endIndex - i];
             let storyButton = this.game.add.button(x, y, story.storyImageKey, this.onClickStory, { game: this.game, story: story });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__UIUtil__["a" /* setScaleAndAnchorForObject */])(storyButton, 0.5, 0.5, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_TooltipBuilder__["a" /* default */])(this.game, storyButton, story.storyName, 'bottom');
-            x += 150;
+            x -= 150;
         }
-        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, 0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一个故事', 'bottom');
+        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, -0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一页', 'bottom');
+    }
+
+    create() {
+        this.renderMenu();
     }
 
     onClickPrevious() {
-        this.startIndex--;
-        if (this.startIndex < 0) this.startIndex = 0;
+        this.endIndex -= 2;
+        if (this.endIndex < 1) {
+            this.endIndex = 1;
+        }
+        this.renderMenu();
     }
 
     onClickNext() {
-        this.startIndex++;
-        if (this.storyCount >= this.storyCount) this.startIndex = this.storyCount - 1;
+        this.endIndex += 2;
+        if (this.endIndex >= this.storyCount) {
+            this.endIndex = this.storyCount - 1;
+        }
+        this.renderMenu();
     }
 
     onClickStory() {
@@ -5089,7 +5098,7 @@ function play(animationContext) {
 /* harmony default export */ __webpack_exports__["a"] = (class extends __WEBPACK_IMPORTED_MODULE_0_phaser___default.a.State {
     init() {
         console.log('KnightStoryBoard Init.');
-        this.startIndex = 0;
+        this.endIndex = 2;
     }
 
     loadStoryImages() {
@@ -5133,40 +5142,46 @@ function play(animationContext) {
         this.loadStoryAudios();
     }
 
-    create() {
-        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundHeight);
-    }
-
-    render() {
-        console.log('KnightStoryBoard Render.');
+    renderTaskList() {
         let tasks = this.gameContext.task_configs.tasks;
-        let padding = Math.round((this.game.width - 750) / 2);
-        let x = padding + 75;
+        let padding = this.game.width - Math.round((this.game.width - 750) / 2);
+        let x = padding - 75;
         let y = Math.round(this.game.height * 0.5);
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, -0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一个任务', 'bottom');
-        x += 150;
-        for (let i = 0; i < 3; i++) {
-            let task = tasks[this.startIndex + i];
-            let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, { game: this.game, task: task, index: this.startIndex + i });
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(taskButton, 0.5, 0.5, 0.5, 0.5);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, taskButton, task.taskName, 'bottom');
-            x += 150;
-        }
         let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, 0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一个任务', 'bottom');
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一页', 'bottom');
+        x -= 150;
+        for (let i = 0; i < 3; i++) {
+            let task = tasks[this.endIndex - i];
+            let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, { game: this.game, task: task, index: this.endIndex - i });
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(taskButton, 0.5, 0.5, 0.5, 0.5);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, taskButton, task.taskName, 'bottom');
+            x -= 150;
+        }
+        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, -0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一页', 'bottom');
+    }
+
+    create() {
+        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundHeight);
+        this.renderTaskList();
     }
 
     onClickPrevious() {
-        this.startIndex -= 3;
-        if (this.startIndex < 0) this.startIndex = 0;
+        this.endIndex -= 3;
+        if (this.endIndex < 2) {
+            this.endIndex = 2;
+        }
+        this.renderTaskList();
     }
 
     onClickNext() {
-        this.startIndex += 3;
-        if (this.storyCount >= this.taskCount) this.startIndex = this.taskCount - 1;
+        this.endIndex += 3;
+        if (this.endIndex >= this.taskCount) {
+            this.endIndex = this.taskCount - 1;
+        }
+        this.renderTaskList();
     }
 
     onClickTask() {
