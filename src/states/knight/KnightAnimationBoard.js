@@ -261,27 +261,36 @@ export default class extends Phaser.State {
     }
 
     addBlocks() {
-        let toolbox = '<xml>'
-        toolbox += '<block type="logic_compare"></block>'
-        toolbox += '<block type="statement_start"></block>'
-        toolbox += '<block type="statement_end"></block>'
-        toolbox += '<block type="statement_walk_right"></block>'
-        toolbox += '<block type="statement_walk_left"></block>'
-        toolbox += '<block type="statement_walk_up"></block>'
-        toolbox += '<block type="statement_walk_down"></block>'
-        toolbox += '<block type="statement_run_right"></block>'
-        toolbox += '<block type="statement_run_left"></block>'
-        toolbox += '<block type="statement_run_up"></block>'
-        toolbox += '<block type="statement_run_down"></block>'
-        toolbox += '<block type="statement_attack"></block>'
-        toolbox += '<block type="statement_jump"></block>'
-        toolbox += '<block type="statement_turn"></block>'
-        toolbox += '<block type="statement_repeat"></block>'
-        toolbox += '<block type="statement_condition_if"></block>'
-        toolbox += '</xml>'
         let options = {
-            horizontalLayout : true,
-            toolbox : toolbox
+            comments: false,
+            disable: false,
+            collapse: false,
+            media: 'assets/blocks/media/',
+            readOnly: false,
+            rtl: false,
+            scrollbars: true,
+            toolbox: Blockly.Blocks.defaultToolboxSimple,
+            trashcan: true,
+            horizontalLayout: true,
+            toolboxPosition: true,
+            sounds: true,
+            grid: {spacing: 16,
+                length: 1,
+                colour: '#2C344A',
+                snap: false
+            },
+            zoom: {
+                controls: true,
+                wheel: true,
+                startScale: 1.0,
+                maxScale: 4,
+                minScale: 0.25,
+                scaleSpeed: 1.1
+            },
+            colours: {
+                fieldShadow: 'rgba(255, 255, 255, 0.3)',
+                dragShadowOpacity: 0.6
+            }
         }
         this.game.workspace = Blockly.inject('block', options);
     }
