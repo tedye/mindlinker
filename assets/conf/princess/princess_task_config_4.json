@@ -1,0 +1,84 @@
+{
+    "character_starting_grid_x": 2,
+    "character_starting_grid_y": 2,
+    "items":[  
+      {  
+         "key":"stone",
+         "image":"assets/images/knight/background/block-stone.png",
+         "count":0,
+         "random":true,
+         "coordinates":[  
+
+         ],
+         "blocker":true,
+         "width":163,
+         "height":73,
+         "gridWidth":1.1,
+         "gridHeight":1.1
+      },
+      {  
+         "key":"victory",
+         "image":"assets/images/knight/background/victory-flag.png",
+         "count":2,
+         "random":false,
+         "coordinates":[  
+            {  
+               "x":2,
+               "y":2,
+               "xOffset":0,
+               "yOffset":-0.5
+            },
+            {  
+               "x":6,
+               "y":2,
+               "xOffset":0,
+               "yOffset":-0.5
+            }
+         ],
+         "blocker":false,
+         "width":102,
+         "height":222,
+         "gridWidth":1,
+         "gridHeight":2
+      }
+   ],
+   "interactionItems":[],
+   "maxSteps":30,
+   "failCondition":{  
+
+   },
+   "passCondition":{  
+      "destinationXGrid":2,
+      "destinationYGrid":2,
+      "pathMatched": true,
+      "path":[
+         "1_0",
+         "1_0",
+         "1_0",
+         "1_0",
+         "-1_0",
+         "-1_0",
+         "-1_0",
+         "-1_0",
+         "1_0",
+         "1_0",
+         "1_0",
+         "1_0",
+         "-1_0",
+         "-1_0",
+         "-1_0",
+         "-1_0",
+         "1_0",
+         "1_0",
+         "1_0",
+         "1_0",
+         "-1_0",
+         "-1_0",
+         "-1_0",
+         "-1_0"
+      ],
+      "interactions": []
+   },
+   "hint":"控制骑士在两面战旗之间来回走3次。",
+   "testScript": "[{\"name\":\"RepeatStart\", \"count\":3}, {\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkLeft\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatEnd\"}]"
+}

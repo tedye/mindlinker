@@ -21,5 +21,6 @@ export default {
     Turn: 'Turn',
     Attack: 'Attack',
     Standby: 'Standby',
-    Defense: 'Defense'
+    Defense: 'Defense',
+    Walk: 'Walk'
 }

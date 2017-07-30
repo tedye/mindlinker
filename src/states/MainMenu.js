@@ -3,6 +3,7 @@
  */
 import Phaser from 'phaser'
 import KnightBootState from './knight/KnightBoot'
+import PrincessBootState from './princess/PrincessBoot'
 import TooltipBuilder from '../util/TooltipBuilder'
 import {setScaleAndAnchorForObject} from '../UIUtil'
 
@@ -36,7 +37,7 @@ export default class extends Phaser.State {
         x -= 150
         for (let i = 0; i < 2; i++) {
             let story = stories[this.endIndex - i]
-            let storyButton = this.game.add.button(x, y, story.storyImageKey, this.onClickStory, {game: this.game, story: story})
+            let storyButton = this.game.add.button(x, y, story.storyImageKey, this.onClickStory, {game: this.game, story: story, index: this.endIndex - i})
             setScaleAndAnchorForObject(storyButton, 0.5, 0.5, 0.5, 0.5)
             TooltipBuilder(this.game, storyButton, story.storyName, 'bottom')
             x -= 150
@@ -69,7 +70,12 @@ export default class extends Phaser.State {
     onClickStory() {
         console.log('On Click Story.')
         this.game.global.currentStoryConfig = this.story.storyConf
-        this.game.state.add('KnightBoot', KnightBootState, false)
+        if (this.index === 0) {
+            this.game.state.add('KnightBoot', KnightBootState, false)
+        } else {
+            this.game.state.add('PrincessBoot', PrincessBootState, false)
+        }
+        console.log('About to start the story: ' + this.story.storyState)
         this.game.state.start(this.story.storyState)
     }
 }

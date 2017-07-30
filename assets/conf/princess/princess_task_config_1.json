@@ -1,0 +1,27 @@
+
+{
+    "character_starting_x_percentage": 0.3,
+    "character_starting_y_percentage": 0.3,
+    "character_starting_clock_position": 3,
+    "maxSteps":20,
+    "passPath": [
+    	{
+           "position": 3,
+           "dist": 300
+    	},
+    	{
+           "position": 6,
+           "dist": 300
+    	},
+    	{
+           "position": 9,
+           "dist": 300
+    	},
+    	{
+           "position": 0,
+           "dist": 300
+    	}
+    ],
+    "passCommand":"[{\"name\":\"Walk\", \"distance\":300}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":300}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":300}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":300}]",
+    "hint":"控制公主画出一条水平直线。"
+}

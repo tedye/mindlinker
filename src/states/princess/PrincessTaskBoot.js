@@ -1,4 +1,7 @@
 /**
+ * Created by kfang on 7/23/17.
+ */
+/**
  * Created by kfang on 6/27/17.
  */
 import Phaser from 'phaser'
@@ -9,7 +12,7 @@ export default class extends Phaser.State {
     }
 
     init() {
-        console.log('KnightTaskBoot Init.')
+        console.log('PrincessTaskBoot Init.')
         this.setCurrentGameContext()
     }
 
@@ -20,12 +23,12 @@ export default class extends Phaser.State {
     }
 
     preload() {
-        console.log('KnightTaskBoot Preload.')
+        console.log('PrincessTaskBoot Preload.')
         this.loadCurrentTaskConfig()
     }
 
     render() {
-        console.log('KnightTaskBoot Render.')
-        this.state.start('KnightAnimationBoard')
+        console.log('PrincessTaskBoot Render.')
+        this.state.start('PrincessAnimationBoard')
     }
 }

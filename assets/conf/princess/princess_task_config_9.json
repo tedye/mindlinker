@@ -1,0 +1,73 @@
+{  
+   "character_starting_grid_x":4,
+   "character_starting_grid_y":2,
+   "items":[  
+
+   ],
+   "interactionItems":[  
+      {  
+         "spriteKey":"trainingStump1",
+         "spriteSheetKey":"KnightAnimationItems",
+         "animationKey":"AttackTrainingStump",
+         "statusPostAnimation":"Attacked",
+         "coordinate":{  
+            "x":5,
+            "y":2,
+            "xOffset":0,
+            "yOffset":-0.5            
+         },
+         "blocker":true,
+         "width":95,
+         "height":214,
+         "gridWidth":1,
+         "gridHeight":3,
+         "spritesheets": [  
+            {  
+               "key":"KnightAnimationItems",
+               "animations":[  
+                  {  
+                     "name":"AttackTrainingStump",
+                     "rate":12,
+                     "loop":false,
+                     "frames":[  
+                        "training-stump/training-stump000",
+                        "training-stump/training-stump001",
+                        "training-stump/training-stump002",
+                        "training-stump/training-stump003",
+                        "training-stump/training-stump004",
+                        "training-stump/training-stump005",
+                        "training-stump/training-stump006",
+                        "training-stump/training-stump007",
+                        "training-stump/training-stump008",
+                        "training-stump/training-stump009",
+                        "training-stump/training-stump010",
+                        "training-stump/training-stump011",
+                        "training-stump/training-stump012"
+                     ]
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "maxSteps":30,
+   "failCondition":{  
+
+   },
+   "passCondition":{  
+      "destinationXGrid":4,
+      "destinationYGrid":2,
+      "pathMatched":false,
+      "path":[  
+
+      ],
+      "interactions":[  
+         {  
+            "sprite":"trainingStump1",
+            "status":"Attacked"
+         }
+      ]
+   },
+   "hint":"控制骑士攻击木桩。",
+   "testScript":"[{\"name\":\"Attack\"}]"
+}
