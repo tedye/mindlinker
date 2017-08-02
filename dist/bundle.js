@@ -4629,19 +4629,34 @@ function play(animationContext) {
     };
 
     let passConditionMatched = function () {
-        console.log('Check final condition');
+        console.log('Check final condition.');
+        console.log('Actual Path: ');
+        for (let i = 0; i < path.length; i++) {
+            let p = path[i];
+            console.log('Position: ' + p.position + ' Distance: ' + p.dist);
+        }
+
+        console.log('Target Path: ');
+        for (let i = 0; i < passPath.length; i++) {
+            let p = passPath[i];
+            console.log('Position: ' + p.position + ' Distance: ' + p.dist);
+        }
+
         let stepCheck = stepCount < maxSteps;
         let pathCheck = false;
         if (path.length === passPath.length) {
             for (let i = 0; i < path.length; i++) {
                 let currentPath = path[i];
                 let targetPath = passPath[i];
-                if (currentPath.position !== targetPath.position || currentPath.dist != targetPath.position) {
+                if (currentPath.position !== targetPath.position || currentPath.dist != targetPath.dist) {
                     break;
                 }
             }
             pathCheck = true;
+        } else {
+            console.log('Action sizes are not the same.');
         }
+        console.log('Step check: ' + stepCheck + ' path check: ' + pathCheck);
         return stepCheck && pathCheck;
     };
 
@@ -4833,22 +4848,25 @@ function play(animationContext) {
         this.actionQueue = [];
         this.playingAnimation = null;
         this.taskCompleted = false;
+        this.walking = false;
+        this.start = false;
     }
 
     update() {
         if (this.actionQueue.length > 0 && (this.playingAnimation === null || this.playingAnimation.isFinished)) {
             this.playNextAction();
-        } else if (this.actionQueue.length === 0 && this.playingAnimation !== null && this.playingAnimation.isFinished) {
+        } else if (this.start && this.actionQueue.length === 0 && this.playingAnimation !== null && this.playingAnimation.isFinished) {
             this.showButtons();
         }
-        if (this.playingAnimation != null && !this.playingAnimation.isFinished) {
-            let footPrintSprite = this.game.add.sprite(this.centerX - 15, this.centerY, 'footprint');
-            footPrintSprite.scale.setTo(0.1, 0.1);
+        if (this.start && this.playingAnimation != null && !this.playingAnimation.isFinished && this.walking) {
+            let footPrintSprite = this.game.add.sprite(this.centerX, this.centerY + this.height / 4, 'footprint');
             footPrintSprite.anchor.setTo(0.5, 0.5);
+            footPrintSprite.scale.setTo(0.4, 0.4);
         }
     }
 
     showButtons() {
+        this.start = false;
         this.restartButton = this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY, 'restart', this.restart, this);
         this.restartButton.scale.setTo(0.3, 0.3);
         this.restartButton.anchor.setTo(0.5, 0.5);
@@ -4867,6 +4885,11 @@ function play(animationContext) {
         let newX = this.x + nextAction.xOffset;
         let newY = this.y + nextAction.yOffset;
         this.playingAnimation = this.animations.play(nextAction.name);
+        if (nextAction.name.indexOf('Walk') >= 0) {
+            this.walking = true;
+        } else {
+            this.walking = false;
+        }
         if (nextAction.audio !== null) {
             this.game.sound.play(nextAction.audio);
         }
@@ -5616,6 +5639,7 @@ function play(animationContext) {
         console.log('play blocks');
         this.game.sound.play('press');
         let animationContext = this.getCurrentAnimationContext(this.gameContext);
+        this.princess.start = true;
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__animation_PrincessAnimationPlayer__["a" /* default */])(animationContext);
         this.startButton.visible = false;
     }
@@ -5635,7 +5659,7 @@ function play(animationContext) {
 
     drawMainCharacterAtStartingPosition() {
         let startX = this.characterStartX;
-        let startY = this.characterStartY;
+        let startY = this.characterStartY - Math.round(this.taskContext.character_height_in_pixel / 3);
         let frames = ["animation/walk-0/walk-0-0000", "animation/walk-1/walk-1-0000", "animation/walk-2/walk-2-0000", "animation/walk-3/walk-3-0000", "animation/walk-4/walk-4-0000", "animation/walk-5/walk-5-0000", "animation/walk-6/walk-6-0000", "animation/walk-7/walk-7-0000", "animation/walk-8/walk-8-0000", "animation/walk-9/walk-9-0000", "animation/walk-10/walk-10-0000", "animation/walk-11/walk-11-0000"];
         console.log('Draw main character at location: x = ' + startX + ' and y = ' + startY);
         console.log('The starting sprite image is ' + frames[this.taskContext.character_starting_clock_position]);
@@ -5645,16 +5669,22 @@ function play(animationContext) {
             x: startX,
             y: startY,
             asset: this.gameContext.spritesheets[0].key,
-            frame: frames[this.taskContext.character_starting_clock_position]
+            frame: 0
         });
         this.princess = this.game.add.existing(sprite);
+        this.princess.actionQueue.push({
+            name: 'TurnRight0_' + this.taskContext.character_starting_clock_position,
+            xOffset: 0,
+            yOffset: 0,
+            audio: null
+        });
     }
 
-    drawForeGround() {
-        let fWidth = this.game.width;
-        let fHeight = this.game.height;
-        console.log('Draw front ground image with size width = ' + fWidth + ' height = ' + fHeight);
-        this.game.add.sprite(0, 0, 'foreground').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].backgroundWidth, this.game.height / __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].backgroundHeight);
+    drawPath() {
+        console.log('Draw task path.');
+        console.log('Path center: x = ' + Math.round(this.game.width / 2) + ' y = ' + Math.round(this.game.height / 2));
+        let path = this.game.add.sprite(Math.round(this.game.width / 2), Math.round(this.game.height / 2), 'taskPath');
+        path.anchor.setTo(0.5, 0.5);
     }
 
     setCurrentGameContexts() {
@@ -5663,6 +5693,11 @@ function play(animationContext) {
 
     setCurrentTaskContext() {
         this.taskContext = JSON.parse(this.game.cache.getText('taskContext'));
+    }
+
+    loadPath() {
+        console.log('Load path image: ' + this.taskContext.pathImage);
+        this.game.load.image('taskPath', this.taskContext.pathImage);
     }
 
     addAnimationsForSprite(sprite, spritesheets) {
@@ -5718,6 +5753,7 @@ function play(animationContext) {
         console.log('PrincessAnimationBoard Preload.');
         this.setCurrentGameContexts();
         this.setCurrentTaskContext();
+        this.loadPath();
         if (typeof this.game.workspace == "undefined") {
             // Only create blocks once
             this.addBlocks();
@@ -5728,9 +5764,9 @@ function play(animationContext) {
         console.log('PrincessAnimationBoard Create.');
         this.calculateCharacterStartingPositionResponsively();
         this.drawBackground();
+        this.drawPath();
         this.drawBoardButtons();
         this.drawMainCharacterAtStartingPosition();
-        this.drawForeGround();
         this.addAnimationsForSprite(this.princess, this.gameContext.spritesheets);
         this.addAudios();
     }
@@ -5813,7 +5849,6 @@ function play(animationContext) {
         }
 
         this.game.load.image('background', this.gameContext.background_image);
-        this.game.load.image('foreground', this.gameContext.foreground_image);
         this.game.load.image('start', this.gameContext.start_button_image);
         this.game.load.image('restart', this.gameContext.restart_button_image);
         this.game.load.image('next', this.gameContext.next_button_image);

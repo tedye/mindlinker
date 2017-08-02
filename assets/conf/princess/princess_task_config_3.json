@@ -1,53 +1,30 @@
+
 {
-    "character_starting_grid_x": 2,
-    "character_starting_grid_y": 2,
-    "items":[  
-      {  
-         "key":"stone",
-         "image":"assets/images/knight/background/block-stone.png",
-         "count":0,
-         "random":true,
-         "coordinates":[  
-
-         ],
-         "blocker":true,
-         "width":163,
-         "height":73,
-         "gridWidth":1.1,
-         "gridHeight":1.1
+    "character_width_in_pixel":129,
+    "character_height_in_pixel":221,
+    "character_starting_x_percentage": 0.44,
+    "character_starting_y_percentage": 0.27,
+    "character_starting_clock_position": 3,
+    "pathImage": "assets/images/princess/background/path03.png",
+    "maxSteps":20,
+    "passPath": [
+      {
+           "position": 3,
+           "dist": 175
       },
-      {  
-         "key":"victory",
-         "image":"assets/images/knight/background/victory-flag.png",
-         "count":1,
-         "random":false,
-         "coordinates":[  
-            {  
-               "x":8,
-               "y":2,
-               "xOffset":0,
-               "yOffset":-0.5
-            }
-         ],
-         "blocker":false,
-         "width":102,
-         "height":222,
-         "gridWidth":1,
-         "gridHeight":2
+      {
+           "position": 6,
+           "dist": 175
+      },
+      {
+           "position": 9,
+           "dist": 175
+      },
+      {
+           "position": 0,
+           "dist": 175
       }
-   ],
-   "interactionItems":[],
-   "maxSteps":20,
-   "failCondition":{  
-
-   },
-   "passCondition":{  
-      "destinationXGrid":8,
-      "destinationYGrid":2,
-      "pathMatched": false,
-      "path":[],
-      "interactions": []
-   },
-   "hint":"运用循环模块控制骑士行走至战旗位置。",
-   "testScript": "[{\"name\":\"RepeatStart\", \"count\":6},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"}]"
+    ],
+    "passCommand":"[{\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}]",
+    "hint":"控制公主画出一个正方形。"
 }

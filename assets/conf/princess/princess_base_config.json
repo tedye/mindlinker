@@ -1,6 +1,4 @@
 {  
-   "character_width_in_pixel":134,
-   "character_height_in_pixel":232,
    "spritesheets":[  
       {  
          "key":"PrincessAnimation",
@@ -170,7 +168,7 @@
             {  
                "name":"Walk10",
                "rate":12,
-               "loop":true,
+               "loop":false,
                "frames":[  
                   "animation/walk-10/walk-10-0000",
                   "animation/walk-10/walk-10-0003",
@@ -186,7 +184,7 @@
             {  
                "name":"Walk11",
                "rate":12,
-               "loop":true,
+               "loop":false,
                "frames":[  
                   "animation/walk-11/walk-11-0000",
                   "animation/walk-11/walk-11-0003",
@@ -3899,7 +3897,6 @@
       }
    ],
    "background_image":"assets/images/princess/background/background.jpg",
-   "foreground_image":"assets/images/princess/background/foreground.png",
    "start_button_image":"assets/images/princess/background/start.png",
    "restart_button_image":"assets/images/princess/background/restart.png",
    "next_button_image":"assets/images/princess/background/next.png",

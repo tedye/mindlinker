@@ -22,7 +22,6 @@ export default class extends Phaser.State {
         }
 
         this.game.load.image('background', this.gameContext.background_image)
-        this.game.load.image('foreground', this.gameContext.foreground_image)
         this.game.load.image('start', this.gameContext.start_button_image)
         this.game.load.image('restart', this.gameContext.restart_button_image)
         this.game.load.image('next', this.gameContext.next_button_image)

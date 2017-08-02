@@ -1,58 +1,22 @@
-{
-    "character_starting_grid_x": 2,
-    "character_starting_grid_y": 2,
-    "items":[  
-      {  
-         "key":"stone",
-         "image":"assets/images/knight/background/block-stone.png",
-         "count":1,
-         "random":false,
-         "coordinates":[  
-           {
-            "x": 3,
-            "y": 2,
-            "xOffset":0,
-            "yOffset":0
-           }
-         ],
-         "blocker":true,
-         "width":163,
-         "height":73,
-         "gridWidth":1.1,
-         "gridHeight":1.1
-      },
-      {  
-         "key":"victory",
-         "image":"assets/images/knight/background/victory-flag.png",
-         "count":1,
-         "random":false,
-         "coordinates":[  
-            {  
-               "x":4,
-               "y":2,
-               "xOffset":0,
-               "yOffset":-0.5
-            }
-         ],
-         "blocker":false,
-         "width":102,
-         "height":222,
-         "gridWidth":1,
-         "gridHeight":2
-      }
-   ],
-   "interactionItems":[],
-   "maxSteps":20,
-   "failCondition":{  
 
-   },
-   "passCondition":{  
-      "destinationXGrid":4,
-      "destinationYGrid":2,
-      "pathMatched": false,
-      "path":[],
-      "interactions": []
-   },
-   "hint":"控制骑士绕过石头行走至战旗位置。",
-   "testScript": "[{\"name\":\"WalkDown\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkUp\"}]"
+{
+    "character_width_in_pixel":129,
+    "character_height_in_pixel":221,
+    "character_starting_x_percentage": 0.42,
+    "character_starting_y_percentage": 0.27,
+    "character_starting_clock_position": 3,
+    "pathImage": "assets/images/princess/background/path02.png",
+    "maxSteps":20,
+    "passPath": [
+      {
+           "position": 3,
+           "dist": 210
+      },
+      {
+           "position": 6,
+           "dist": 210
+      }
+    ],
+    "passCommand":"[{\"name\":\"Walk\", \"distance\":210}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":210}]",
+    "hint":"控制公主画出一条水平直线，旋转90度后画出另一条直线。"
 }

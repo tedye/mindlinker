@@ -16,22 +16,25 @@ export default class extends Phaser.Sprite {
         this.actionQueue = []
         this.playingAnimation = null
         this.taskCompleted = false
+        this.walking = false
+        this.start = false
     }
 
     update() {
         if (this.actionQueue.length > 0 && (this.playingAnimation === null || this.playingAnimation.isFinished)) {
             this.playNextAction()
-        } else if (this.actionQueue.length === 0 && this.playingAnimation !== null && this.playingAnimation.isFinished) {
+        } else if (this.start && this.actionQueue.length === 0 && this.playingAnimation !== null && this.playingAnimation.isFinished) {
             this.showButtons()
         }
-        if (this.playingAnimation != null && !this.playingAnimation.isFinished) {
-            let footPrintSprite = this.game.add.sprite(this.centerX - 15, this.centerY, 'footprint')
-            footPrintSprite.scale.setTo(0.1, 0.1)
+        if (this.start && this.playingAnimation != null && !this.playingAnimation.isFinished && this.walking) {
+            let footPrintSprite = this.game.add.sprite(this.centerX, this.centerY + this.height / 4, 'footprint')
             footPrintSprite.anchor.setTo(0.5, 0.5)
+            footPrintSprite.scale.setTo(0.4, 0.4)
         }
     }
 
     showButtons() {
+        this.start = false
         this.restartButton = this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY, 'restart', this.restart, this)
         this.restartButton.scale.setTo(0.3, 0.3)
         this.restartButton.anchor.setTo(0.5, 0.5)
@@ -50,6 +53,11 @@ export default class extends Phaser.Sprite {
         let newX = this.x + nextAction.xOffset
         let newY = this.y + nextAction.yOffset
         this.playingAnimation = this.animations.play(nextAction.name)
+        if (nextAction.name.indexOf('Walk') >= 0) {
+            this.walking = true
+        } else {
+            this.walking = false
+        }
         if (nextAction.audio !== null) {
             this.game.sound.play(nextAction.audio)
         }

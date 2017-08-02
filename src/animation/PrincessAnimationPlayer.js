@@ -188,19 +188,34 @@ export default function play(animationContext) {
     }
 
     let passConditionMatched = function () {
-        console.log('Check final condition')
+        console.log('Check final condition.')
+        console.log('Actual Path: ')
+        for (let i = 0; i < path.length; i++) {
+            let p = path[i]
+            console.log('Position: ' + p.position + ' Distance: ' + p.dist)
+        }
+
+        console.log('Target Path: ')
+        for (let i = 0; i < passPath.length; i++) {
+            let p = passPath[i]
+            console.log('Position: ' + p.position + ' Distance: ' + p.dist)
+        }
+
         let stepCheck = stepCount < maxSteps
         let pathCheck = false
         if (path.length === passPath.length) {
             for (let i = 0; i < path.length; i++) {
                 let currentPath = path[i]
                 let targetPath = passPath[i]
-                if (currentPath.position !== targetPath.position || currentPath.dist != targetPath.position) {
+                if (currentPath.position !== targetPath.position || currentPath.dist != targetPath.dist) {
                     break;
                 }
             }
             pathCheck = true
+        } else {
+            console.log('Action sizes are not the same.')
         }
+        console.log('Step check: ' + stepCheck + ' path check: ' + pathCheck)
         return stepCheck && pathCheck
     }
 

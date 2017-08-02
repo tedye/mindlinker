@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdcceba8-8fe8-459d-b70f-1a120b76c6a4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/princess/background/background.jpg" afterPath="$PROJECT_DIR$/assets/images/princess/background/background.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/princess/background/footprint.png" afterPath="$PROJECT_DIR$/assets/images/princess/background/footprint.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/princess/princess_base_config.json" afterPath="$PROJECT_DIR$/assets/conf/princess/princess_base_config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_1.json" afterPath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_1.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_2.json" afterPath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_2.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_3.json" afterPath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_3.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_4.json" afterPath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_5.json" afterPath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_5.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_6.json" afterPath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_6.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_7.json" afterPath="$PROJECT_DIR$/assets/conf/princess/princess_task_config_7.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bundle.js" afterPath="$PROJECT_DIR$/dist/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bundle.js.map" afterPath="$PROJECT_DIR$/dist/bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vendor.bundle.js" afterPath="$PROJECT_DIR$/dist/vendor.bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vendor.bundle.js.map" afterPath="$PROJECT_DIR$/dist/vendor.bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/animation/SupportedBlocks.js" afterPath="$PROJECT_DIR$/src/animation/SupportedBlocks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/MainMenu.js" afterPath="$PROJECT_DIR$/src/states/MainMenu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/knight/KnightTaskBoot.js" afterPath="$PROJECT_DIR$/src/states/knight/KnightTaskBoot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/animation/PrincessAnimationPlayer.js" afterPath="$PROJECT_DIR$/src/animation/PrincessAnimationPlayer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sprites/Princess.js" afterPath="$PROJECT_DIR$/src/sprites/Princess.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/princess/PrincessAnimationBoard.js" afterPath="$PROJECT_DIR$/src/states/princess/PrincessAnimationBoard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/princess/PrincessStoryBoard.js" afterPath="$PROJECT_DIR$/src/states/princess/PrincessStoryBoard.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,23 +34,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainMenu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/states/MainMenu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="39" column="153" lean-forward="false" selection-start-line="39" selection-start-column="153" selection-end-line="39" selection-end-column="153" />
-              <folding>
-                <element signature="e#40#67#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PrincessStoryBoard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessStoryBoard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="33" column="67" lean-forward="true" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
+            <state relative-caret-position="435">
+              <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -50,22 +47,10 @@
       <file leaf-file-name="PrincessAnimationBoard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessAnimationBoard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1192">
-              <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+            <state relative-caret-position="301">
+              <caret line="51" column="101" lean-forward="false" selection-start-line="51" selection-start-column="101" selection-end-line="51" selection-end-column="101" />
               <folding>
                 <element signature="e#40#67#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,8 +59,8 @@
       <file leaf-file-name="KnightAnimationPlayer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/animation/KnightAnimationPlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="275" column="21" lean-forward="true" selection-start-line="275" selection-start-column="21" selection-end-line="275" selection-end-column="21" />
+            <state relative-caret-position="4095">
+              <caret line="275" column="21" lean-forward="false" selection-start-line="275" selection-start-column="21" selection-end-line="275" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -84,8 +69,8 @@
       <file leaf-file-name="RootBoot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/states/RootBoot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="30">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding>
                 <element signature="e#40#67#0" expanded="true" />
               </folding>
@@ -93,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrincessAnimationPlayer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PrincessAnimationPlayer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/animation/PrincessAnimationPlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+            <state relative-caret-position="216">
+              <caret line="195" column="9" lean-forward="true" selection-start-line="195" selection-start-column="9" selection-end-line="195" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -106,7 +91,7 @@
       <file leaf-file-name="PrincessBoot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessBoot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="240">
               <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
               <folding>
                 <element signature="e#40#67#0" expanded="true" />
@@ -115,11 +100,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Princess.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PrincessTaskBoot.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessTaskBoot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <folding>
+                <element signature="e#40#79#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Princess.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sprites/Princess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+            <state relative-caret-position="405">
+              <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
               <folding>
                 <element signature="e#40#79#0" expanded="false" />
                 <element signature="e#80#107#0" expanded="true" />
@@ -128,11 +125,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="KnightAnimationBoard.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/states/knight/KnightAnimationBoard.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Knight.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sprites/Knight.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+              <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -149,8 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gameContext</find>
-      <find>playFailure</find>
       <find>image_stream_size</find>
       <find>Standby</find>
       <find>start</find>
@@ -179,6 +184,8 @@
       <find>failed</find>
       <find>stepCount</find>
       <find>Play animation for</find>
+      <find>this.gameContext.character_height_in_pixel</find>
+      <find>path</find>
     </findStrings>
     <replaceStrings>
       <replace>this.gameContext</replace>
@@ -207,14 +214,14 @@
         <option value="$PROJECT_DIR$/src/util/TooltipBuilder.js" />
         <option value="$PROJECT_DIR$/src/states/knight/KnightStoryBoard.js" />
         <option value="$PROJECT_DIR$/src/states/knight/KnightTaskBoot.js" />
-        <option value="$PROJECT_DIR$/src/states/princess/PrincessTaskBoot.js" />
         <option value="$PROJECT_DIR$/src/animation/SupportedBlocks.js" />
         <option value="$PROJECT_DIR$/src/states/MainMenu.js" />
         <option value="$PROJECT_DIR$/src/states/princess/PrincessBoot.js" />
+        <option value="$PROJECT_DIR$/src/states/princess/PrincessTaskBoot.js" />
         <option value="$PROJECT_DIR$/src/states/princess/PrincessStoryBoard.js" />
         <option value="$PROJECT_DIR$/src/states/princess/PrincessAnimationBoard.js" />
-        <option value="$PROJECT_DIR$/src/sprites/Princess.js" />
         <option value="$PROJECT_DIR$/src/animation/PrincessAnimationPlayer.js" />
+        <option value="$PROJECT_DIR$/src/sprites/Princess.js" />
       </list>
     </option>
   </component>
@@ -232,7 +239,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="807" />
+    <option name="height" value="812" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -249,7 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -466,6 +472,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -623,15 +630,18 @@
       <workItem from="1500834548103" duration="2470000" />
       <workItem from="1501266007569" duration="978000" />
       <workItem from="1501375797902" duration="1436000" />
-      <workItem from="1501439452431" duration="6438000" />
+      <workItem from="1501439452431" duration="6510000" />
+      <workItem from="1501546231178" duration="2710000" />
+      <workItem from="1501634056172" duration="1960000" />
+      <workItem from="1501679677225" duration="2277000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72652000" />
+    <option name="totallyTimeSpent" value="79671000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="807" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="812" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -713,9 +723,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="38" column="65" lean-forward="true" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
-          <folding>
-            <element signature="e#40#67#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -780,9 +788,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-          <folding>
-            <element signature="e#40#67#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -825,9 +831,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="e#40#67#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -939,29 +943,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessTaskBoot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#79#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/animation/SupportedBlocks.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/states/knight/KnightAnimationBoard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,27 +960,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="45">
           <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/states/MainMenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
+        <state relative-caret-position="495">
           <caret line="39" column="153" lean-forward="false" selection-start-line="39" selection-start-column="153" selection-end-line="39" selection-end-column="153" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/states/RootBoot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
             <element signature="e#40#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sprites/Knight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/animation/KnightAnimationPlayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4095">
+          <caret line="275" column="21" lean-forward="false" selection-start-line="275" selection-start-column="21" selection-end-line="275" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessBoot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="240">
           <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
           <folding>
             <element signature="e#40#67#0" expanded="true" />
@@ -1003,55 +1009,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessStoryBoard.js">
+    <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessTaskBoot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="33" column="67" lean-forward="true" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/states/RootBoot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/animation/KnightAnimationPlayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="275" column="21" lean-forward="true" selection-start-line="275" selection-start-column="21" selection-end-line="275" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sprites/Knight.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sprites/Princess.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        <state relative-caret-position="270">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
             <element signature="e#40#79#0" expanded="false" />
-            <element signature="e#80#107#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessStoryBoard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/states/knight/KnightAnimationBoard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/states/princess/PrincessAnimationBoard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1192">
-          <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+        <state relative-caret-position="301">
+          <caret line="51" column="101" lean-forward="false" selection-start-line="51" selection-start-column="101" selection-end-line="51" selection-end-column="101" />
           <folding>
             <element signature="e#40#67#0" expanded="true" />
           </folding>
@@ -1060,9 +1047,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/animation/PrincessAnimationPlayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+        <state relative-caret-position="216">
+          <caret line="195" column="9" lean-forward="true" selection-start-line="195" selection-start-column="9" selection-end-line="195" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sprites/Princess.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+          <folding>
+            <element signature="e#40#79#0" expanded="false" />
+            <element signature="e#80#107#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

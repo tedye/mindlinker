@@ -4,7 +4,7 @@
 import Phaser from 'phaser'
 import config from '../../config'
 import Princess from '../../sprites/Princess'
-import KnightAnimationPlayer from '../../animation/PrincessAnimationPlayer'
+import PrincessAnimationPlayer from '../../animation/PrincessAnimationPlayer'
 import TooltipBuilder from '../../util/TooltipBuilder'
 
 export default class extends Phaser.State {
@@ -29,7 +29,8 @@ export default class extends Phaser.State {
         console.log('play blocks')
         this.game.sound.play('press')
         let animationContext = this.getCurrentAnimationContext(this.gameContext)
-        KnightAnimationPlayer(animationContext)
+        this.princess.start = true
+        PrincessAnimationPlayer(animationContext)
         this.startButton.visible = false
     }
 
@@ -48,7 +49,7 @@ export default class extends Phaser.State {
 
     drawMainCharacterAtStartingPosition() {
         let startX = this.characterStartX
-        let startY = this.characterStartY
+        let startY = this.characterStartY - Math.round(this.taskContext.character_height_in_pixel / 3)
         let frames = [
             "animation/walk-0/walk-0-0000",
             "animation/walk-1/walk-1-0000",
@@ -71,16 +72,22 @@ export default class extends Phaser.State {
             x: startX,
             y: startY,
             asset: this.gameContext.spritesheets[0].key,
-            frame: frames[this.taskContext.character_starting_clock_position]
+            frame: 0
         })
         this.princess = this.game.add.existing(sprite)
+        this.princess.actionQueue.push({
+            name: 'TurnRight0_' + this.taskContext.character_starting_clock_position,
+            xOffset: 0,
+            yOffset: 0,
+            audio: null
+        })
     }
 
-    drawForeGround() {
-        let fWidth = this.game.width
-        let fHeight = this.game.height
-        console.log('Draw front ground image with size width = ' + fWidth + ' height = ' + fHeight)
-        this.game.add.sprite(0, 0, 'foreground').scale.setTo(this.game.width/config.backgroundWidth, this.game.height/config.backgroundHeight)
+    drawPath() {
+        console.log('Draw task path.')
+        console.log('Path center: x = ' + Math.round(this.game.width/2) + ' y = ' + Math.round(this.game.height/2))
+        let path = this.game.add.sprite(Math.round(this.game.width/2), Math.round(this.game.height/2), 'taskPath')
+        path.anchor.setTo(0.5, 0.5)
     }
 
     setCurrentGameContexts() {
@@ -89,6 +96,11 @@ export default class extends Phaser.State {
 
     setCurrentTaskContext() {
         this.taskContext = JSON.parse(this.game.cache.getText('taskContext'))
+    }
+
+    loadPath() {
+        console.log('Load path image: ' + this.taskContext.pathImage)
+        this.game.load.image('taskPath', this.taskContext.pathImage)
     }
 
     addAnimationsForSprite(sprite, spritesheets) {
@@ -144,6 +156,7 @@ export default class extends Phaser.State {
         console.log('PrincessAnimationBoard Preload.')
         this.setCurrentGameContexts()
         this.setCurrentTaskContext()
+        this.loadPath()
         if (typeof this.game.workspace == "undefined"){
             // Only create blocks once
             this.addBlocks()
@@ -154,9 +167,9 @@ export default class extends Phaser.State {
         console.log('PrincessAnimationBoard Create.')
         this.calculateCharacterStartingPositionResponsively()
         this.drawBackground()
+        this.drawPath()
         this.drawBoardButtons()
         this.drawMainCharacterAtStartingPosition()
-        this.drawForeGround()
         this.addAnimationsForSprite(this.princess, this.gameContext.spritesheets)
         this.addAudios()
     }
