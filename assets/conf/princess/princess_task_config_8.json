@@ -26,5 +26,6 @@
       }
     ],
     "passCommand":"[{\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":60, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":120, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":60, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}]",
-    "hint":"控制公主画出图示平行四边形。"
+    "hint":"控制公主画出图示平行四边形。",
+    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">175</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">60</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">120</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

@@ -80,5 +80,6 @@
       "interactions": []
    },
    "hint":"控制骑士在两面战旗之间来回走3次。",
-   "testScript": "[{\"name\":\"RepeatStart\", \"count\":3}, {\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkLeft\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatEnd\"}]"
+   "testScript": "[{\"name\":\"RepeatStart\", \"count\":3}, {\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkLeft\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatEnd\"}]",
+   "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_turn\"></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

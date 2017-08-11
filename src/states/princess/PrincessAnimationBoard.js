@@ -14,14 +14,20 @@ export default class extends Phaser.State {
         this.characterStartY = Math.round(this.game.height * this.taskContext.character_starting_y_percentage)
     }
 
+    getInstructionFromWorkspace() {
+        let startBlock = this.game.workspace.getTopBlocks()[0]
+        return Blockly.JavaScript[startBlock.type](startBlock);
+
+    }
+
     getCurrentAnimationContext() {
-        console.log('Blockly Instruction: ' + Blockly.JavaScript.workspaceToCode(this.game.workspace))
+        console.log('Blockly Instruction: ' + this.getInstructionFromWorkspace())
         return {
             sprite: this.princess,
             startClockPosition: this.taskContext.character_starting_clock_position,
             maxSteps: this.taskContext.maxSteps,
             passPath: this.taskContext.passPath,
-            instruction: this.taskContext.passCommand//Blockly.JavaScript.workspaceToCode(this.game.workspace)
+            instruction: this.getInstructionFromWorkspace()
         }
     }
 
@@ -122,30 +128,50 @@ export default class extends Phaser.State {
         }
     }
 
-    addBlocks() {
-        let toolbox = '<xml>'
-        toolbox += '<block type="logic_compare"></block>'
-        toolbox += '<block type="statement_start"></block>'
-        toolbox += '<block type="statement_end"></block>'
-        toolbox += '<block type="statement_walk_right"></block>'
-        toolbox += '<block type="statement_walk_left"></block>'
-        toolbox += '<block type="statement_walk_up"></block>'
-        toolbox += '<block type="statement_walk_down"></block>'
-        toolbox += '<block type="statement_run_right"></block>'
-        toolbox += '<block type="statement_run_left"></block>'
-        toolbox += '<block type="statement_run_up"></block>'
-        toolbox += '<block type="statement_run_down"></block>'
-        toolbox += '<block type="statement_attack"></block>'
-        toolbox += '<block type="statement_jump"></block>'
-        toolbox += '<block type="statement_turn"></block>'
-        toolbox += '<block type="statement_repeat"></block>'
-        toolbox += '<block type="statement_condition_if"></block>'
-        toolbox += '</xml>'
+    addWorkspace() {
         let options = {
-            horizontalLayout : true,
-            toolbox : toolbox
+            comments: false,
+            disable: false,
+            collapse: false,
+            media: 'assets/blocks/media/',
+            readOnly: false,
+            rtl: false,
+            scrollbars: true,
+            toolbox: Blockly.Blocks.defaultToolboxPrincess,
+            trashcan: true,
+            horizontalLayout: true,
+            toolboxPosition: true,
+            sounds: true,
+            grid: {spacing: 16,
+                length: 1,
+                colour: '#2C344A',
+                snap: false
+            },
+            zoom: {
+                controls: true,
+                wheel: true,
+                startScale: 1.0,
+                maxScale: 4,
+                minScale: 0.25,
+                scaleSpeed: 1.1
+            },
+            colours: {
+                workspace: '#334771',
+                flyout: '#283856',
+                scrollbar: '#24324D',
+                scrollbarHover: '#0C111A',
+                insertionMarker: '#FFFFFF',
+                insertionMarkerOpacity: 0.3,
+                fieldShadow: 'rgba(255, 255, 255, 0.3)',
+                dragShadowOpacity: 0.6
+            }
         }
         this.game.workspace = Blockly.inject('block', options);
+    }
+
+    loadToolbox() {
+        let tree = Blockly.Xml.textToDom(this.taskContext.toolbox)
+        this.game.workspace.updateToolbox(tree)
     }
 
     init() {
@@ -157,10 +183,11 @@ export default class extends Phaser.State {
         this.setCurrentGameContexts()
         this.setCurrentTaskContext()
         this.loadPath()
-        if (typeof this.game.workspace == "undefined"){
+        if (typeof this.game.workspace === "undefined"){
             // Only create blocks once
-            this.addBlocks()
+            this.addWorkspace()
         }
+        this.loadToolbox()
     }
 
     create() {

@@ -49,5 +49,6 @@
       "interactions": []
    },
    "hint":"运用循环模块控制骑士行走至战旗位置。",
-   "testScript": "[{\"name\":\"RepeatStart\", \"count\":6},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"}]"
+   "testScript": "[{\"name\":\"RepeatStart\", \"count\":6},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"}]",
+   "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }
