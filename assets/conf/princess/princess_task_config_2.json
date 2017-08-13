@@ -19,5 +19,6 @@
       }
     ],
     "passCommand":"[{\"name\":\"Walk\", \"distance\":164}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":164}]",
-    "hint":"控制公主画出一条水平直线，旋转90度后画出另一条直线。"
+    "hint":"控制公主画出一条水平直线，旋转90度后画出另一条直线。",
+    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">210</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">90</field></shadow></value></block></xml>"
 }

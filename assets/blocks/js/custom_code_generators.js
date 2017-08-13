@@ -1,96 +1,96 @@
 Blockly.JavaScript['statement_start'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '[\n' + value_next_statement.substring(0, value_next_statement.length - 2) + '\n]';
-  return code;
-};
-
-Blockly.JavaScript['statement_walk_right'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"WalkRight"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_walk_left'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"WalkLeft"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_walk_up'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"WalkUp"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ATOMIC];
-};
-
-Blockly.JavaScript['statement_walk_down'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"WalkDown"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_run_right'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"RunRight"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_run_left'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"RunLeft"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_run_up'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"RunUp"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_run_down'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"RunDown"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_attack'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"Attack"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_jump'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"Jump"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_turn'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"Turn"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_repeat'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var number_repeat_count = block.getFieldValue('repeat_count');
-  var value_loop = Blockly.JavaScript.valueToCode(block, 'loop', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"RepeatStart","count":' + number_repeat_count + '},\n' +
-    value_loop + '{"name":"RepeatEnd"},\n' + value_next_statement;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['statement_condition_if'] = function(block) {
-  var value_next_statement = Blockly.JavaScript.valueToCode(block, 'next_statement', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_condition_true = Blockly.JavaScript.valueToCode(block, 'condition_true', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{"name":"IfStart","condition":' + eval(value_condition) + '},\n';
-  code += value_condition_true;
-  code += '{"name":"IfEnd"},\n' + value_next_statement;
-
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+    let instruction = '[';
+    let nextBlock = block.childBlocks_[0]
+    instruction += Blockly.JavaScript[nextBlock.type](nextBlock)
+    let len = instruction.length
+    return instruction.substring(0, len - 1) + ']';
 };
 
 Blockly.JavaScript['statement_end'] = function(block) {
-  var code = '';
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+    return '';
 };
+
+let motionCodeGenerator = function(instruction) {
+    return function(block) {
+        let childBlocks = block.childBlocks_;
+        let count = parseInt(childBlocks[0].inputList[0].fieldRow[0].text_);
+        let currentBlockInstruction = instruction.repeat(count);
+        if (childBlocks.length > 1){
+            let nextBlock = childBlocks[1];
+            currentBlockInstruction += Blockly.JavaScript[nextBlock.type](nextBlock);
+        }
+        return currentBlockInstruction;
+    };
+};
+
+Blockly.JavaScript['statement_walk_right'] = motionCodeGenerator('{"name":"WalkRight"},');
+Blockly.JavaScript['statement_walk_left'] = motionCodeGenerator('{"name":"WalkLeft"},');
+Blockly.JavaScript['statement_walk_up'] = motionCodeGenerator('{"name":"WalkUp"},');
+Blockly.JavaScript['statement_walk_down'] = motionCodeGenerator('{"name":"WalkDown"},');
+Blockly.JavaScript['statement_run_right'] = motionCodeGenerator('{"name":"RunRight"},');
+Blockly.JavaScript['statement_run_left'] = motionCodeGenerator('{"name":"RunLeft"},');
+Blockly.JavaScript['statement_run_up'] = motionCodeGenerator('{"name":"RunUp"},');
+Blockly.JavaScript['statement_run_down'] = motionCodeGenerator('{"name":"RunDown"},');
+Blockly.JavaScript['statement_attack'] = motionCodeGenerator('{"name":"Attack"},');
+Blockly.JavaScript['statement_defense'] = motionCodeGenerator('{"name":"Defense"},');
+Blockly.JavaScript['statement_standby'] = motionCodeGenerator('{"name":"Standby"},');
+Blockly.JavaScript['statement_jump'] = motionCodeGenerator('{"name":"Jump"},');
+Blockly.JavaScript['statement_jump_left'] = motionCodeGenerator('{"name":"JumpLeft"},');
+Blockly.JavaScript['statement_jump_right'] = motionCodeGenerator('{"name":"JumpRight"},');
+Blockly.JavaScript['statement_turn'] = function(block) {
+    let instruction = '{"name":"Turn"},\n';
+    let childBlocks = block.childBlocks_;
+    if (childBlocks.length > 0){
+        let nextBlock = childBlocks[0];
+        instruction += Blockly.JavaScript[nextBlock.type](nextBlock);
+    }
+    return instruction
+};
+
+Blockly.JavaScript['statement_repeat'] = function(block) {
+    let childBlocks = block.childBlocks_;
+    let count = childBlocks[0].inputList[0].fieldRow[0].text_;
+    let repeatBlock = childBlocks[1];
+    let instruction = '{"name":"RepeatStart","count":' + count + '},';
+    instruction += Blockly.JavaScript[repeatBlock.type](repeatBlock);
+    instruction += '{"name":"RepeatEnd"},';
+    if (childBlocks.length > 2){
+        let nextBlock = childBlocks[2];
+        instruction += Blockly.JavaScript[nextBlock.type](nextBlock);
+    }
+  return instruction;
+};
+
+Blockly.JavaScript['statement_turn_left'] = function(block) {
+    let childBlocks = block.childBlocks_;
+    let distance = childBlocks[0].inputList[0].fieldRow[0].text_;
+    let instruction = '{"name":"Turn", "degree":' + distance + ',"turnRight": false},';
+    if (childBlocks.length > 1){
+        let nextBlock = childBlocks[1];
+        instruction += Blockly.JavaScript[nextBlock.type](nextBlock);
+    }
+    return instruction;
+};
+
+Blockly.JavaScript['statement_turn_right'] = function(block) {
+    let childBlocks = block.childBlocks_;
+    let distance = childBlocks[0].inputList[0].fieldRow[0].text_;
+    let instruction = '{"name":"Turn", "degree":' + distance + ',"turnRight": true},';
+    if (childBlocks.length > 1){
+        let nextBlock = childBlocks[1];
+        instruction += Blockly.JavaScript[nextBlock.type](nextBlock);
+    }
+    return instruction;
+};
+
+Blockly.JavaScript['statement_walk'] = function(block) {
+    let childBlocks = block.childBlocks_;
+    let distance = childBlocks[0].inputList[0].fieldRow[0].text_;
+    let instruction = '{"name":"Walk", "distance":' + distance + '},';
+    if (childBlocks.length > 1){
+        let nextBlock = childBlocks[1];
+        instruction += Blockly.JavaScript[nextBlock.type](nextBlock);
+    }
+    return instruction;
+};
+

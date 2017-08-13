@@ -1,112 +1,112 @@
 {
-    "character_starting_grid_x": 0,
-    "character_starting_grid_y": 2,
-    "items":[  
-      {  
-         "key":"stump",
-         "image":"assets/images/knight/background/block-stump.png",
-         "count":10,
-         "random":false,
-         "coordinates":[  
-            {  
-               "x":3,
-               "y":0,
-               "xOffset":0,
-               "yOffset":0
+   "character_starting_grid_x": 0,
+   "character_starting_grid_y": 2,
+   "items": [
+      {
+         "key": "stump",
+         "image": "assets/images/knight/background/block-stump.png",
+         "count": 10,
+         "random": false,
+         "coordinates": [
+            {
+               "x": 3,
+               "y": 0,
+               "xOffset": 0,
+               "yOffset": 0
             },
-            {  
-               "x":3,
-               "y":1,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 3,
+               "y": 1,
+               "xOffset": 0,
+               "yOffset": 0
             },
-                        {  
-               "x":3,
-               "y":2,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 3,
+               "y": 2,
+               "xOffset": 0,
+               "yOffset": 0
             },
-                        {  
-               "x":3,
-               "y":3,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 3,
+               "y": 3,
+               "xOffset": 0,
+               "yOffset": 0
             },
-                        {  
-               "x":3,
-               "y":4,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 3,
+               "y": 4,
+               "xOffset": 0,
+               "yOffset": 0
             },
-                        {  
-               "x":7,
-               "y":0,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 7,
+               "y": 0,
+               "xOffset": 0,
+               "yOffset": 0
             },
-            {  
-               "x":7,
-               "y":1,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 7,
+               "y": 1,
+               "xOffset": 0,
+               "yOffset": 0
             },
-                        {  
-               "x":7,
-               "y":2,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 7,
+               "y": 2,
+               "xOffset": 0,
+               "yOffset": 0
             },
-                        {  
-               "x":7,
-               "y":3,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 7,
+               "y": 3,
+               "xOffset": 0,
+               "yOffset": 0
             },
-                        {  
-               "x":7,
-               "y":4,
-               "xOffset":0,
-               "yOffset":0
+            {
+               "x": 7,
+               "y": 4,
+               "xOffset": 0,
+               "yOffset": 0
             }
          ],
-         "blocker":true,
-         "width":163,
-         "height":73,
-         "gridWidth":1.1,
-         "gridHeight":1.1
+         "blocker": true,
+         "width": 163,
+         "height": 73,
+         "gridWidth": 1.1,
+         "gridHeight": 1.1
       },
-      {  
-         "key":"victory",
-         "image":"assets/images/knight/background/victory-flag.png",
-         "count":1,
-         "random":false,
-         "coordinates":[  
-            {  
-               "x":8,
-               "y":2,
-               "xOffset":0,
-               "yOffset":-0.5
+      {
+         "key": "victory",
+         "image": "assets/images/knight/background/victory-flag.png",
+         "count": 1,
+         "random": false,
+         "coordinates": [
+            {
+               "x": 8,
+               "y": 2,
+               "xOffset": 0,
+               "yOffset": -0.5
             }
          ],
-         "blocker":false,
-         "width":102,
-         "height":222,
-         "gridWidth":1,
-         "gridHeight":2
+         "blocker": false,
+         "width": 102,
+         "height": 222,
+         "gridWidth": 1,
+         "gridHeight": 2
       }
    ],
-   "interactionItems":[],
-   "maxSteps":20,
-   "failCondition":{  
-
+   "interactionItems": [],
+   "maxSteps": 20,
+   "failCondition": {
    },
-   "passCondition":{  
-      "destinationXGrid":8,
-      "destinationYGrid":2,
+   "passCondition": {
+      "destinationXGrid": 8,
+      "destinationYGrid": 2,
       "pathMatched": false,
-      "path":[],
+      "path": [],
       "interactions": []
    },
-   "hint":"控制骑士跳开障碍物并行走至战旗位置。",
-   "testScript": "[{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"JumpRight\"},{\"name\":\"RepeatEnd\"}]"
+   "hint": "控制骑士跳开障碍物并行走至战旗位置。",
+   "testScript": "[{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"JumpRight\"},{\"name\":\"RepeatEnd\"}]",
+   "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_jump_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }
