@@ -16,5 +16,5 @@
     ],
     "passCommand":"[{\"name\":\"Walk\", \"distance\":190}]",
     "hint":"控制公主画出一条水平直线。",
-    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">200</field></shadow></value></block></xml>"
+    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">190</field></shadow></value></block></xml>"
 }

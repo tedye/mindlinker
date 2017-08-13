@@ -58,12 +58,7 @@
            "dist": 104
       }
     ],
-<<<<<<< HEAD
     "passCommand":"[{\"name\":\"RepeatStart\", \"count\": 3}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104},{\"name\":\"Turn\", \"degree\":150, \"turnRight\": false}, {\"name\":\"RepeatEnd\"}]",
-    "hint":"控制公主画出如图所示的三个正方形。"
-=======
-    "passCommand":"[{\"name\":\"RepeatStart\", \"count\": 3}, {\"name\":\"Walk\", \"distance\":115}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":115}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":115}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":115},{\"name\":\"Turn\", \"degree\":150, \"turnRight\": false}, {\"name\":\"RepeatEnd\"}]",
     "hint":"控制公主画出如图所示的三个正方形。",
-    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">115</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">90</field></shadow></value></block><block type=\"statement_turn_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">120</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
->>>>>>> 0d9e9895c93139fe52ecb2a73ef2ef6f6cbdbdf3
+    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">104</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">90</field></shadow></value></block><block type=\"statement_turn_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">120</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

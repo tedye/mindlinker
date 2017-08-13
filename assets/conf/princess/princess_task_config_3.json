@@ -28,5 +28,5 @@
     ],
     "passCommand":"[{\"name\":\"Walk\", \"distance\":164}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":164}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":164}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":164}]",
     "hint":"控制公主画出一个正方形。",
-    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">175</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">90</field></shadow></value></block></xml>"
+    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">164</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">90</field></shadow></value></block></xml>"
 }
