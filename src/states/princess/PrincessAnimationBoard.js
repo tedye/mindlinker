@@ -21,7 +21,7 @@ export default class extends Phaser.State {
             startClockPosition: this.taskContext.character_starting_clock_position,
             maxSteps: this.taskContext.maxSteps,
             passPath: this.taskContext.passPath,
-            instruction: this.taskContext.passCommand//Blockly.JavaScript.workspaceToCode(this.game.workspace)
+            instruction: Blockly.JavaScript.workspaceToCode(this.game.workspace)
         }
     }
 
@@ -71,6 +71,8 @@ export default class extends Phaser.State {
             name: 'princess',
             x: startX,
             y: startY,
+            yOffset: Math.round(this.taskContext.character_height_in_pixel / 3),
+            speed: this.taskContext.speed,
             asset: this.gameContext.spritesheets[0].key,
             frame: 0
         })

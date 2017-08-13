@@ -181,7 +181,7 @@ exports.f = __webpack_require__(/*! ./_descriptors */ 6) ? Object.defineProperty
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(/*! ./_to-integer */ 31)
+var toInteger = __webpack_require__(/*! ./_to-integer */ 32)
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -241,7 +241,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(/*! ./_object-dp */ 7)
-  , createDesc = __webpack_require__(/*! ./_property-desc */ 30);
+  , createDesc = __webpack_require__(/*! ./_property-desc */ 31);
 module.exports = __webpack_require__(/*! ./_descriptors */ 6) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
@@ -346,7 +346,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE            = __webpack_require__(/*! ./_object-pie */ 50)
-  , createDesc     = __webpack_require__(/*! ./_property-desc */ 30)
+  , createDesc     = __webpack_require__(/*! ./_property-desc */ 31)
   , toIObject      = __webpack_require__(/*! ./_to-iobject */ 16)
   , toPrimitive    = __webpack_require__(/*! ./_to-primitive */ 24)
   , has            = __webpack_require__(/*! ./_has */ 11)
@@ -651,10 +651,10 @@ if(__webpack_require__(/*! ./_descriptors */ 6)){
     , $buffer             = __webpack_require__(/*! ./_typed-buffer */ 86)
     , ctx                 = __webpack_require__(/*! ./_ctx */ 26)
     , anInstance          = __webpack_require__(/*! ./_an-instance */ 34)
-    , propertyDesc        = __webpack_require__(/*! ./_property-desc */ 30)
+    , propertyDesc        = __webpack_require__(/*! ./_property-desc */ 31)
     , hide                = __webpack_require__(/*! ./_hide */ 13)
     , redefineAll         = __webpack_require__(/*! ./_redefine-all */ 39)
-    , toInteger           = __webpack_require__(/*! ./_to-integer */ 31)
+    , toInteger           = __webpack_require__(/*! ./_to-integer */ 32)
     , toLength            = __webpack_require__(/*! ./_to-length */ 8)
     , toIndex             = __webpack_require__(/*! ./_to-index */ 41)
     , toPrimitive         = __webpack_require__(/*! ./_to-primitive */ 24)
@@ -1123,6 +1123,24 @@ if(__webpack_require__(/*! ./_descriptors */ 6)){
 
 /***/ }),
 /* 29 */
+/* exports provided: default */
+/* exports used: default */
+/*!***********************!*\
+  !*** ./src/config.js ***!
+  \***********************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    backgroundWidth: 1440,
+    backgroundHeight: 750,
+    animationDuration: 500,
+    rootConf: 'assets/conf/root_config.json',
+    localStorageName: 'phaseres6webpack'
+});
+
+/***/ }),
+/* 30 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -1185,7 +1203,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 30 */
+/* 31 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -1203,7 +1221,7 @@ module.exports = function(bitmap, value){
 };
 
 /***/ }),
-/* 31 */
+/* 32 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -1217,24 +1235,6 @@ var ceil  = Math.ceil
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
-
-/***/ }),
-/* 32 */
-/* exports provided: default */
-/* exports used: default */
-/*!***********************!*\
-  !*** ./src/config.js ***!
-  \***********************/
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    backgroundWidth: 1440,
-    backgroundHeight: 750,
-    animationDuration: 800,
-    rootConf: 'assets/conf/root_config.json',
-    localStorageName: 'phaseres6webpack'
-});
 
 /***/ }),
 /* 33 */
@@ -1423,7 +1423,7 @@ module.exports = function(KEY){
   \****************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ./_to-integer */ 31)
+var toInteger = __webpack_require__(/*! ./_to-integer */ 32)
   , max       = Math.max
   , min       = Math.min;
 module.exports = function(index, length){
@@ -1672,7 +1672,7 @@ var global            = __webpack_require__(/*! ./_global */ 2)
   , $export           = __webpack_require__(/*! ./_export */ 0)
   , redefine          = __webpack_require__(/*! ./_redefine */ 14)
   , redefineAll       = __webpack_require__(/*! ./_redefine-all */ 39)
-  , meta              = __webpack_require__(/*! ./_meta */ 29)
+  , meta              = __webpack_require__(/*! ./_meta */ 30)
   , forOf             = __webpack_require__(/*! ./_for-of */ 44)
   , anInstance        = __webpack_require__(/*! ./_an-instance */ 34)
   , isObject          = __webpack_require__(/*! ./_is-object */ 4)
@@ -2025,7 +2025,7 @@ module.exports = function fill(value /*, start = 0, end = @length */){
 "use strict";
 
 var $defineProperty = __webpack_require__(/*! ./_object-dp */ 7)
-  , createDesc      = __webpack_require__(/*! ./_property-desc */ 30);
+  , createDesc      = __webpack_require__(/*! ./_property-desc */ 31);
 
 module.exports = function(object, index, value){
   if(index in object)$defineProperty.f(object, index, createDesc(0, value));
@@ -2159,7 +2159,7 @@ module.exports = Array.isArray || function isArray(arg){
 "use strict";
 
 var create         = __webpack_require__(/*! ./_object-create */ 36)
-  , descriptor     = __webpack_require__(/*! ./_property-desc */ 30)
+  , descriptor     = __webpack_require__(/*! ./_property-desc */ 31)
   , setToStringTag = __webpack_require__(/*! ./_set-to-string-tag */ 46)
   , IteratorPrototype = {};
 
@@ -2441,7 +2441,7 @@ module.exports = function(O, D){
   \*****************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ./_to-integer */ 31)
+var toInteger = __webpack_require__(/*! ./_to-integer */ 32)
   , defined   = __webpack_require__(/*! ./_defined */ 20);
 // true  -> String#at
 // false -> String#codePointAt
@@ -2488,7 +2488,7 @@ module.exports = function(that, searchString, NAME){
 
 "use strict";
 
-var toInteger = __webpack_require__(/*! ./_to-integer */ 31)
+var toInteger = __webpack_require__(/*! ./_to-integer */ 32)
   , defined   = __webpack_require__(/*! ./_defined */ 20);
 
 module.exports = function repeat(count){
@@ -2616,7 +2616,7 @@ var global         = __webpack_require__(/*! ./_global */ 2)
   , redefineAll    = __webpack_require__(/*! ./_redefine-all */ 39)
   , fails          = __webpack_require__(/*! ./_fails */ 3)
   , anInstance     = __webpack_require__(/*! ./_an-instance */ 34)
-  , toInteger      = __webpack_require__(/*! ./_to-integer */ 31)
+  , toInteger      = __webpack_require__(/*! ./_to-integer */ 32)
   , toLength       = __webpack_require__(/*! ./_to-length */ 8)
   , gOPN           = __webpack_require__(/*! ./_object-gopn */ 37).f
   , dP             = __webpack_require__(/*! ./_object-dp */ 7).f
@@ -3167,7 +3167,7 @@ var dP          = __webpack_require__(/*! ./_object-dp */ 7).f
   , step        = __webpack_require__(/*! ./_iter-step */ 104)
   , setSpecies  = __webpack_require__(/*! ./_set-species */ 40)
   , DESCRIPTORS = __webpack_require__(/*! ./_descriptors */ 6)
-  , fastKey     = __webpack_require__(/*! ./_meta */ 29).fastKey
+  , fastKey     = __webpack_require__(/*! ./_meta */ 30).fastKey
   , SIZE        = DESCRIPTORS ? '_s' : 'size';
 
 var getEntry = function(that, key){
@@ -3329,7 +3329,7 @@ module.exports = function(NAME){
 "use strict";
 
 var redefineAll       = __webpack_require__(/*! ./_redefine-all */ 39)
-  , getWeak           = __webpack_require__(/*! ./_meta */ 29).getWeak
+  , getWeak           = __webpack_require__(/*! ./_meta */ 30).getWeak
   , anObject          = __webpack_require__(/*! ./_an-object */ 1)
   , isObject          = __webpack_require__(/*! ./_is-object */ 4)
   , anInstance        = __webpack_require__(/*! ./_an-instance */ 34)
@@ -3827,7 +3827,7 @@ module.exports = __webpack_require__(/*! ./_collection */ 53)('Set', function(ge
 
 var each         = __webpack_require__(/*! ./_array-methods */ 22)(0)
   , redefine     = __webpack_require__(/*! ./_redefine */ 14)
-  , meta         = __webpack_require__(/*! ./_meta */ 29)
+  , meta         = __webpack_require__(/*! ./_meta */ 30)
   , assign       = __webpack_require__(/*! ./_object-assign */ 106)
   , weak         = __webpack_require__(/*! ./_collection-weak */ 100)
   , isObject     = __webpack_require__(/*! ./_is-object */ 4)
@@ -4738,7 +4738,7 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__ = __webpack_require__(/*! ../util/TooltipBuilder */ 33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(/*! ../config */ 32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(/*! ../config */ 29);
 /**
  * Created by kfang on 6/16/17.
  */
@@ -4771,7 +4771,7 @@ function play(animationContext) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__["a" /* default */])(this.game, this.restartButton, '重新开始', 'bottom');
         if (this.taskCompleted) {
             this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'next', this.nextGame, this);
-            this.nextButton.scale.setTo(0.3, 0.3);
+            this.nextButton.scale.setTo(-0.3, 0.3);
             this.nextButton.anchor.setTo(0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__["a" /* default */])(this.game, this.nextButton, '开始下一关', 'bottom');
         }
@@ -4829,39 +4829,41 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__ = __webpack_require__(/*! ../util/TooltipBuilder */ 33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(/*! ../config */ 32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(/*! ../config */ 29);
 /**
  * Created by kfang on 7/23/17.
- */
-/**
- * Created by kfang on 6/16/17.
  */
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = (class extends __WEBPACK_IMPORTED_MODULE_0_phaser___default.a.Sprite {
-    constructor({ game, name, x, y, asset, frame }) {
+    constructor({ game, name, x, y, yOffset, speed, asset, frame }) {
         super(game, x, y, asset, frame);
         this.name = name;
         this.anchor.setTo(0.5, 0.5);
         this.actionQueue = [];
         this.playingAnimation = null;
         this.taskCompleted = false;
-        this.walking = false;
+        this.lineQueue = [];
+        this.speedUpdatedSet = [];
         this.start = false;
+        this.yOffset = yOffset;
+        this.speed = speed;
+        this.walking = false;
+        this.graphics = this.game.add.graphics(0, 0);
+        this.graphics.lineStyle(8, 0x33FFF6, 1);
     }
 
     update() {
         if (this.actionQueue.length > 0 && (this.playingAnimation === null || this.playingAnimation.isFinished)) {
             this.playNextAction();
+            if (!this.walking) {
+                this.drawLine();
+            }
         } else if (this.start && this.actionQueue.length === 0 && this.playingAnimation !== null && this.playingAnimation.isFinished) {
+            this.drawLine();
             this.showButtons();
-        }
-        if (this.start && this.playingAnimation != null && !this.playingAnimation.isFinished && this.walking) {
-            let footPrintSprite = this.game.add.sprite(this.centerX, this.centerY + this.height / 4, 'footprint');
-            footPrintSprite.anchor.setTo(0.5, 0.5);
-            footPrintSprite.scale.setTo(0.4, 0.4);
         }
     }
 
@@ -4873,7 +4875,7 @@ function play(animationContext) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__["a" /* default */])(this.game, this.restartButton, '重新开始', 'bottom');
         if (this.taskCompleted) {
             this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'next', this.nextGame, this);
-            this.nextButton.scale.setTo(0.3, 0.3);
+            this.nextButton.scale.setTo(-0.3, 0.3);
             this.nextButton.anchor.setTo(0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__["a" /* default */])(this.game, this.nextButton, '开始下一关', 'bottom');
         }
@@ -4884,16 +4886,22 @@ function play(animationContext) {
         console.log('Update: play animation ' + nextAction.name + ' with xOffset: ' + nextAction.xOffset + ' and yOffset: ' + nextAction.yOffset);
         let newX = this.x + nextAction.xOffset;
         let newY = this.y + nextAction.yOffset;
-        this.playingAnimation = this.animations.play(nextAction.name);
         if (nextAction.name.indexOf('Walk') >= 0) {
             this.walking = true;
         } else {
             this.walking = false;
         }
+        this.playingAnimation = this.animations.play(nextAction.name);
+        if (this.speedUpdatedSet.indexOf(nextAction.name) === -1) {
+            this.playingAnimation.speed *= 1 / this.speed;
+            this.speedUpdatedSet.push(nextAction.name);
+        }
         if (nextAction.audio !== null) {
             this.game.sound.play(nextAction.audio);
         }
-        this.game.add.tween(this).to({ x: newX, y: newY }, __WEBPACK_IMPORTED_MODULE_2__config__["a" /* default */].animationDuration, null, true);
+        let duration = Math.round(__WEBPACK_IMPORTED_MODULE_2__config__["a" /* default */].animationDuration * this.speed);
+        this.game.add.tween(this).to({ x: newX, y: newY }, duration, null, true);
+        this.lineQueue.push({ x1: this.x, y1: this.y, x2: newX, y2: newY });
     }
 
     destroyAllButtons() {
@@ -4915,6 +4923,16 @@ function play(animationContext) {
         this.game.global.currentTaskIndex = this.game.global.currentTaskIndex + 1;
         this.game.state.start('PrincessTaskBoot');
     }
+
+    drawLine() {
+        while (this.lineQueue.length > 0) {
+            let line = this.lineQueue.shift();
+            this.graphics.beginFill();
+            this.graphics.moveTo(line.x1, line.y1 + this.yOffset);
+            this.graphics.lineTo(line.x2, line.y2 + this.yOffset);
+            this.graphics.endFill();
+        }
+    }
 });
 
 /***/ }),
@@ -4933,9 +4951,11 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__princess_PrincessBoot__ = __webpack_require__(/*! ./princess/PrincessBoot */ 136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__ = __webpack_require__(/*! ../util/TooltipBuilder */ 33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UIUtil__ = __webpack_require__(/*! ../UIUtil */ 63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../config */ 29);
 /**
  * Created by kfang on 7/11/17.
  */
+
 
 
 
@@ -4951,6 +4971,7 @@ function play(animationContext) {
     preload() {
         console.log('Main Menu Preload.');
         this.rootContext = JSON.parse(this.game.cache.getText('rootContext'));
+        this.game.load.image('mainBackground', this.rootContext.main_background_image);
         this.storyCount = this.rootContext.stories.length;
         let stories = this.rootContext.stories;
         for (let i = 0; i < stories.length; i++) {
@@ -4961,28 +4982,33 @@ function play(animationContext) {
         this.game.load.image('nextImage', 'assets/images/knight/next.png');
     }
 
+    renderBackground() {
+        this.game.add.sprite(0, 0, 'mainBackground').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundHeight);
+    }
+
     renderMenu() {
         let stories = this.rootContext.stories;
         let padding = this.game.width - Math.round((this.game.width - 600) / 2);
         let x = padding - 75;
         let y = Math.round(this.game.height * 0.5);
         let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, 0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, -0.5, 0.5, 0.5, 0.5);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一页', 'bottom');
-        x -= 150;
+        x -= 170;
         for (let i = 0; i < 2; i++) {
             let story = stories[this.endIndex - i];
             let storyButton = this.game.add.button(x, y, story.storyImageKey, this.onClickStory, { game: this.game, story: story, index: this.endIndex - i });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(storyButton, 0.5, 0.5, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, storyButton, story.storyName, 'bottom');
-            x -= 150;
+            x -= 170;
         }
         let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, -0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, 0.5, 0.5, 0.5, 0.5);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一页', 'bottom');
     }
 
     create() {
+        this.renderBackground();
         this.renderMenu();
     }
 
@@ -5027,7 +5053,7 @@ function play(animationContext) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../config */ 32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../config */ 29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MainMenu__ = __webpack_require__(/*! ./MainMenu */ 129);
 /**
  * Created by kfang on 6/19/17.
@@ -5067,7 +5093,7 @@ function play(animationContext) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../../config */ 32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../../config */ 29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sprites_Knight__ = __webpack_require__(/*! ../../sprites/Knight */ 127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sprites_InteractiveItem__ = __webpack_require__(/*! ../../sprites/InteractiveItem */ 126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__animation_KnightAnimationPlayer__ = __webpack_require__(/*! ../../animation/KnightAnimationPlayer */ 124);
@@ -5439,7 +5465,7 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__KnightTaskBoot__ = __webpack_require__(/*! ./KnightTaskBoot */ 134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__ = __webpack_require__(/*! ../../util/TooltipBuilder */ 33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UIUtil__ = __webpack_require__(/*! ../../UIUtil */ 63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../../config */ 32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../../config */ 29);
 /**
  * Created by kfang on 6/25/17.
  */
@@ -5503,18 +5529,18 @@ function play(animationContext) {
         let x = padding - 75;
         let y = Math.round(this.game.height * 0.5);
         let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, 0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, -0.5, 0.5, 0.5, 0.5);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一页', 'bottom');
-        x -= 150;
+        x -= 170;
         for (let i = 0; i < 3; i++) {
             let task = tasks[this.endIndex - i];
             let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, { game: this.game, task: task, index: this.endIndex - i });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(taskButton, 0.5, 0.5, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, taskButton, task.taskName, 'bottom');
-            x -= 150;
+            x -= 170;
         }
         let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, -0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, 0.5, 0.5, 0.5, 0.5);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一页', 'bottom');
     }
 
@@ -5604,7 +5630,7 @@ function play(animationContext) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../../config */ 32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../../config */ 29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sprites_Princess__ = __webpack_require__(/*! ../../sprites/Princess */ 128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__animation_PrincessAnimationPlayer__ = __webpack_require__(/*! ../../animation/PrincessAnimationPlayer */ 125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_TooltipBuilder__ = __webpack_require__(/*! ../../util/TooltipBuilder */ 33);
@@ -5668,6 +5694,8 @@ function play(animationContext) {
             name: 'princess',
             x: startX,
             y: startY,
+            yOffset: Math.round(this.taskContext.character_height_in_pixel / 3),
+            speed: this.taskContext.speed,
             asset: this.gameContext.spritesheets[0].key,
             frame: 0
         });
@@ -5824,7 +5852,7 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PrincessTaskBoot__ = __webpack_require__(/*! ./PrincessTaskBoot */ 138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__ = __webpack_require__(/*! ../../util/TooltipBuilder */ 33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UIUtil__ = __webpack_require__(/*! ../../UIUtil */ 63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../../config */ 32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../../config */ 29);
 /**
  * Created by kfang on 7/23/17.
  */
@@ -5886,18 +5914,18 @@ function play(animationContext) {
         let x = padding - 75;
         let y = Math.round(this.game.height * 0.5);
         let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, 0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, -0.5, 0.5, 0.5, 0.5);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一页', 'bottom');
-        x -= 150;
+        x -= 170;
         for (let i = 0; i < 3; i++) {
             let task = tasks[this.endIndex - i];
             let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, { game: this.game, task: task, index: this.endIndex - i });
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(taskButton, 0.5, 0.5, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, taskButton, task.taskName, 'bottom');
-            x -= 150;
+            x -= 170;
         }
         let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, -0.5, 0.5, 0.5, 0.5);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, 0.5, 0.5, 0.5, 0.5);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一页', 'bottom');
     }
 
@@ -6781,7 +6809,7 @@ $export($export.P + $export.F * (__webpack_require__(/*! ./_iobject */ 49) != Ob
 
 var $export       = __webpack_require__(/*! ./_export */ 0)
   , toIObject     = __webpack_require__(/*! ./_to-iobject */ 16)
-  , toInteger     = __webpack_require__(/*! ./_to-integer */ 31)
+  , toInteger     = __webpack_require__(/*! ./_to-integer */ 32)
   , toLength      = __webpack_require__(/*! ./_to-length */ 8)
   , $native       = [].lastIndexOf
   , NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
@@ -7160,7 +7188,7 @@ if(!(HAS_INSTANCE in FunctionProto))__webpack_require__(/*! ./_object-dp */ 7).f
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(/*! ./_object-dp */ 7).f
-  , createDesc = __webpack_require__(/*! ./_property-desc */ 30)
+  , createDesc = __webpack_require__(/*! ./_property-desc */ 31)
   , has        = __webpack_require__(/*! ./_has */ 11)
   , FProto     = Function.prototype
   , nameRE     = /^\s*function ([^ (]*)/
@@ -7784,7 +7812,7 @@ $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parse
 "use strict";
 
 var $export      = __webpack_require__(/*! ./_export */ 0)
-  , toInteger    = __webpack_require__(/*! ./_to-integer */ 31)
+  , toInteger    = __webpack_require__(/*! ./_to-integer */ 32)
   , aNumberValue = __webpack_require__(/*! ./_a-number-value */ 93)
   , repeat       = __webpack_require__(/*! ./_string-repeat */ 83)
   , $toFixed     = 1..toFixed
@@ -7989,7 +8017,7 @@ $export($export.S + $export.F * !__webpack_require__(/*! ./_descriptors */ 6), '
 
 // 19.1.2.5 Object.freeze(O)
 var isObject = __webpack_require__(/*! ./_is-object */ 4)
-  , meta     = __webpack_require__(/*! ./_meta */ 29).onFreeze;
+  , meta     = __webpack_require__(/*! ./_meta */ 30).onFreeze;
 
 __webpack_require__(/*! ./_object-sap */ 23)('freeze', function($freeze){
   return function freeze(it){
@@ -8146,7 +8174,7 @@ __webpack_require__(/*! ./_object-sap */ 23)('keys', function(){
 
 // 19.1.2.15 Object.preventExtensions(O)
 var isObject = __webpack_require__(/*! ./_is-object */ 4)
-  , meta     = __webpack_require__(/*! ./_meta */ 29).onFreeze;
+  , meta     = __webpack_require__(/*! ./_meta */ 30).onFreeze;
 
 __webpack_require__(/*! ./_object-sap */ 23)('preventExtensions', function($preventExtensions){
   return function preventExtensions(it){
@@ -8165,7 +8193,7 @@ __webpack_require__(/*! ./_object-sap */ 23)('preventExtensions', function($prev
 
 // 19.1.2.17 Object.seal(O)
 var isObject = __webpack_require__(/*! ./_is-object */ 4)
-  , meta     = __webpack_require__(/*! ./_meta */ 29).onFreeze;
+  , meta     = __webpack_require__(/*! ./_meta */ 30).onFreeze;
 
 __webpack_require__(/*! ./_object-sap */ 23)('seal', function($seal){
   return function seal(it){
@@ -8908,7 +8936,7 @@ var dP             = __webpack_require__(/*! ./_object-dp */ 7)
   , getPrototypeOf = __webpack_require__(/*! ./_object-gpo */ 18)
   , has            = __webpack_require__(/*! ./_has */ 11)
   , $export        = __webpack_require__(/*! ./_export */ 0)
-  , createDesc     = __webpack_require__(/*! ./_property-desc */ 30)
+  , createDesc     = __webpack_require__(/*! ./_property-desc */ 31)
   , anObject       = __webpack_require__(/*! ./_an-object */ 1)
   , isObject       = __webpack_require__(/*! ./_is-object */ 4);
 
@@ -9642,7 +9670,7 @@ var global         = __webpack_require__(/*! ./_global */ 2)
   , DESCRIPTORS    = __webpack_require__(/*! ./_descriptors */ 6)
   , $export        = __webpack_require__(/*! ./_export */ 0)
   , redefine       = __webpack_require__(/*! ./_redefine */ 14)
-  , META           = __webpack_require__(/*! ./_meta */ 29).KEY
+  , META           = __webpack_require__(/*! ./_meta */ 30).KEY
   , $fails         = __webpack_require__(/*! ./_fails */ 3)
   , shared         = __webpack_require__(/*! ./_shared */ 61)
   , setToStringTag = __webpack_require__(/*! ./_set-to-string-tag */ 46)
@@ -9656,7 +9684,7 @@ var global         = __webpack_require__(/*! ./_global */ 2)
   , anObject       = __webpack_require__(/*! ./_an-object */ 1)
   , toIObject      = __webpack_require__(/*! ./_to-iobject */ 16)
   , toPrimitive    = __webpack_require__(/*! ./_to-primitive */ 24)
-  , createDesc     = __webpack_require__(/*! ./_property-desc */ 30)
+  , createDesc     = __webpack_require__(/*! ./_property-desc */ 31)
   , _create        = __webpack_require__(/*! ./_object-create */ 36)
   , gOPNExt        = __webpack_require__(/*! ./_object-gopn-ext */ 108)
   , $GOPD          = __webpack_require__(/*! ./_object-gopd */ 17)

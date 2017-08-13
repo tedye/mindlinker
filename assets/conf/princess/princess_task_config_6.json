@@ -5,42 +5,43 @@
     "character_starting_x_percentage": 0.5,
     "character_starting_y_percentage": 0.5,
     "character_starting_clock_position": 6,
+    "speed": 1, 
     "pathImage": "assets/images/princess/background/path06.png",
     "maxSteps":20,
     "passPath": [
       {
            "position": 6,
-           "dist": 150
+           "dist": 136
       },
       {
            "position": 0,
-           "dist": 150
+           "dist": 136
       },
       {
            "position": 3,
-           "dist": 150
+           "dist": 136
       },
       {
            "position": 9,
-           "dist": 150
+           "dist": 136
       },
       {
            "position": 0,
-           "dist": 150
+           "dist": 136
       },
       {
            "position": 6,
-           "dist": 150
+           "dist": 136
       },
       {
            "position": 9,
-           "dist": 150
+           "dist": 136
       },
       {
            "position": 3,
-           "dist": 150
+           "dist": 136
       }
     ],
-    "passCommand":"[{\"name\":\"Walk\", \"distance\":150}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":150}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":150}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":150}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":150}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":150}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":150}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":150}]",
+    "passCommand":"[{\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}]",
     "hint":"控制公主画出图示十字形。"
 }

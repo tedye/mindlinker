@@ -2,29 +2,30 @@
 {
     "character_width_in_pixel":129,
     "character_height_in_pixel":221,
-    "character_starting_x_percentage": 0.42,
-    "character_starting_y_percentage": 0.4,
+    "character_starting_x_percentage": 0.415,
+    "character_starting_y_percentage": 0.395,
     "character_starting_clock_position": 3,
+    "speed": 1, 
     "pathImage": "assets/images/princess/background/path08.png",
     "maxSteps":20,
     "passPath": [
       {
            "position": 3,
-           "dist": 175
+           "dist": 164
       },
       {
            "position": 5,
-           "dist": 175
+           "dist": 164
       },
       {
            "position": 9,
-           "dist": 175
+           "dist": 164
       },
       {
            "position": 11,
-           "dist": 175
+           "dist": 164
       }
     ],
-    "passCommand":"[{\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":60, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":120, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}, {\"name\":\"Turn\", \"degree\":60, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":175}]",
+    "passCommand":"[{\"name\":\"Walk\", \"distance\":164}, {\"name\":\"Turn\", \"degree\":60, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":164}, {\"name\":\"Turn\", \"degree\":120, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":164}, {\"name\":\"Turn\", \"degree\":60, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":164}]",
     "hint":"控制公主画出图示平行四边形。"
 }

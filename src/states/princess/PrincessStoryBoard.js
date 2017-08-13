@@ -59,18 +59,18 @@ export default class extends Phaser.State {
         let x = padding - 75
         let y = Math.round(this.game.height * 0.5)
         let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
-        setScaleAndAnchorForObject(nextButton, 0.5, 0.5, 0.5, 0.5)
+        setScaleAndAnchorForObject(nextButton, -0.5, 0.5, 0.5, 0.5)
         TooltipBuilder(this.game, nextButton, '下一页', 'bottom')
-        x -= 150
+        x -= 170
         for (let i = 0; i < 3; i++) {
             let task = tasks[this.endIndex - i]
             let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, {game: this.game, task: task, index: this.endIndex - i})
             setScaleAndAnchorForObject(taskButton, 0.5, 0.5, 0.5, 0.5)
             TooltipBuilder(this.game, taskButton, task.taskName, 'bottom')
-            x -= 150
+            x -= 170
         }
         let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
-        setScaleAndAnchorForObject(prevButton, -0.5, 0.5, 0.5, 0.5)
+        setScaleAndAnchorForObject(prevButton, 0.5, 0.5, 0.5, 0.5)
         TooltipBuilder(this.game, prevButton, '上一页', 'bottom')
     }
 

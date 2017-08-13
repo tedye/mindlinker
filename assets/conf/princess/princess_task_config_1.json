@@ -2,17 +2,18 @@
 {
     "character_width_in_pixel":129,
     "character_height_in_pixel":221,
-    "character_starting_x_percentage": 0.42,
-    "character_starting_y_percentage": 0.39,
+    "character_starting_x_percentage": 0.434,
+    "character_starting_y_percentage": 0.5,
     "character_starting_clock_position": 3,
+    "speed": 1, 
     "pathImage": "assets/images/princess/background/path01.png",
     "maxSteps":20,
     "passPath": [
     	{
            "position": 3,
-           "dist": 200
+           "dist": 190
     	}
     ],
-    "passCommand":"[{\"name\":\"Walk\", \"distance\":200}]",
+    "passCommand":"[{\"name\":\"Walk\", \"distance\":190}]",
     "hint":"控制公主画出一条水平直线。"
 }

@@ -6,6 +6,7 @@ import KnightBootState from './knight/KnightBoot'
 import PrincessBootState from './princess/PrincessBoot'
 import TooltipBuilder from '../util/TooltipBuilder'
 import {setScaleAndAnchorForObject} from '../UIUtil'
+import config from '../config'
 
 export default class extends Phaser.State {
     init() {
@@ -16,6 +17,7 @@ export default class extends Phaser.State {
     preload() {
         console.log('Main Menu Preload.')
         this.rootContext = JSON.parse(this.game.cache.getText('rootContext'))
+        this.game.load.image('mainBackground', this.rootContext.main_background_image)
         this.storyCount = this.rootContext.stories.length
         let stories = this.rootContext.stories
         for (let i = 0; i < stories.length; i++) {
@@ -26,28 +28,33 @@ export default class extends Phaser.State {
         this.game.load.image('nextImage', 'assets/images/knight/next.png')
     }
 
+    renderBackground() {
+        this.game.add.sprite(0, 0, 'mainBackground').scale.setTo(this.game.width/config.backgroundWidth, this.game.height/config.backgroundHeight)
+    }
+
     renderMenu() {
         let stories = this.rootContext.stories
         let padding = this.game.width - Math.round((this.game.width - 600) / 2)
         let x = padding - 75
         let y = Math.round(this.game.height * 0.5)
         let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
-        setScaleAndAnchorForObject(nextButton, 0.5, 0.5, 0.5, 0.5)
+        setScaleAndAnchorForObject(nextButton, -0.5, 0.5, 0.5, 0.5)
         TooltipBuilder(this.game, nextButton, '下一页', 'bottom')
-        x -= 150
+        x -= 170
         for (let i = 0; i < 2; i++) {
             let story = stories[this.endIndex - i]
             let storyButton = this.game.add.button(x, y, story.storyImageKey, this.onClickStory, {game: this.game, story: story, index: this.endIndex - i})
             setScaleAndAnchorForObject(storyButton, 0.5, 0.5, 0.5, 0.5)
             TooltipBuilder(this.game, storyButton, story.storyName, 'bottom')
-            x -= 150
+            x -= 170
         }
         let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
-        setScaleAndAnchorForObject(prevButton, -0.5, 0.5, 0.5, 0.5)
+        setScaleAndAnchorForObject(prevButton, 0.5, 0.5, 0.5, 0.5)
         TooltipBuilder(this.game, prevButton, '上一页', 'bottom')
     }
 
     create() {
+        this.renderBackground()
         this.renderMenu()
     }
 

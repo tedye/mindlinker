@@ -1,5 +1,6 @@
 
 {
+	"main_background_image":"assets/images/main_background.png",
 	"stories": [
 	    {
 	        "storyName": "骑士",

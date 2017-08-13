@@ -30,7 +30,7 @@ export default class extends Phaser.Sprite {
         TooltipBuilder(this.game, this.restartButton, '重新开始', 'bottom')
         if (this.taskCompleted) {
             this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'next', this.nextGame, this)
-            this.nextButton.scale.setTo(0.3, 0.3)
+            this.nextButton.scale.setTo(-0.3, 0.3)
             this.nextButton.anchor.setTo(0.5, 0.5)
         TooltipBuilder(this.game, this.nextButton, '开始下一关', 'bottom')
         }
