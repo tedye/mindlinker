@@ -12175,7 +12175,7 @@ module.exports = __webpack_require__(/*! ./modules/_core */ 25);
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */122);
-module.exports = __webpack_require__(/*! /Users/kfang/Desktop/mindlinker/src/main.js */121);
+module.exports = __webpack_require__(/*! /Users/tedye/pg/repos/mindlinker/src/main.js */121);
 
 
 /***/ })
