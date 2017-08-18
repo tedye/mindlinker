@@ -58,9 +58,14 @@ export default class extends Phaser.State {
         let padding = this.game.width - Math.round((this.game.width - 750) / 2)
         let x = padding - 75
         let y = Math.round(this.game.height * 0.5)
-        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
-        setScaleAndAnchorForObject(nextButton, -0.5, 0.5, 0.5, 0.5)
-        TooltipBuilder(this.game, nextButton, '下一页', 'bottom')
+        if (this.endIndex === 9 && this.nextButton !== undefined) {
+            this.nextButton.destroy()
+            this.nextButton = undefined
+        } else if (this.endIndex < 9 && this.nextButton === undefined) {
+            this.nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
+            setScaleAndAnchorForObject(this.nextButton, -0.5, 0.5, 0.5, 0.5)
+            TooltipBuilder(this.game, this.nextButton, '下一页', 'bottom')
+        }
         x -= 170
         for (let i = 0; i < 3; i++) {
             let task = tasks[this.endIndex - i]
@@ -69,9 +74,14 @@ export default class extends Phaser.State {
             TooltipBuilder(this.game, taskButton, task.taskName, 'bottom')
             x -= 170
         }
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
-        setScaleAndAnchorForObject(prevButton, 0.5, 0.5, 0.5, 0.5)
-        TooltipBuilder(this.game, prevButton, '上一页', 'bottom')
+        if (this.endIndex === 2 && this.prevButton !== undefined) {
+            this.prevButton.destroy()
+            this.prevButton = undefined
+        } else if (this.endIndex > 2 && (this.prevButton === undefined)) {
+            this.prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
+            setScaleAndAnchorForObject(this.prevButton, 0.5, 0.5, 0.5, 0.5)
+            TooltipBuilder(this.game, this.prevButton, '上一页', 'bottom')
+        }
     }
 
     create() {
