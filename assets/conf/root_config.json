@@ -1,20 +1,35 @@
-
-{
-	"main_background_image":"assets/images/main_background.png",
-	"stories": [
-	    {
-	        "storyName": "骑士",
-            "storyConf": "assets/conf/knight/knight_base_config.json",
-            "storyImage": "assets/images/knight/knight_story_image.png",
-            "storyImageKey": "knightStory",
-            "storyState":"KnightBoot"
-	    },
-	    {
-	        "storyName": "公主",
-            "storyConf": "assets/conf/princess/princess_base_config.json",
-            "storyImage": "assets/images/princess/princess_story_image.png",
-            "storyImageKey": "princessStory",
-            "storyState": "PrincessBoot"
-	    }
-	]
+{  
+   "main_background_image":"assets/images/main_background.png",
+   "spritesheets":[  
+      {  
+         "key":"Stories",
+         "spritesheet":"assets/images/stories.png",
+         "datafile":"assets/images/stories.json"
+      },
+      {  
+         "key":"Buttons",
+         "spritesheet":"assets/images/buttons.png",
+         "datafile":"assets/images/buttons.json"
+      }
+   ],
+   "stories":[  
+      {  
+         "storyName":"骑士",
+         "storyConf":"assets/conf/knight/knight_base_config.json",
+         "storyClickImageKey":"stories/knight/click",
+         "storyNormalImageKey":"stories/knight/normal",
+         "storyDisabledImageKey":"stories/knight/disabled",
+         "storyHoverImageKey":"stories/knight/hover",
+         "storyState":"KnightBoot"
+      },
+      {  
+         "storyName":"公主",
+         "storyConf":"assets/conf/princess/princess_base_config.json",
+         "storyClickImageKey":"stories/princess/click",
+         "storyNormalImageKey":"stories/princess/normal",
+         "storyDisabledImageKey":"stories/princess/disabled",
+         "storyHoverImageKey":"stories/princess/hover",
+         "storyState":"PrincessBoot"
+      }
+   ]
 }

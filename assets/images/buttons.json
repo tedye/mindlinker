@@ -1,0 +1,236 @@
+{"frames": [
+
+{
+	"filename": "buttons/arrow/click",
+	"frame": {"x":438,"y":177,"w":75,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":100},
+	"sourceSize": {"w":75,"h":100}
+},
+{
+	"filename": "buttons/arrow/disabled",
+	"frame": {"x":451,"y":1,"w":61,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":7,"w":61,"h":86},
+	"sourceSize": {"w":75,"h":100}
+},
+{
+	"filename": "buttons/arrow/hover",
+	"frame": {"x":369,"y":171,"w":67,"h":92},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":67,"h":92},
+	"sourceSize": {"w":75,"h":100}
+},
+{
+	"filename": "buttons/arrow/normal",
+	"frame": {"x":451,"y":89,"w":61,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":7,"w":61,"h":86},
+	"sourceSize": {"w":75,"h":100}
+},
+{
+	"filename": "buttons/home/click",
+	"frame": {"x":377,"y":279,"w":100,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/home/disabled",
+	"frame": {"x":1,"y":1,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/home/hover",
+	"frame": {"x":189,"y":260,"w":92,"h":88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":3,"w":92,"h":88},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/home/normal",
+	"frame": {"x":91,"y":1,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/info/click",
+	"frame": {"x":1,"y":349,"w":100,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/info/disabled",
+	"frame": {"x":181,"y":1,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/info/hover",
+	"frame": {"x":181,"y":171,"w":92,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":87},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/info/normal",
+	"frame": {"x":271,"y":1,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/pause/click",
+	"frame": {"x":103,"y":350,"w":100,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/pause/disabled",
+	"frame": {"x":361,"y":1,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/pause/hover",
+	"frame": {"x":275,"y":171,"w":92,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":87},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/pause/normal",
+	"frame": {"x":1,"y":86,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/restart/click",
+	"frame": {"x":205,"y":355,"w":100,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/restart/disabled",
+	"frame": {"x":91,"y":86,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/restart/hover",
+	"frame": {"x":283,"y":265,"w":92,"h":88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":3,"w":92,"h":88},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/restart/normal",
+	"frame": {"x":181,"y":86,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/setting/click",
+	"frame": {"x":307,"y":376,"w":100,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/setting/disabled",
+	"frame": {"x":271,"y":86,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/setting/hover",
+	"frame": {"x":1,"y":256,"w":92,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":87},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/setting/normal",
+	"frame": {"x":361,"y":86,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/start/click",
+	"frame": {"x":409,"y":376,"w":100,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/start/disabled",
+	"frame": {"x":1,"y":171,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/start/hover",
+	"frame": {"x":95,"y":260,"w":92,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":87},
+	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/start/normal",
+	"frame": {"x":91,"y":171,"w":88,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
+	"sourceSize": {"w":100,"h":95}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "buttons.png",
+	"format": "RGBA8888",
+	"size": {"w":514,"h":472},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1bf636a5781f06454a4b6ae4d23ccd26:771bea366d86cb41f6e0523fe313cefb:b34c8670b11bb20cb1751a70d3683e22$"
+}
+}

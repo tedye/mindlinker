@@ -1133,7 +1133,7 @@ if(__webpack_require__(/*! ./_descriptors */ 6)){
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     backgroundWidth: 1440,
-    backgroundHeight: 900,
+    backgroundHeight: 700,
     animationDuration: 500,
     rootConf: 'assets/conf/root_config.json',
     localStorageName: 'phaseres6webpack'
@@ -4765,13 +4765,12 @@ function play(animationContext) {
     }
 
     showButtons() {
-        this.restartButton = this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY, 'restart', this.restart, this);
-        this.restartButton.scale.setTo(0.3, 0.3);
+        this.restartButton = this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY, 'Buttons', this.restart, this, 'buttons/restart/hover', 'buttons/restart/normal', 'buttons/restart/click', 'buttons/restart/disabled');
         this.restartButton.anchor.setTo(0.5, 0.5);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__["a" /* default */])(this.game, this.restartButton, '重新开始', 'bottom');
         if (this.taskCompleted) {
-            this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'next', this.nextGame, this);
-            this.nextButton.scale.setTo(-0.3, 0.3);
+            this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'Buttons', this.nextGame, this, 'buttons/arrow/hover', 'buttons/arrow/normal', 'buttons/arrow/click', 'buttons/arrow/disabled');
+            this.nextButton.scale.setTo(-1, 1);
             this.nextButton.anchor.setTo(0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__["a" /* default */])(this.game, this.nextButton, '开始下一关', 'bottom');
         }
@@ -4869,13 +4868,12 @@ function play(animationContext) {
 
     showButtons() {
         this.start = false;
-        this.restartButton = this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY, 'restart', this.restart, this);
-        this.restartButton.scale.setTo(0.3, 0.3);
+        this.restartButton = this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY, 'Buttons', this.restart, this, 'buttons/restart/hover', 'buttons/restart/normal', 'buttons/restart/click', 'buttons/restart/disabled');
         this.restartButton.anchor.setTo(0.5, 0.5);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__["a" /* default */])(this.game, this.restartButton, '重新开始', 'bottom');
         if (this.taskCompleted) {
-            this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'next', this.nextGame, this);
-            this.nextButton.scale.setTo(-0.3, 0.3);
+            this.nextButton = this.game.add.button(this.game.world.centerX + 60, this.game.world.centerY, 'Buttons', this.nextGame, this, 'buttons/arrow/hover', 'buttons/arrow/normal', 'buttons/arrow/click', 'buttons/arrow/disabled');
+            this.nextButton.scale.setTo(-1, 1);
             this.nextButton.anchor.setTo(0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__["a" /* default */])(this.game, this.nextButton, '开始下一关', 'bottom');
         }
@@ -4972,35 +4970,33 @@ function play(animationContext) {
         console.log('Main Menu Preload.');
         this.rootContext = JSON.parse(this.game.cache.getText('rootContext'));
         this.game.load.image('mainBackground', this.rootContext.main_background_image);
-        this.storyCount = this.rootContext.stories.length;
-        let stories = this.rootContext.stories;
-        for (let i = 0; i < stories.length; i++) {
-            let story = stories[i];
-            this.game.load.image(story.storyImageKey, story.storyImage);
+        let spriteSheets = this.rootContext.spritesheets;
+        for (let i = 0; i < spriteSheets.length; i++) {
+            let spriteSheet = spriteSheets[i];
+            console.log('Load spritesheet: ' + spriteSheet.spritesheet + ' as ' + spriteSheet.key + ' with data file: ' + spriteSheet.datafile);
+            this.game.load.atlasJSONArray(spriteSheet.key, spriteSheet.spritesheet, spriteSheet.datafile);
         }
-
-        this.game.load.image('nextImage', 'assets/images/knight/next.png');
+        this.storyKey = 'Stories';
     }
 
     renderBackground() {
-        this.game.add.sprite(0, 0, 'mainBackground').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundHeight);
+        this.game.add.sprite(0, 0, 'mainBackground').scale.setTo(this.game.width / 1440, this.game.height / 900);
     }
 
     renderMenu() {
         let stories = this.rootContext.stories;
-        let padding = this.game.width - Math.round((this.game.width - 600) / 2);
+        let padding = this.game.width - Math.round((this.game.width - 700) / 2);
         let x = padding - 75;
-        let y = Math.round(this.game.height * 0.5
+        let y = Math.round(this.game.height * 0.65
         /**let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
         setScaleAndAnchorForObject(nextButton, -0.5, 0.5, 0.5, 0.5)
         TooltipBuilder(this.game, nextButton, '下一页', 'bottom')**/
-        );x -= 170;
-        for (let i = 0; i < 2; i++) {
+        );for (let i = 0; i < 2; i++) {
             let story = stories[this.endIndex - i];
-            let storyButton = this.game.add.button(x, y, story.storyImageKey, this.onClickStory, { game: this.game, story: story, index: this.endIndex - i });
+            let storyButton = this.game.add.button(x, y, this.storyKey, this.onClickStory, { game: this.game, story: story, index: this.endIndex - i }, story.storyHoverImageKey, story.storyNormalImageKey, story.storyClickImageKey, story.storyDisabledImageKey);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(storyButton, 0.5, 0.5, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, storyButton, story.storyName, 'bottom');
-            x -= 170;
+            x -= 250;
         }
         /**let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
         setScaleAndAnchorForObject(prevButton, 0.5, 0.5, 0.5, 0.5)
@@ -5157,12 +5153,12 @@ function play(animationContext) {
     }
 
     drawBoardButtons() {
-        this.startButton = this.game.add.button(0, 0, 'start', this.play, this);
-        this.startButton.scale.setTo(0.3, 0.3);
-        this.hintButton = this.game.add.button(this.startButton.width + 20, 0, 'taskhint', null, this);
-        this.hintButton.scale.setTo(0.3, 0.3);
+        this.homeButton = this.game.add.button(10, 0, 'Buttons', this.onBackHome, this, 'buttons/home/hover', 'buttons/home/normal', 'buttons/home/click', 'buttons/home/disabled');
+        this.hintButton = this.game.add.button(this.homeButton.width + 20, 0, 'Buttons', null, this, 'buttons/info/hover', 'buttons/info/normal', 'buttons/info/click', 'buttons/info/disabled');
+        this.startButton = this.game.add.button(this.homeButton.width + this.hintButton.width + 40, 0, 'Buttons', this.play, this, 'buttons/start/hover', 'buttons/start/normal', 'buttons/start/click', 'buttons/start/disabled');
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__util_TooltipBuilder__["a" /* default */])(this.game, this.startButton, '开始', 'right');
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__util_TooltipBuilder__["a" /* default */])(this.game, this.hintButton, this.taskContext.hint, 'right');
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__util_TooltipBuilder__["a" /* default */])(this.game, this.homeButton, '返回主界面', 'right');
     }
 
     drawMainCharacterAtStartingPosition() {
@@ -5433,6 +5429,10 @@ function play(animationContext) {
         this.addAnimationsForSprite(this.knight, this.gameContext.spritesheets);
         this.addAudios();
     }
+
+    onBackHome() {
+        this.game.state.start('MainMenu');
+    }
 });
 
 /***/ }),
@@ -5543,6 +5543,8 @@ function play(animationContext) {
     }
 
     renderTaskList() {
+        this.homeButton = this.game.add.button(10, 10, 'Buttons', this.onBackHome, this, 'buttons/home/hover', 'buttons/home/normal', 'buttons/home/click', 'buttons/home/disabled');
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.homeButton, '返回主界面', 'right');
         let tasks = this.gameContext.task_configs.tasks;
         let padding = this.game.width - Math.round((this.game.width - 750) / 2);
         let x = padding - 75;
@@ -5551,8 +5553,8 @@ function play(animationContext) {
             this.nextButton.destroy();
             this.nextButton = undefined;
         } else if (this.endIndex < 9 && this.nextButton === undefined) {
-            this.nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.nextButton, -0.5, 0.5, 0.5, 0.5);
+            this.nextButton = this.game.add.button(x, y, 'Buttons', this.onClickNext, this, 'buttons/arrow/hover', 'buttons/arrow/normal', 'buttons/arrow/click', 'buttons/arrow/disabled');
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.nextButton, -1, 1, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.nextButton, '下一页', 'bottom');
         }
         x -= 170;
@@ -5567,8 +5569,8 @@ function play(animationContext) {
             this.prevButton.destroy();
             this.prevButton = undefined;
         } else if (this.endIndex > 2 && this.prevButton === undefined) {
-            this.prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.prevButton, 0.5, 0.5, 0.5, 0.5);
+            this.prevButton = this.game.add.button(x, y, 'Buttons', this.onClickPrevious, this, 'buttons/arrow/hover', 'buttons/arrow/normal', 'buttons/arrow/click', 'buttons/arrow/disabled');
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.prevButton, 1, 1, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.prevButton, '上一页', 'bottom');
         }
     }
@@ -5600,6 +5602,10 @@ function play(animationContext) {
         this.game.state.add('KnightTaskBoot', __WEBPACK_IMPORTED_MODULE_2__KnightTaskBoot__["a" /* default */], false);
         this.game.global.currentTaskIndex = this.index;
         this.game.state.start('KnightTaskBoot');
+    }
+
+    onBackHome() {
+        this.game.state.start('MainMenu');
     }
 });
 
@@ -5709,12 +5715,12 @@ function play(animationContext) {
     }
 
     drawBoardButtons() {
-        this.startButton = this.game.add.button(0, 0, 'start', this.play, this);
-        this.startButton.scale.setTo(0.3, 0.3);
-        this.hintButton = this.game.add.button(this.startButton.width + 20, 0, 'taskhint', null, this);
-        this.hintButton.scale.setTo(0.3, 0.3);
+        this.homeButton = this.game.add.button(10, 0, 'Buttons', this.onBackHome, this, 'buttons/home/hover', 'buttons/home/normal', 'buttons/home/click', 'buttons/home/disabled');
+        this.hintButton = this.game.add.button(this.homeButton.width + 20, 0, 'Buttons', null, this, 'buttons/info/hover', 'buttons/info/normal', 'buttons/info/click', 'buttons/info/disabled');
+        this.startButton = this.game.add.button(this.homeButton.width + this.hintButton.width + 40, 0, 'Buttons', this.play, this, 'buttons/start/hover', 'buttons/start/normal', 'buttons/start/click', 'buttons/start/disabled');
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__util_TooltipBuilder__["a" /* default */])(this.game, this.startButton, '开始', 'right');
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__util_TooltipBuilder__["a" /* default */])(this.game, this.hintButton, this.taskContext.hint, 'right');
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__util_TooltipBuilder__["a" /* default */])(this.game, this.homeButton, '返回主界面', 'right');
     }
 
     drawMainCharacterAtStartingPosition() {
@@ -5841,6 +5847,10 @@ function play(animationContext) {
         this.addAnimationsForSprite(this.princess, this.gameContext.spritesheets);
         this.addAudios();
     }
+
+    onBackHome() {
+        this.game.state.start('MainMenu');
+    }
 });
 
 /***/ }),
@@ -5920,11 +5930,6 @@ function play(animationContext) {
         }
 
         this.game.load.image('background', this.gameContext.background_image);
-        this.game.load.image('start', this.gameContext.start_button_image);
-        this.game.load.image('restart', this.gameContext.restart_button_image);
-        this.game.load.image('next', this.gameContext.next_button_image);
-        this.game.load.image('taskhint', this.gameContext.task_hint_image);
-        this.game.load.image('footprint', this.gameContext.foot_print_image);
 
         for (let i = 0; i < this.gameContext.task_configs.tasks.length; i++) {
             let task = this.gameContext.task_configs.tasks[i];
@@ -5952,6 +5957,8 @@ function play(animationContext) {
     }
 
     renderTaskList() {
+        this.homeButton = this.game.add.button(10, 10, 'Buttons', this.onBackHome, this, 'buttons/home/hover', 'buttons/home/normal', 'buttons/home/click', 'buttons/home/disabled');
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.homeButton, '返回主界面', 'right');
         let tasks = this.gameContext.task_configs.tasks;
         let padding = this.game.width - Math.round((this.game.width - 750) / 2);
         let x = padding - 75;
@@ -5960,8 +5967,8 @@ function play(animationContext) {
             this.nextButton.destroy();
             this.nextButton = undefined;
         } else if (this.endIndex < 9 && this.nextButton === undefined) {
-            this.nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.nextButton, -0.5, 0.5, 0.5, 0.5);
+            this.nextButton = this.game.add.button(x, y, 'Buttons', this.onClickNext, this, 'buttons/arrow/hover', 'buttons/arrow/normal', 'buttons/arrow/click', 'buttons/arrow/disabled');
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.nextButton, -1, 1, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.nextButton, '下一页', 'bottom');
         }
         x -= 170;
@@ -5976,8 +5983,8 @@ function play(animationContext) {
             this.prevButton.destroy();
             this.prevButton = undefined;
         } else if (this.endIndex > 2 && this.prevButton === undefined) {
-            this.prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.prevButton, 0.5, 0.5, 0.5, 0.5);
+            this.prevButton = this.game.add.button(x, y, 'Buttons', this.onClickPrevious, this, 'buttons/arrow/hover', 'buttons/arrow/normal', 'buttons/arrow/click', 'buttons/arrow/disabled');
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.prevButton, 1, 1, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.prevButton, '上一页', 'bottom');
         }
     }
@@ -6009,6 +6016,10 @@ function play(animationContext) {
         this.game.state.add('PrincessTaskBoot', __WEBPACK_IMPORTED_MODULE_2__PrincessTaskBoot__["a" /* default */], false);
         this.game.global.currentTaskIndex = this.index;
         this.game.state.start('PrincessTaskBoot');
+    }
+
+    onBackHome() {
+        this.game.state.start('MainMenu');
     }
 });
 
