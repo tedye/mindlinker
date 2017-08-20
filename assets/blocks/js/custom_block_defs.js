@@ -18,7 +18,8 @@ Blockly.Blocks['statement_start'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.event.primary,
             "colourSecondary": Blockly.Colours.event.secondary,
-            "colourTertiary": Blockly.Colours.event.tertiary
+            "colourTertiary": Blockly.Colours.event.tertiary,
+            "tooltip": "开始"
         });
     }
 };
@@ -47,7 +48,8 @@ Blockly.Blocks['statement_walk'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "前进"
         });
     }
 };
@@ -76,7 +78,8 @@ Blockly.Blocks['statement_walk_right'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向右走"
         });
     }
 };
@@ -105,7 +108,8 @@ Blockly.Blocks['statement_walk_left'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向左走"
         });
     }
 };
@@ -134,7 +138,8 @@ Blockly.Blocks['statement_walk_up'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向上走"
         });
     }
 };
@@ -163,7 +168,8 @@ Blockly.Blocks['statement_walk_down'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向下走"
         });
     }
 };
@@ -192,7 +198,8 @@ Blockly.Blocks['statement_run_right'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向右跑"
         });
     }
 };
@@ -221,7 +228,8 @@ Blockly.Blocks['statement_run_left'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向左跑"
         });
     }
 };
@@ -250,7 +258,8 @@ Blockly.Blocks['statement_run_up'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向上跑"
         });
     }
 };
@@ -279,7 +288,8 @@ Blockly.Blocks['statement_run_down'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向下跑"
         });
     }
 };
@@ -308,7 +318,8 @@ Blockly.Blocks['statement_attack'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "攻击"
         });
     }
 };
@@ -337,7 +348,8 @@ Blockly.Blocks['statement_defense'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "防御"
         });
     }
 };
@@ -366,7 +378,8 @@ Blockly.Blocks['statement_jump'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "跳"
         });
     }
 };
@@ -395,7 +408,8 @@ Blockly.Blocks['statement_jump_right'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向右跳"
         });
     }
 };
@@ -424,7 +438,8 @@ Blockly.Blocks['statement_jump_left'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向左跳"
         });
     }
 };
@@ -448,7 +463,8 @@ Blockly.Blocks['statement_turn'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "转身"
         });
     }
 };
@@ -477,7 +493,8 @@ Blockly.Blocks['statement_turn_left'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向左转"
         });
     }
 };
@@ -506,7 +523,8 @@ Blockly.Blocks['statement_turn_right'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.motion.primary,
             "colourSecondary": Blockly.Colours.motion.secondary,
-            "colourTertiary": Blockly.Colours.motion.tertiary
+            "colourTertiary": Blockly.Colours.motion.tertiary,
+            "tooltip": "向右转"
         });
     }
 };
@@ -544,7 +562,8 @@ Blockly.Blocks['statement_repeat'] = {
             "nextStatement": null,
             "colour": Blockly.Colours.control.primary,
             "colourSecondary": Blockly.Colours.control.secondary,
-            "colourTertiary": Blockly.Colours.control.tertiary
+            "colourTertiary": Blockly.Colours.control.tertiary,
+            "tooltip": "重复"
         });
     }
 };

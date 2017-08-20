@@ -285,14 +285,6 @@ export default class extends Phaser.State {
                 colour: '#2C344A',
                 snap: false
             },
-            zoom: {
-                controls: true,
-                wheel: true,
-                startScale: 1.0,
-                maxScale: 4,
-                minScale: 0.25,
-                scaleSpeed: 1.1
-            },
             colours: {
                 workspace: '#334771',
                 flyout: '#283856',
@@ -325,6 +317,7 @@ export default class extends Phaser.State {
             // Only create blocks once
             this.addWorkspace()
         }
+        this.game.workspace.clear()
         this.loadToolbox()
     }
 
