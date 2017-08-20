@@ -287,7 +287,7 @@ export default class extends Phaser.State {
             },
             colours: {
                 workspace: '#334771',
-                flyout: '#283856',
+                flyout: '#334771',
                 scrollbar: '#24324D',
                 scrollbarHover: '#0C111A',
                 insertionMarker: '#FFFFFF',
