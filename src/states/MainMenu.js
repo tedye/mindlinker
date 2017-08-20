@@ -37,9 +37,9 @@ export default class extends Phaser.State {
         let padding = this.game.width - Math.round((this.game.width - 600) / 2)
         let x = padding - 75
         let y = Math.round(this.game.height * 0.5)
-        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
+        /**let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
         setScaleAndAnchorForObject(nextButton, -0.5, 0.5, 0.5, 0.5)
-        TooltipBuilder(this.game, nextButton, '下一页', 'bottom')
+        TooltipBuilder(this.game, nextButton, '下一页', 'bottom')**/
         x -= 170
         for (let i = 0; i < 2; i++) {
             let story = stories[this.endIndex - i]
@@ -48,9 +48,9 @@ export default class extends Phaser.State {
             TooltipBuilder(this.game, storyButton, story.storyName, 'bottom')
             x -= 170
         }
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
+        /**let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
         setScaleAndAnchorForObject(prevButton, 0.5, 0.5, 0.5, 0.5)
-        TooltipBuilder(this.game, prevButton, '上一页', 'bottom')
+        TooltipBuilder(this.game, prevButton, '上一页', 'bottom')**/
     }
 
     create() {
@@ -58,6 +58,7 @@ export default class extends Phaser.State {
         this.renderMenu()
     }
 
+    /**
     onClickPrevious() {
         this.endIndex -= 2
         if (this.endIndex < 1) {
@@ -72,7 +73,7 @@ export default class extends Phaser.State {
             this.endIndex = this.storyCount - 1
         }
         this.renderMenu()
-    }
+    }**/
 
     onClickStory() {
         console.log('On Click Story.')

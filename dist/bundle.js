@@ -1133,7 +1133,7 @@ if(__webpack_require__(/*! ./_descriptors */ 6)){
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     backgroundWidth: 1440,
-    backgroundHeight: 750,
+    backgroundHeight: 900,
     animationDuration: 500,
     rootConf: 'assets/conf/root_config.json',
     localStorageName: 'phaseres6webpack'
@@ -4990,11 +4990,11 @@ function play(animationContext) {
         let stories = this.rootContext.stories;
         let padding = this.game.width - Math.round((this.game.width - 600) / 2);
         let x = padding - 75;
-        let y = Math.round(this.game.height * 0.5);
-        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, -0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一页', 'bottom');
-        x -= 170;
+        let y = Math.round(this.game.height * 0.5
+        /**let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this)
+        setScaleAndAnchorForObject(nextButton, -0.5, 0.5, 0.5, 0.5)
+        TooltipBuilder(this.game, nextButton, '下一页', 'bottom')**/
+        );x -= 170;
         for (let i = 0; i < 2; i++) {
             let story = stories[this.endIndex - i];
             let storyButton = this.game.add.button(x, y, story.storyImageKey, this.onClickStory, { game: this.game, story: story, index: this.endIndex - i });
@@ -5002,9 +5002,9 @@ function play(animationContext) {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, storyButton, story.storyName, 'bottom');
             x -= 170;
         }
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, 0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一页', 'bottom');
+        /**let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this)
+        setScaleAndAnchorForObject(prevButton, 0.5, 0.5, 0.5, 0.5)
+        TooltipBuilder(this.game, prevButton, '上一页', 'bottom')**/
     }
 
     create() {
@@ -5012,21 +5012,21 @@ function play(animationContext) {
         this.renderMenu();
     }
 
+    /**
     onClickPrevious() {
-        this.endIndex -= 2;
+        this.endIndex -= 2
         if (this.endIndex < 1) {
-            this.endIndex = 1;
+            this.endIndex = 1
         }
-        this.renderMenu();
+        this.renderMenu()
     }
-
-    onClickNext() {
-        this.endIndex += 2;
+     onClickNext() {
+        this.endIndex += 2
         if (this.endIndex >= this.storyCount) {
-            this.endIndex = this.storyCount - 1;
+            this.endIndex = this.storyCount - 1
         }
-        this.renderMenu();
-    }
+        this.renderMenu()
+    }**/
 
     onClickStory() {
         console.log('On Click Story.');
@@ -5554,9 +5554,14 @@ function play(animationContext) {
         let padding = this.game.width - Math.round((this.game.width - 750) / 2);
         let x = padding - 75;
         let y = Math.round(this.game.height * 0.5);
-        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, -0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一页', 'bottom');
+        if (this.endIndex === 9 && this.nextButton !== undefined) {
+            this.nextButton.destroy();
+            this.nextButton = undefined;
+        } else if (this.endIndex < 9 && this.nextButton === undefined) {
+            this.nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.nextButton, -0.5, 0.5, 0.5, 0.5);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.nextButton, '下一页', 'bottom');
+        }
         x -= 170;
         for (let i = 0; i < 3; i++) {
             let task = tasks[this.endIndex - i];
@@ -5565,13 +5570,18 @@ function play(animationContext) {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, taskButton, task.taskName, 'bottom');
             x -= 170;
         }
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, 0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一页', 'bottom');
+        if (this.endIndex === 2 && this.prevButton !== undefined) {
+            this.prevButton.destroy();
+            this.prevButton = undefined;
+        } else if (this.endIndex > 2 && this.prevButton === undefined) {
+            this.prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.prevButton, 0.5, 0.5, 0.5, 0.5);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.prevButton, '上一页', 'bottom');
+        }
     }
 
     create() {
-        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundHeight);
+        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / 650);
         this.renderTaskList();
     }
 
@@ -5965,9 +5975,14 @@ function play(animationContext) {
         let padding = this.game.width - Math.round((this.game.width - 750) / 2);
         let x = padding - 75;
         let y = Math.round(this.game.height * 0.5);
-        let nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(nextButton, -0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, nextButton, '下一页', 'bottom');
+        if (this.endIndex === 9 && this.nextButton !== undefined) {
+            this.nextButton.destroy();
+            this.nextButton = undefined;
+        } else if (this.endIndex < 9 && this.nextButton === undefined) {
+            this.nextButton = this.game.add.button(x, y, 'nextImage', this.onClickNext, this);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.nextButton, -0.5, 0.5, 0.5, 0.5);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.nextButton, '下一页', 'bottom');
+        }
         x -= 170;
         for (let i = 0; i < 3; i++) {
             let task = tasks[this.endIndex - i];
@@ -5976,9 +5991,14 @@ function play(animationContext) {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, taskButton, task.taskName, 'bottom');
             x -= 170;
         }
-        let prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(prevButton, 0.5, 0.5, 0.5, 0.5);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, prevButton, '上一页', 'bottom');
+        if (this.endIndex === 2 && this.prevButton !== undefined) {
+            this.prevButton.destroy();
+            this.prevButton = undefined;
+        } else if (this.endIndex > 2 && this.prevButton === undefined) {
+            this.prevButton = this.game.add.button(x, y, 'nextImage', this.onClickPrevious, this);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(this.prevButton, 0.5, 0.5, 0.5, 0.5);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, this.prevButton, '上一页', 'bottom');
+        }
     }
 
     create() {
