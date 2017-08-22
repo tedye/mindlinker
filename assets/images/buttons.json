@@ -2,7 +2,7 @@
 
 {
 	"filename": "buttons/arrow/click",
-	"frame": {"x":438,"y":177,"w":75,"h":100},
+	"frame": {"x":409,"y":1,"w":75,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":100},
@@ -10,7 +10,7 @@
 },
 {
 	"filename": "buttons/arrow/disabled",
-	"frame": {"x":451,"y":1,"w":61,"h":86},
+	"frame": {"x":409,"y":197,"w":61,"h":86},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":7,"w":61,"h":86},
@@ -18,7 +18,7 @@
 },
 {
 	"filename": "buttons/arrow/hover",
-	"frame": {"x":369,"y":171,"w":67,"h":92},
+	"frame": {"x":409,"y":103,"w":67,"h":92},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":4,"w":67,"h":92},
@@ -26,7 +26,7 @@
 },
 {
 	"filename": "buttons/arrow/normal",
-	"frame": {"x":451,"y":89,"w":61,"h":86},
+	"frame": {"x":401,"y":285,"w":61,"h":86},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":7,"w":61,"h":86},
@@ -34,7 +34,7 @@
 },
 {
 	"filename": "buttons/home/click",
-	"frame": {"x":377,"y":279,"w":100,"h":95},
+	"frame": {"x":1,"y":1,"w":100,"h":95},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
@@ -42,7 +42,7 @@
 },
 {
 	"filename": "buttons/home/disabled",
-	"frame": {"x":1,"y":1,"w":88,"h":83},
+	"frame": {"x":193,"y":785,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -50,7 +50,7 @@
 },
 {
 	"filename": "buttons/home/hover",
-	"frame": {"x":189,"y":260,"w":92,"h":88},
+	"frame": {"x":103,"y":377,"w":92,"h":88},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":3,"w":92,"h":88},
@@ -58,7 +58,7 @@
 },
 {
 	"filename": "buttons/home/normal",
-	"frame": {"x":91,"y":1,"w":88,"h":83},
+	"frame": {"x":193,"y":870,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -66,7 +66,7 @@
 },
 {
 	"filename": "buttons/info/click",
-	"frame": {"x":1,"y":349,"w":100,"h":95},
+	"frame": {"x":1,"y":98,"w":100,"h":95},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "buttons/info/disabled",
-	"frame": {"x":181,"y":1,"w":88,"h":83},
+	"frame": {"x":193,"y":955,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -82,7 +82,7 @@
 },
 {
 	"filename": "buttons/info/hover",
-	"frame": {"x":181,"y":171,"w":92,"h":87},
+	"frame": {"x":1,"y":565,"w":92,"h":87},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":87},
@@ -90,7 +90,7 @@
 },
 {
 	"filename": "buttons/info/normal",
-	"frame": {"x":271,"y":1,"w":88,"h":83},
+	"frame": {"x":193,"y":1040,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -98,7 +98,7 @@
 },
 {
 	"filename": "buttons/pause/click",
-	"frame": {"x":103,"y":350,"w":100,"h":95},
+	"frame": {"x":103,"y":1,"w":100,"h":95},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
@@ -106,7 +106,7 @@
 },
 {
 	"filename": "buttons/pause/disabled",
-	"frame": {"x":361,"y":1,"w":88,"h":83},
+	"frame": {"x":193,"y":1125,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -114,7 +114,7 @@
 },
 {
 	"filename": "buttons/pause/hover",
-	"frame": {"x":275,"y":171,"w":92,"h":87},
+	"frame": {"x":103,"y":467,"w":92,"h":87},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":87},
@@ -122,7 +122,7 @@
 },
 {
 	"filename": "buttons/pause/normal",
-	"frame": {"x":1,"y":86,"w":88,"h":83},
+	"frame": {"x":393,"y":373,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -130,7 +130,7 @@
 },
 {
 	"filename": "buttons/restart/click",
-	"frame": {"x":205,"y":355,"w":100,"h":95},
+	"frame": {"x":1,"y":195,"w":100,"h":95},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
@@ -138,7 +138,7 @@
 },
 {
 	"filename": "buttons/restart/disabled",
-	"frame": {"x":91,"y":86,"w":88,"h":83},
+	"frame": {"x":393,"y":458,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -146,7 +146,7 @@
 },
 {
 	"filename": "buttons/restart/hover",
-	"frame": {"x":283,"y":265,"w":92,"h":88},
+	"frame": {"x":205,"y":280,"w":92,"h":88},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":3,"w":92,"h":88},
@@ -154,7 +154,7 @@
 },
 {
 	"filename": "buttons/restart/normal",
-	"frame": {"x":181,"y":86,"w":88,"h":83},
+	"frame": {"x":379,"y":792,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -162,7 +162,7 @@
 },
 {
 	"filename": "buttons/setting/click",
-	"frame": {"x":307,"y":376,"w":100,"h":95},
+	"frame": {"x":103,"y":98,"w":100,"h":95},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
@@ -170,7 +170,7 @@
 },
 {
 	"filename": "buttons/setting/disabled",
-	"frame": {"x":271,"y":86,"w":88,"h":83},
+	"frame": {"x":377,"y":877,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -178,7 +178,7 @@
 },
 {
 	"filename": "buttons/setting/hover",
-	"frame": {"x":1,"y":256,"w":92,"h":87},
+	"frame": {"x":1,"y":654,"w":92,"h":87},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":87},
@@ -186,7 +186,7 @@
 },
 {
 	"filename": "buttons/setting/normal",
-	"frame": {"x":361,"y":86,"w":88,"h":83},
+	"frame": {"x":377,"y":962,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -194,7 +194,7 @@
 },
 {
 	"filename": "buttons/start/click",
-	"frame": {"x":409,"y":376,"w":100,"h":95},
+	"frame": {"x":205,"y":1,"w":100,"h":95},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":95},
@@ -202,7 +202,7 @@
 },
 {
 	"filename": "buttons/start/disabled",
-	"frame": {"x":1,"y":171,"w":88,"h":83},
+	"frame": {"x":377,"y":1047,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
@@ -210,7 +210,7 @@
 },
 {
 	"filename": "buttons/start/hover",
-	"frame": {"x":95,"y":260,"w":92,"h":87},
+	"frame": {"x":1,"y":743,"w":92,"h":87},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":87},
@@ -218,19 +218,339 @@
 },
 {
 	"filename": "buttons/start/normal",
-	"frame": {"x":91,"y":171,"w":88,"h":83},
+	"frame": {"x":377,"y":1132,"w":88,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":6,"w":88,"h":83},
 	"sourceSize": {"w":100,"h":95}
+},
+{
+	"filename": "buttons/tasks/click/Lv01",
+	"frame": {"x":1,"y":292,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv02",
+	"frame": {"x":103,"y":195,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv03",
+	"frame": {"x":205,"y":98,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv04",
+	"frame": {"x":307,"y":1,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv05",
+	"frame": {"x":307,"y":92,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv06",
+	"frame": {"x":1,"y":383,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv07",
+	"frame": {"x":103,"y":286,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv08",
+	"frame": {"x":205,"y":189,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv09",
+	"frame": {"x":307,"y":183,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/click/Lv10",
+	"frame": {"x":1,"y":474,"w":100,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":89},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv01",
+	"frame": {"x":103,"y":556,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv02",
+	"frame": {"x":205,"y":370,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv03",
+	"frame": {"x":197,"y":453,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv04",
+	"frame": {"x":197,"y":536,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv05",
+	"frame": {"x":197,"y":619,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv06",
+	"frame": {"x":191,"y":702,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv07",
+	"frame": {"x":307,"y":274,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv08",
+	"frame": {"x":299,"y":357,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv09",
+	"frame": {"x":299,"y":440,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/disabled/Lv10",
+	"frame": {"x":291,"y":523,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv01",
+	"frame": {"x":1,"y":832,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv02",
+	"frame": {"x":1,"y":917,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv03",
+	"frame": {"x":1,"y":1002,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv04",
+	"frame": {"x":1,"y":1087,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv05",
+	"frame": {"x":95,"y":639,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv06",
+	"frame": {"x":95,"y":724,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv07",
+	"frame": {"x":97,"y":809,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv08",
+	"frame": {"x":97,"y":894,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv09",
+	"frame": {"x":97,"y":979,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/hover/Lv10",
+	"frame": {"x":97,"y":1064,"w":94,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":94,"h":83},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv01",
+	"frame": {"x":291,"y":606,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv02",
+	"frame": {"x":385,"y":543,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv03",
+	"frame": {"x":385,"y":626,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv04",
+	"frame": {"x":291,"y":689,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv05",
+	"frame": {"x":385,"y":709,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv06",
+	"frame": {"x":285,"y":772,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv07",
+	"frame": {"x":283,"y":855,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv08",
+	"frame": {"x":283,"y":938,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv09",
+	"frame": {"x":283,"y":1021,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
+},
+{
+	"filename": "buttons/tasks/normal/Lv10",
+	"frame": {"x":283,"y":1104,"w":92,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":92,"h":81},
+	"sourceSize": {"w":100,"h":89}
 }],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "buttons.png",
 	"format": "RGBA8888",
-	"size": {"w":514,"h":472},
+	"size": {"w":485,"h":1216},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1bf636a5781f06454a4b6ae4d23ccd26:771bea366d86cb41f6e0523fe313cefb:b34c8670b11bb20cb1751a70d3683e22$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9308d72f2aa12379b0a10cda73193324:f100fdbf7aed97d2c817caef52314ed4:b34c8670b11bb20cb1751a70d3683e22$"
 }
 }

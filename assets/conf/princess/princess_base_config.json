@@ -3897,12 +3897,6 @@
       }
    ],
    "background_image":"assets/images/princess/background/background.jpg",
-   "start_button_image":"assets/images/princess/background/start.png",
-   "restart_button_image":"assets/images/princess/background/restart.png",
-   "next_button_image":"assets/images/princess/background/next.png",
-   "task_hint_image":"assets/images/princess/background/taskhint.png",
-   "foot_print_image":"assets/images/princess/background/footprint.png",
-   "line_image":"assets/images/princess/background/line.png",
    "audios":[  
       {  
          "key":"walk",
@@ -3922,62 +3916,82 @@
       "tasks":[  
          {  
             "taskName":"第一关",
-            "taskImage":"assets/images/princess/princess_task_image1.png",
-            "taskImageKey":"PrincessTask1",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv01",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv01",
+            "taskClickImageKey":"buttons/tasks/click/Lv01",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv01",
             "taskConf":"assets/conf/princess/princess_task_config_1.json"
          },
          {  
             "taskName":"第二关",
-            "taskImage":"assets/images/princess/princess_task_image2.png",
-            "taskImageKey":"PrincessTask2",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv02",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv02",
+            "taskClickImageKey":"buttons/tasks/click/Lv02",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv02",
             "taskConf":"assets/conf/princess/princess_task_config_2.json"
          },
          {  
             "taskName":"第三关",
-            "taskImage":"assets/images/princess/princess_task_image3.png",
-            "taskImageKey":"PrincessTask3",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv03",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv03",
+            "taskClickImageKey":"buttons/tasks/click/Lv03",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv03",
             "taskConf":"assets/conf/princess/princess_task_config_3.json"
          },
          {  
             "taskName":"第四关",
-            "taskImage":"assets/images/princess/princess_task_image4.png",
-            "taskImageKey":"PrincessTask4",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv04",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv04",
+            "taskClickImageKey":"buttons/tasks/click/Lv04",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv04",
             "taskConf":"assets/conf/princess/princess_task_config_4.json"
          },
          {  
             "taskName":"第五关",
-            "taskImage":"assets/images/princess/princess_task_image5.png",
-            "taskImageKey":"PrincessTask5",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv05",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv05",
+            "taskClickImageKey":"buttons/tasks/click/Lv05",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv05",
             "taskConf":"assets/conf/princess/princess_task_config_5.json"
          },
          {  
             "taskName":"第六关",
-            "taskImage":"assets/images/princess/princess_task_image6.png",
-            "taskImageKey":"PrincessTask6",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv06",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv06",
+            "taskClickImageKey":"buttons/tasks/click/Lv06",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv06",
             "taskConf":"assets/conf/princess/princess_task_config_6.json"
          },
          {  
             "taskName":"第七关",
-            "taskImage":"assets/images/princess/princess_task_image7.png",
-            "taskImageKey":"PrincessTask7",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv07",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv07",
+            "taskClickImageKey":"buttons/tasks/click/Lv07",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv07",
             "taskConf":"assets/conf/princess/princess_task_config_7.json"
          },
          {  
             "taskName":"第八关",
-            "taskImage":"assets/images/princess/princess_task_image8.png",
-            "taskImageKey":"PrincessTask8",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv08",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv08",
+            "taskClickImageKey":"buttons/tasks/click/Lv08",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv08",
             "taskConf":"assets/conf/princess/princess_task_config_8.json"
          },
          {  
             "taskName":"第九关",
-            "taskImage":"assets/images/princess/princess_task_image9.png",
-            "taskImageKey":"PrincessTask9",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv09",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv09",
+            "taskClickImageKey":"buttons/tasks/click/Lv09",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv09",
             "taskConf":"assets/conf/princess/princess_task_config_9.json"
          },
          {  
             "taskName":"第十关",
-            "taskImage":"assets/images/princess/princess_task_image10.png",
-            "taskImageKey":"PrincessTask10",
+            "taskNormalImageKey":"buttons/tasks/normal/Lv10",
+            "taskDisabledImageKey":"buttons/tasks/disabled/Lv10",
+            "taskClickImageKey":"buttons/tasks/click/Lv10",
+            "taskHoverImageKey":"buttons/tasks/hover/Lv10",
             "taskConf":"assets/conf/princess/princess_task_config_10.json"
          }
       ]

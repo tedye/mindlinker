@@ -5530,10 +5530,6 @@ function play(animationContext) {
         this.game.load.image('foreground', this.gameContext.foreground_image);
         this.game.load.image('grid', this.gameContext.grid_image);
         this.game.load.image('shadow', this.gameContext.shadow_image);
-        this.game.load.image('start', this.gameContext.start_button_image);
-        this.game.load.image('restart', this.gameContext.restart_button_image);
-        this.game.load.image('next', this.gameContext.next_button_image);
-        this.game.load.image('taskhint', this.gameContext.task_hint_image);
 
         for (let i = 0; i < this.gameContext.task_configs.tasks.length; i++) {
             let task = this.gameContext.task_configs.tasks[i];
@@ -5578,8 +5574,8 @@ function play(animationContext) {
         x -= 170;
         for (let i = 0; i < 3; i++) {
             let task = tasks[this.endIndex - i];
-            let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, { game: this.game, task: task, index: this.endIndex - i });
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(taskButton, 0.5, 0.5, 0.5, 0.5);
+            let taskButton = this.game.add.button(x, y, 'Buttons', this.onClickTask, { game: this.game, task: task, index: this.endIndex - i }, task.taskHoverImageKey, task.taskNormalImageKey, task.taskClickImageKey, task.taskDisabledImageKey);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(taskButton, 1, 1, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, taskButton, task.taskName, 'bottom');
             x -= 170;
         }
@@ -5995,8 +5991,8 @@ function play(animationContext) {
         x -= 170;
         for (let i = 0; i < 3; i++) {
             let task = tasks[this.endIndex - i];
-            let taskButton = this.game.add.button(x, y, task.taskImageKey, this.onClickTask, { game: this.game, task: task, index: this.endIndex - i });
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(taskButton, 0.5, 0.5, 0.5, 0.5);
+            let taskButton = this.game.add.button(x, y, 'Buttons', this.onClickTask, { game: this.game, task: task, index: this.endIndex - i }, task.taskHoverImageKey, task.taskNormalImageKey, task.taskClickImageKey, task.taskDisabledImageKey);
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["a" /* setScaleAndAnchorForObject */])(taskButton, 1, 1, 0.5, 0.5);
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__["a" /* default */])(this.game, taskButton, task.taskName, 'bottom');
             x -= 170;
         }
