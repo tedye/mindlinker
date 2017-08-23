@@ -181,7 +181,7 @@ exports.f = __webpack_require__(/*! ./_descriptors */ 6) ? Object.defineProperty
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(/*! ./_to-integer */ 32)
+var toInteger = __webpack_require__(/*! ./_to-integer */ 31)
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -241,7 +241,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(/*! ./_object-dp */ 7)
-  , createDesc = __webpack_require__(/*! ./_property-desc */ 31);
+  , createDesc = __webpack_require__(/*! ./_property-desc */ 30);
 module.exports = __webpack_require__(/*! ./_descriptors */ 6) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
@@ -346,7 +346,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE            = __webpack_require__(/*! ./_object-pie */ 51)
-  , createDesc     = __webpack_require__(/*! ./_property-desc */ 31)
+  , createDesc     = __webpack_require__(/*! ./_property-desc */ 30)
   , toIObject      = __webpack_require__(/*! ./_to-iobject */ 16)
   , toPrimitive    = __webpack_require__(/*! ./_to-primitive */ 24)
   , has            = __webpack_require__(/*! ./_has */ 11)
@@ -651,10 +651,10 @@ if(__webpack_require__(/*! ./_descriptors */ 6)){
     , $buffer             = __webpack_require__(/*! ./_typed-buffer */ 86)
     , ctx                 = __webpack_require__(/*! ./_ctx */ 26)
     , anInstance          = __webpack_require__(/*! ./_an-instance */ 34)
-    , propertyDesc        = __webpack_require__(/*! ./_property-desc */ 31)
+    , propertyDesc        = __webpack_require__(/*! ./_property-desc */ 30)
     , hide                = __webpack_require__(/*! ./_hide */ 13)
     , redefineAll         = __webpack_require__(/*! ./_redefine-all */ 39)
-    , toInteger           = __webpack_require__(/*! ./_to-integer */ 32)
+    , toInteger           = __webpack_require__(/*! ./_to-integer */ 31)
     , toLength            = __webpack_require__(/*! ./_to-length */ 8)
     , toIndex             = __webpack_require__(/*! ./_to-index */ 41)
     , toPrimitive         = __webpack_require__(/*! ./_to-primitive */ 24)
@@ -1123,24 +1123,6 @@ if(__webpack_require__(/*! ./_descriptors */ 6)){
 
 /***/ }),
 /* 29 */
-/* exports provided: default */
-/* exports used: default */
-/*!***********************!*\
-  !*** ./src/config.js ***!
-  \***********************/
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    backgroundWidth: 1440,
-    backgroundHeight: 700,
-    animationDuration: 500,
-    rootConf: 'assets/conf/root_config.json',
-    localStorageName: 'phaseres6webpack'
-});
-
-/***/ }),
-/* 30 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -1203,7 +1185,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 31 */
+/* 30 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -1221,7 +1203,7 @@ module.exports = function(bitmap, value){
 };
 
 /***/ }),
-/* 32 */
+/* 31 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -1235,6 +1217,24 @@ var ceil  = Math.ceil
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
+
+/***/ }),
+/* 32 */
+/* exports provided: default */
+/* exports used: default */
+/*!***********************!*\
+  !*** ./src/config.js ***!
+  \***********************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    backgroundWidth: 1440,
+    backgroundHeight: 700,
+    animationDuration: 500,
+    rootConf: 'assets/conf/root_config.json',
+    localStorageName: 'phaseres6webpack'
+});
 
 /***/ }),
 /* 33 */
@@ -1423,7 +1423,7 @@ module.exports = function(KEY){
   \****************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ./_to-integer */ 32)
+var toInteger = __webpack_require__(/*! ./_to-integer */ 31)
   , max       = Math.max
   , min       = Math.min;
 module.exports = function(index, length){
@@ -1568,8 +1568,8 @@ module.exports = exporter;
 
 /***/ }),
 /* 48 */
-/* exports provided: setScaleAndAnchorForObject, hideBlock, showBlock */
-/* exports used: setScaleAndAnchorForObject, hideBlock, showBlock */
+/* exports provided: setScaleAndAnchorForObject, hideBlock, showBlock, createLoadingText */
+/* exports used: setScaleAndAnchorForObject, hideBlock, createLoadingText, showBlock */
 /*!***********************!*\
   !*** ./src/UIUtil.js ***!
   \***********************/
@@ -1578,18 +1578,25 @@ module.exports = exporter;
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = setScaleAndAnchorForObject;
 /* harmony export (immutable) */ __webpack_exports__["b"] = hideBlock;
-/* harmony export (immutable) */ __webpack_exports__["c"] = showBlock;
+/* harmony export (immutable) */ __webpack_exports__["d"] = showBlock;
+/* harmony export (immutable) */ __webpack_exports__["c"] = createLoadingText;
 function setScaleAndAnchorForObject(obj, sX, sY, aX, aY) {
     obj.scale.setTo(sX, sY);
     obj.anchor.setTo(aX, aY);
 }
 
 function hideBlock() {
-    document.getElementById('block').style.visibility = "hidden";
+    document.getElementById('block').style.visibility = 'hidden';
 }
 
 function showBlock() {
-    document.getElementById('block').style.visibility = "visible";
+    document.getElementById('block').style.visibility = 'visible';
+}
+
+function createLoadingText(game) {
+    let loadingText = game.add.text(game.world.centerX, game.world.centerY, 'Loading...', { font: "65px Arial", fill: "#F3FF33", align: "center" });
+    loadingText.anchor.set(0.5);
+    return loadingText;
 }
 
 /***/ }),
@@ -1698,7 +1705,7 @@ var global            = __webpack_require__(/*! ./_global */ 2)
   , $export           = __webpack_require__(/*! ./_export */ 0)
   , redefine          = __webpack_require__(/*! ./_redefine */ 14)
   , redefineAll       = __webpack_require__(/*! ./_redefine-all */ 39)
-  , meta              = __webpack_require__(/*! ./_meta */ 30)
+  , meta              = __webpack_require__(/*! ./_meta */ 29)
   , forOf             = __webpack_require__(/*! ./_for-of */ 44)
   , anInstance        = __webpack_require__(/*! ./_an-instance */ 34)
   , isObject          = __webpack_require__(/*! ./_is-object */ 4)
@@ -2035,7 +2042,7 @@ module.exports = function fill(value /*, start = 0, end = @length */){
 "use strict";
 
 var $defineProperty = __webpack_require__(/*! ./_object-dp */ 7)
-  , createDesc      = __webpack_require__(/*! ./_property-desc */ 31);
+  , createDesc      = __webpack_require__(/*! ./_property-desc */ 30);
 
 module.exports = function(object, index, value){
   if(index in object)$defineProperty.f(object, index, createDesc(0, value));
@@ -2169,7 +2176,7 @@ module.exports = Array.isArray || function isArray(arg){
 "use strict";
 
 var create         = __webpack_require__(/*! ./_object-create */ 36)
-  , descriptor     = __webpack_require__(/*! ./_property-desc */ 31)
+  , descriptor     = __webpack_require__(/*! ./_property-desc */ 30)
   , setToStringTag = __webpack_require__(/*! ./_set-to-string-tag */ 46)
   , IteratorPrototype = {};
 
@@ -2451,7 +2458,7 @@ module.exports = function(O, D){
   \*****************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ./_to-integer */ 32)
+var toInteger = __webpack_require__(/*! ./_to-integer */ 31)
   , defined   = __webpack_require__(/*! ./_defined */ 20);
 // true  -> String#at
 // false -> String#codePointAt
@@ -2498,7 +2505,7 @@ module.exports = function(that, searchString, NAME){
 
 "use strict";
 
-var toInteger = __webpack_require__(/*! ./_to-integer */ 32)
+var toInteger = __webpack_require__(/*! ./_to-integer */ 31)
   , defined   = __webpack_require__(/*! ./_defined */ 20);
 
 module.exports = function repeat(count){
@@ -2626,7 +2633,7 @@ var global         = __webpack_require__(/*! ./_global */ 2)
   , redefineAll    = __webpack_require__(/*! ./_redefine-all */ 39)
   , fails          = __webpack_require__(/*! ./_fails */ 3)
   , anInstance     = __webpack_require__(/*! ./_an-instance */ 34)
-  , toInteger      = __webpack_require__(/*! ./_to-integer */ 32)
+  , toInteger      = __webpack_require__(/*! ./_to-integer */ 31)
   , toLength       = __webpack_require__(/*! ./_to-length */ 8)
   , gOPN           = __webpack_require__(/*! ./_object-gopn */ 37).f
   , dP             = __webpack_require__(/*! ./_object-dp */ 7).f
@@ -3177,7 +3184,7 @@ var dP          = __webpack_require__(/*! ./_object-dp */ 7).f
   , step        = __webpack_require__(/*! ./_iter-step */ 104)
   , setSpecies  = __webpack_require__(/*! ./_set-species */ 40)
   , DESCRIPTORS = __webpack_require__(/*! ./_descriptors */ 6)
-  , fastKey     = __webpack_require__(/*! ./_meta */ 30).fastKey
+  , fastKey     = __webpack_require__(/*! ./_meta */ 29).fastKey
   , SIZE        = DESCRIPTORS ? '_s' : 'size';
 
 var getEntry = function(that, key){
@@ -3339,7 +3346,7 @@ module.exports = function(NAME){
 "use strict";
 
 var redefineAll       = __webpack_require__(/*! ./_redefine-all */ 39)
-  , getWeak           = __webpack_require__(/*! ./_meta */ 30).getWeak
+  , getWeak           = __webpack_require__(/*! ./_meta */ 29).getWeak
   , anObject          = __webpack_require__(/*! ./_an-object */ 1)
   , isObject          = __webpack_require__(/*! ./_is-object */ 4)
   , anInstance        = __webpack_require__(/*! ./_an-instance */ 34)
@@ -3837,7 +3844,7 @@ module.exports = __webpack_require__(/*! ./_collection */ 54)('Set', function(ge
 
 var each         = __webpack_require__(/*! ./_array-methods */ 22)(0)
   , redefine     = __webpack_require__(/*! ./_redefine */ 14)
-  , meta         = __webpack_require__(/*! ./_meta */ 30)
+  , meta         = __webpack_require__(/*! ./_meta */ 29)
   , assign       = __webpack_require__(/*! ./_object-assign */ 106)
   , weak         = __webpack_require__(/*! ./_collection-weak */ 100)
   , isObject     = __webpack_require__(/*! ./_is-object */ 4)
@@ -4748,7 +4755,7 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__ = __webpack_require__(/*! ../util/TooltipBuilder */ 33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(/*! ../config */ 29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(/*! ../config */ 32);
 /**
  * Created by kfang on 6/16/17.
  */
@@ -4838,7 +4845,7 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_TooltipBuilder__ = __webpack_require__(/*! ../util/TooltipBuilder */ 33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(/*! ../config */ 29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(/*! ../config */ 32);
 /**
  * Created by kfang on 7/23/17.
  */
@@ -4959,11 +4966,9 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__princess_PrincessBoot__ = __webpack_require__(/*! ./princess/PrincessBoot */ 136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__ = __webpack_require__(/*! ../util/TooltipBuilder */ 33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UIUtil__ = __webpack_require__(/*! ../UIUtil */ 48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../config */ 29);
 /**
  * Created by kfang on 7/11/17.
  */
-
 
 
 
@@ -4979,14 +4984,18 @@ function play(animationContext) {
     preload() {
         console.log('Main Menu Preload.');
         this.rootContext = JSON.parse(this.game.cache.getText('rootContext'));
-        this.game.load.image('mainBackground', this.rootContext.main_background_image);
+    }
+
+    loadAssets() {
         let spriteSheets = this.rootContext.spritesheets;
+        this.game.load.image('mainBackground', this.rootContext.main_background_image);
         for (let i = 0; i < spriteSheets.length; i++) {
             let spriteSheet = spriteSheets[i];
             console.log('Load spritesheet: ' + spriteSheet.spritesheet + ' as ' + spriteSheet.key + ' with data file: ' + spriteSheet.datafile);
             this.game.load.atlasJSONArray(spriteSheet.key, spriteSheet.spritesheet, spriteSheet.datafile);
         }
         this.storyKey = 'Stories';
+        this.game.load.start();
     }
 
     renderBackground() {
@@ -5019,8 +5028,16 @@ function play(animationContext) {
     }
 
     create() {
-        this.renderBackground();
-        this.renderMenu();
+        console.log('Main Menu Create.');
+        if (!this.created) {
+            this.loadingText = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["c" /* createLoadingText */])(this.game);
+            this.game.load.onLoadStart.addOnce(this.loadStart, this);
+            this.game.load.onFileComplete.add(this.fileComplete, this);
+            this.game.load.onLoadComplete.addOnce(this.loadComplete, this);
+            this.loadAssets();
+        } else {
+            this.renderState();
+        }
     }
 
     /**
@@ -5050,6 +5067,25 @@ function play(animationContext) {
         console.log('About to start the story: ' + this.story.storyState);
         this.game.state.start(this.story.storyState);
     }
+
+    loadStart() {
+        this.loadingText.setText("Loading ...");
+    }
+
+    fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+        this.loadingText.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+    }
+
+    loadComplete() {
+        this.renderState();
+        this.loadingText.destroy();
+        this.created = true;
+    }
+
+    renderState() {
+        this.renderBackground();
+        this.renderMenu();
+    }
 });
 
 /***/ }),
@@ -5064,7 +5100,7 @@ function play(animationContext) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../config */ 29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../config */ 32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MainMenu__ = __webpack_require__(/*! ./MainMenu */ 129);
 /**
  * Created by kfang on 6/19/17.
@@ -5104,7 +5140,7 @@ function play(animationContext) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../../config */ 29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../../config */ 32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sprites_Knight__ = __webpack_require__(/*! ../../sprites/Knight */ 127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sprites_InteractiveItem__ = __webpack_require__(/*! ../../sprites/InteractiveItem */ 126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__animation_KnightAnimationPlayer__ = __webpack_require__(/*! ../../animation/KnightAnimationPlayer */ 124);
@@ -5424,11 +5460,45 @@ function play(animationContext) {
         console.log('KnightAnimationBoard Preload.');
         this.setCurrentGameContexts();
         this.setCurrentTaskContext();
+    }
+
+    loadAssets() {
         this.preloadImages();
+        this.game.load.start();
     }
 
     create() {
         console.log('KnightAnimationBoard Create.');
+        if (!this.created) {
+            this.loadingText = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["c" /* createLoadingText */])(this.game);
+            this.game.load.onLoadStart.addOnce(this.loadStart, this);
+            this.game.load.onFileComplete.add(this.fileComplete, this);
+            this.game.load.onLoadComplete.addOnce(this.loadComplete, this);
+            this.loadAssets();
+        } else {
+            this.renderState();
+        }
+    }
+
+    onBackHome() {
+        this.game.state.start('MainMenu');
+    }
+
+    loadStart() {
+        this.loadingText.setText("Loading ...");
+    }
+
+    fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+        this.loadingText.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+    }
+
+    loadComplete() {
+        this.renderState();
+        this.loadingText.destroy();
+        this.created = true;
+    }
+
+    renderState() {
         this.calculateAndSetGridPositionAndStepSizesResponsively();
         this.drawBackground();
         this.drawBoardButtons();
@@ -5445,11 +5515,7 @@ function play(animationContext) {
         }
         this.game.workspace.clear();
         this.loadToolbox();
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["c" /* showBlock */])();
-    }
-
-    onBackHome() {
-        this.game.state.start('MainMenu');
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["d" /* showBlock */])();
     }
 });
 
@@ -5502,7 +5568,7 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__KnightTaskBoot__ = __webpack_require__(/*! ./KnightTaskBoot */ 134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__ = __webpack_require__(/*! ../../util/TooltipBuilder */ 33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UIUtil__ = __webpack_require__(/*! ../../UIUtil */ 48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../../config */ 29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../../config */ 32);
 /**
  * Created by kfang on 6/25/17.
  */
@@ -5530,11 +5596,6 @@ function play(animationContext) {
         this.game.load.image('foreground', this.gameContext.foreground_image);
         this.game.load.image('grid', this.gameContext.grid_image);
         this.game.load.image('shadow', this.gameContext.shadow_image);
-
-        for (let i = 0; i < this.gameContext.task_configs.tasks.length; i++) {
-            let task = this.gameContext.task_configs.tasks[i];
-            this.game.load.image(task.taskImageKey, task.taskImage);
-        }
     }
 
     loadStoryAudios() {
@@ -5552,8 +5613,12 @@ function play(animationContext) {
     preload() {
         console.log('KnightStoryBoard Preload.');
         this.setCurrentGameContext();
+    }
+
+    loadAssets() {
         this.loadStoryImages();
         this.loadStoryAudios();
+        this.game.load.start();
     }
 
     renderTaskList() {
@@ -5590,8 +5655,16 @@ function play(animationContext) {
     }
 
     create() {
-        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / 650);
-        this.renderTaskList();
+        console.log('Knight Story Board Create.');
+        if (!this.created) {
+            this.loadingText = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["c" /* createLoadingText */])(this.game);
+            this.game.load.onLoadStart.addOnce(this.loadStart, this);
+            this.game.load.onFileComplete.add(this.fileComplete, this);
+            this.game.load.onLoadComplete.addOnce(this.loadComplete, this);
+            this.loadAssets();
+        } else {
+            this.renderState();
+        }
     }
 
     onClickPrevious() {
@@ -5620,6 +5693,25 @@ function play(animationContext) {
 
     onBackHome() {
         this.game.state.start('MainMenu');
+    }
+
+    loadStart() {
+        this.loadingText.setText("Loading ...");
+    }
+
+    fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+        this.loadingText.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+    }
+
+    loadComplete() {
+        this.renderState();
+        this.loadingText.destroy();
+        this.created = true;
+    }
+
+    renderState() {
+        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / 650);
+        this.renderTaskList();
     }
 });
 
@@ -5679,7 +5771,7 @@ function play(animationContext) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser__ = __webpack_require__(/*! phaser */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_phaser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_phaser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../../config */ 29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(/*! ../../config */ 32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sprites_Princess__ = __webpack_require__(/*! ../../sprites/Princess */ 128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__animation_PrincessAnimationPlayer__ = __webpack_require__(/*! ../../animation/PrincessAnimationPlayer */ 125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_TooltipBuilder__ = __webpack_require__(/*! ../../util/TooltipBuilder */ 33);
@@ -5844,11 +5936,32 @@ function play(animationContext) {
         console.log('PrincessAnimationBoard Preload.');
         this.setCurrentGameContexts();
         this.setCurrentTaskContext();
+    }
+
+    loadAssets() {
+        console.log('Load assets.');
         this.loadPath();
+        this.game.load.start();
     }
 
     create() {
         console.log('PrincessAnimationBoard Create.');
+        if (!this.created) {
+            this.loadingText = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["c" /* createLoadingText */])(this.game);
+            this.game.load.onLoadStart.addOnce(this.loadStart, this);
+            this.game.load.onFileComplete.add(this.fileComplete, this);
+            this.game.load.onLoadComplete.addOnce(this.loadComplete, this);
+            this.loadAssets();
+        } else {
+            this.renderState();
+        }
+    }
+
+    onBackHome() {
+        this.game.state.start('MainMenu');
+    }
+
+    renderState() {
         this.calculateCharacterStartingPositionResponsively();
         this.drawBackground();
         this.drawPath();
@@ -5862,11 +5975,21 @@ function play(animationContext) {
         }
         this.game.workspace.clear();
         this.loadToolbox();
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["c" /* showBlock */])();
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["d" /* showBlock */])();
     }
 
-    onBackHome() {
-        this.game.state.start('MainMenu');
+    loadStart() {
+        this.loadingText.setText("Loading ...");
+    }
+
+    fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+        this.loadingText.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+    }
+
+    loadComplete() {
+        this.renderState();
+        this.loadingText.destroy();
+        this.created = true;
     }
 });
 
@@ -5922,7 +6045,7 @@ function play(animationContext) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PrincessTaskBoot__ = __webpack_require__(/*! ./PrincessTaskBoot */ 138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_TooltipBuilder__ = __webpack_require__(/*! ../../util/TooltipBuilder */ 33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__UIUtil__ = __webpack_require__(/*! ../../UIUtil */ 48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../../config */ 29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(/*! ../../config */ 32);
 /**
  * Created by kfang on 7/23/17.
  */
@@ -5947,11 +6070,6 @@ function play(animationContext) {
         }
 
         this.game.load.image('background', this.gameContext.background_image);
-
-        for (let i = 0; i < this.gameContext.task_configs.tasks.length; i++) {
-            let task = this.gameContext.task_configs.tasks[i];
-            this.game.load.image(task.taskImageKey, task.taskImage);
-        }
     }
 
     loadStoryAudios() {
@@ -5969,8 +6087,12 @@ function play(animationContext) {
     preload() {
         console.log('PrincessStoryBoard Preload.');
         this.setCurrentGameContext();
+    }
+
+    loadAssets() {
         this.loadStoryImages();
         this.loadStoryAudios();
+        this.game.load.start();
     }
 
     renderTaskList() {
@@ -6007,8 +6129,16 @@ function play(animationContext) {
     }
 
     create() {
-        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundHeight);
-        this.renderTaskList();
+        console.log('Princess Story Board Create.');
+        if (!this.created) {
+            this.loadingText = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__UIUtil__["c" /* createLoadingText */])(this.game);
+            this.game.load.onLoadStart.addOnce(this.loadStart, this);
+            this.game.load.onFileComplete.add(this.fileComplete, this);
+            this.game.load.onLoadComplete.addOnce(this.loadComplete, this);
+            this.loadAssets();
+        } else {
+            this.renderState();
+        }
     }
 
     onClickPrevious() {
@@ -6037,6 +6167,25 @@ function play(animationContext) {
 
     onBackHome() {
         this.game.state.start('MainMenu');
+    }
+
+    loadStart() {
+        this.loadingText.setText("Loading ...");
+    }
+
+    fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+        this.loadingText.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+    }
+
+    loadComplete() {
+        this.renderState();
+        this.loadingText.destroy();
+        this.created = true;
+    }
+
+    renderState() {
+        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundWidth, this.game.height / __WEBPACK_IMPORTED_MODULE_5__config__["a" /* default */].backgroundHeight);
+        this.renderTaskList();
     }
 });
 
@@ -6890,7 +7039,7 @@ $export($export.P + $export.F * (__webpack_require__(/*! ./_iobject */ 50) != Ob
 
 var $export       = __webpack_require__(/*! ./_export */ 0)
   , toIObject     = __webpack_require__(/*! ./_to-iobject */ 16)
-  , toInteger     = __webpack_require__(/*! ./_to-integer */ 32)
+  , toInteger     = __webpack_require__(/*! ./_to-integer */ 31)
   , toLength      = __webpack_require__(/*! ./_to-length */ 8)
   , $native       = [].lastIndexOf
   , NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
@@ -7269,7 +7418,7 @@ if(!(HAS_INSTANCE in FunctionProto))__webpack_require__(/*! ./_object-dp */ 7).f
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(/*! ./_object-dp */ 7).f
-  , createDesc = __webpack_require__(/*! ./_property-desc */ 31)
+  , createDesc = __webpack_require__(/*! ./_property-desc */ 30)
   , has        = __webpack_require__(/*! ./_has */ 11)
   , FProto     = Function.prototype
   , nameRE     = /^\s*function ([^ (]*)/
@@ -7893,7 +8042,7 @@ $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parse
 "use strict";
 
 var $export      = __webpack_require__(/*! ./_export */ 0)
-  , toInteger    = __webpack_require__(/*! ./_to-integer */ 32)
+  , toInteger    = __webpack_require__(/*! ./_to-integer */ 31)
   , aNumberValue = __webpack_require__(/*! ./_a-number-value */ 93)
   , repeat       = __webpack_require__(/*! ./_string-repeat */ 83)
   , $toFixed     = 1..toFixed
@@ -8098,7 +8247,7 @@ $export($export.S + $export.F * !__webpack_require__(/*! ./_descriptors */ 6), '
 
 // 19.1.2.5 Object.freeze(O)
 var isObject = __webpack_require__(/*! ./_is-object */ 4)
-  , meta     = __webpack_require__(/*! ./_meta */ 30).onFreeze;
+  , meta     = __webpack_require__(/*! ./_meta */ 29).onFreeze;
 
 __webpack_require__(/*! ./_object-sap */ 23)('freeze', function($freeze){
   return function freeze(it){
@@ -8255,7 +8404,7 @@ __webpack_require__(/*! ./_object-sap */ 23)('keys', function(){
 
 // 19.1.2.15 Object.preventExtensions(O)
 var isObject = __webpack_require__(/*! ./_is-object */ 4)
-  , meta     = __webpack_require__(/*! ./_meta */ 30).onFreeze;
+  , meta     = __webpack_require__(/*! ./_meta */ 29).onFreeze;
 
 __webpack_require__(/*! ./_object-sap */ 23)('preventExtensions', function($preventExtensions){
   return function preventExtensions(it){
@@ -8274,7 +8423,7 @@ __webpack_require__(/*! ./_object-sap */ 23)('preventExtensions', function($prev
 
 // 19.1.2.17 Object.seal(O)
 var isObject = __webpack_require__(/*! ./_is-object */ 4)
-  , meta     = __webpack_require__(/*! ./_meta */ 30).onFreeze;
+  , meta     = __webpack_require__(/*! ./_meta */ 29).onFreeze;
 
 __webpack_require__(/*! ./_object-sap */ 23)('seal', function($seal){
   return function seal(it){
@@ -9017,7 +9166,7 @@ var dP             = __webpack_require__(/*! ./_object-dp */ 7)
   , getPrototypeOf = __webpack_require__(/*! ./_object-gpo */ 18)
   , has            = __webpack_require__(/*! ./_has */ 11)
   , $export        = __webpack_require__(/*! ./_export */ 0)
-  , createDesc     = __webpack_require__(/*! ./_property-desc */ 31)
+  , createDesc     = __webpack_require__(/*! ./_property-desc */ 30)
   , anObject       = __webpack_require__(/*! ./_an-object */ 1)
   , isObject       = __webpack_require__(/*! ./_is-object */ 4);
 
@@ -9751,7 +9900,7 @@ var global         = __webpack_require__(/*! ./_global */ 2)
   , DESCRIPTORS    = __webpack_require__(/*! ./_descriptors */ 6)
   , $export        = __webpack_require__(/*! ./_export */ 0)
   , redefine       = __webpack_require__(/*! ./_redefine */ 14)
-  , META           = __webpack_require__(/*! ./_meta */ 30).KEY
+  , META           = __webpack_require__(/*! ./_meta */ 29).KEY
   , $fails         = __webpack_require__(/*! ./_fails */ 3)
   , shared         = __webpack_require__(/*! ./_shared */ 62)
   , setToStringTag = __webpack_require__(/*! ./_set-to-string-tag */ 46)
@@ -9765,7 +9914,7 @@ var global         = __webpack_require__(/*! ./_global */ 2)
   , anObject       = __webpack_require__(/*! ./_an-object */ 1)
   , toIObject      = __webpack_require__(/*! ./_to-iobject */ 16)
   , toPrimitive    = __webpack_require__(/*! ./_to-primitive */ 24)
-  , createDesc     = __webpack_require__(/*! ./_property-desc */ 31)
+  , createDesc     = __webpack_require__(/*! ./_property-desc */ 30)
   , _create        = __webpack_require__(/*! ./_object-create */ 36)
   , gOPNExt        = __webpack_require__(/*! ./_object-gopn-ext */ 108)
   , $GOPD          = __webpack_require__(/*! ./_object-gopd */ 17)
