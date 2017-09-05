@@ -6,7 +6,7 @@ import config from '../../config'
 import Princess from '../../sprites/Princess'
 import PrincessAnimationPlayer from '../../animation/PrincessAnimationPlayer'
 import TooltipBuilder from '../../util/TooltipBuilder'
-import {showBlock, createLoadingText, loadStart, fileComplete} from '../../UIUtil'
+import {showBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText} from '../../UIUtil'
 
 export default class extends Phaser.State {
     calculateCharacterStartingPositionResponsively() {
@@ -136,7 +136,6 @@ export default class extends Phaser.State {
         /* Reposition block div first */
         repositionBlock(252, 744, this.game.height)
         repositionText(429, 315, 252)
-        console.log('Block div x: ' + grid_bottom_left_x + ' yt: ' + grid_bottom_left_y + ' h: ' + this.game.height)
         let options = {
             comments: false,
             disable: false,

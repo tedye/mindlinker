@@ -1551,7 +1551,7 @@ module.exports = exporter;
 /***/ }),
 /* 47 */
 /* exports provided: setScaleAndAnchorForObject, hideBlock, showBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText */
-/* exports used: setScaleAndAnchorForObject, hideBlock, createLoadingText, loadStart, fileComplete, showBlock, repositionBlock, repositionText */
+/* exports used: setScaleAndAnchorForObject, hideBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText, showBlock */
 /*!***********************!*\
   !*** ./src/UIUtil.js ***!
   \***********************/
@@ -1560,12 +1560,12 @@ module.exports = exporter;
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = setScaleAndAnchorForObject;
 /* harmony export (immutable) */ __webpack_exports__["b"] = hideBlock;
-/* harmony export (immutable) */ __webpack_exports__["f"] = showBlock;
+/* harmony export (immutable) */ __webpack_exports__["h"] = showBlock;
 /* harmony export (immutable) */ __webpack_exports__["c"] = createLoadingText;
 /* harmony export (immutable) */ __webpack_exports__["d"] = loadStart;
 /* harmony export (immutable) */ __webpack_exports__["e"] = fileComplete;
-/* harmony export (immutable) */ __webpack_exports__["g"] = repositionBlock;
-/* harmony export (immutable) */ __webpack_exports__["h"] = repositionText;
+/* harmony export (immutable) */ __webpack_exports__["f"] = repositionBlock;
+/* harmony export (immutable) */ __webpack_exports__["g"] = repositionText;
 function setScaleAndAnchorForObject(obj, sX, sY, aX, aY) {
     obj.scale.setTo(sX, sY);
     obj.anchor.setTo(aX, aY);
@@ -5446,8 +5446,8 @@ function play(animationContext) {
         let grid_bottom_left_x = Math.round(this.gridStartX);
         let grid_height = this.gameContext.grid_y_size * this.step_height_in_pixel;
         let grid_bottom_left_y = Math.round(this.gridStartY + grid_height);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["g" /* repositionBlock */])(grid_bottom_left_x, grid_bottom_left_y, this.game.height);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["h" /* repositionText */])(this.gridStartY, grid_height, grid_bottom_left_x);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["f" /* repositionBlock */])(grid_bottom_left_x, grid_bottom_left_y, this.game.height);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["g" /* repositionText */])(this.gridStartY, grid_height, grid_bottom_left_x);
         console.log('Block div x: ' + grid_bottom_left_x + ' yt: ' + grid_bottom_left_y + ' h: ' + this.game.height);
         let options = {
             comments: false,
@@ -5541,7 +5541,7 @@ function play(animationContext) {
         }
         this.game.workspace.clear();
         this.loadToolbox();
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["f" /* showBlock */])();
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["h" /* showBlock */])();
     }
 });
 
@@ -5915,9 +5915,8 @@ function play(animationContext) {
 
     addWorkspace() {
         /* Reposition block div first */
-        repositionBlock(252, 744, this.game.height);
-        repositionText(429, 315, 252);
-        console.log('Block div x: ' + grid_bottom_left_x + ' yt: ' + grid_bottom_left_y + ' h: ' + this.game.height);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["f" /* repositionBlock */])(252, 744, this.game.height);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["g" /* repositionText */])(429, 315, 252);
         let options = {
             comments: false,
             disable: false,
@@ -5997,7 +5996,7 @@ function play(animationContext) {
         }
         this.game.workspace.clear();
         this.loadToolbox();
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["f" /* showBlock */])();
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["h" /* showBlock */])();
     }
 
     loadComplete() {
@@ -12337,7 +12336,7 @@ module.exports = __webpack_require__(/*! ./modules/_core */ 25);
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */122);
-module.exports = __webpack_require__(/*! /Users/tedye/pg/repos/mindlinker/src/main.js */121);
+module.exports = __webpack_require__(/*! /Users/tedye/pg/repos/forked/mindlinker/src/main.js */121);
 
 
 /***/ })
