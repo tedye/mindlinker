@@ -2,7 +2,7 @@
 
 local_python: requirements.txt
 	cp -r dist assets/
-	virtualenv venv && source venv/bin/activate && pip install -r requirements.txt && heroku local
+	virtualenv -ppython2.7 venv && source venv/bin/activate && pip install -r requirements.txt && heroku local
 
 local_npm:
 	npm run dev
