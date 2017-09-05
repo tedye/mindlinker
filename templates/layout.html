@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Mindlinker v0.2</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+            }
+        </style>
+        <script src="assets/blocks/js/blockly_compressed_horizontal.js"></script>
+        <script src="assets/blocks/js/blocks_compressed_horizontal.js"></script>
+        <script src="assets/blocks/js/blocks_compressed.js"></script>
+        <script src="assets/blocks/js/javascript_compressed.js"></script>
+        <script src="assets/blocks/js/zh-hans.js"></script>
+        <script src="assets/blocks/js/custom_block_defs.js"></script>
+        <script src="assets/blocks/js/custom_code_generators.js"></script>
+        <script src="assets/blocks/js/colour.js"></script>
+        <script src="assets/blocks/js/text.js"></script>
+        <script src="assets/blocks/js/math.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+        {% endblock %}
+    </head>
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top" id="nav" role="navigation", style="padding-left: 50px">
+      <a class="navbar-brand" href="#">Mindlinker</a>
+      <ul class="nav navbar-nav">
+        {% if current_user.is_authenticated %}
+        <li>
+          <a href="#">{{current_user.email}}</a>
+        </li>
+        <li>
+          <a href="/logout">登出</a>
+        </li>
+        {% else %}
+        <li><a href="/login">登录</a></li>
+        <li><a href="/register">注册</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+   {% block main %}{% endblock %}
+   {% if not current_user.is_authenticated %}
+    <div class="container">
+      <hr>
+      <footer>
+        <a href="https://github.com/andyfang1989/mindlinker">Github 源代码</a>
+      </footer>
+    </div>
+    {% endif %}
+    {% block scripts %}
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js
+
+"></script>
+        <script src="assets/static/js/main.js"></script>
+        
+    {% endblock %}
+    </body>
+</html>
