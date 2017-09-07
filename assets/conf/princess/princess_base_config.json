@@ -3909,6 +3909,14 @@
       {  
          "key":"press",
          "file":"assets/sound/princess/press.mp3"
+      },
+      {  
+         "key":"victory",
+         "file":"assets/sound/princess/victory.mp3"
+      },
+      {  
+         "key":"fail",
+         "file":"assets/sound/princess/fail.mp3"
       }
    ],
    "task_configs":{  

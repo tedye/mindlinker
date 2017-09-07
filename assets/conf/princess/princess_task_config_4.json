@@ -2,8 +2,8 @@
 {
     "character_width_in_pixel":128,
     "character_height_in_pixel":208,
-    "character_starting_x_percentage": 0.5,
-    "character_starting_y_percentage": 0.5,
+    "character_x_offset": 0,
+    "character_y_offset": 0,
     "character_starting_clock_position": 6,
     "speed": 0.5, 
     "pathImage": "assets/images/princess/background/path04.png",

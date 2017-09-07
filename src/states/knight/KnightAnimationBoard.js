@@ -7,7 +7,7 @@ import Knight from '../../sprites/Knight'
 import InteractiveItem from '../../sprites/InteractiveItem'
 import KnightAnimationPlayer from '../../animation/KnightAnimationPlayer'
 import TooltipBuilder from '../../util/TooltipBuilder'
-import {showBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText} from '../../UIUtil'
+import {showBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText, getInstruction, setReadableCode} from '../../UIUtil'
 
 export default class extends Phaser.State {
     calculateAndSetGridPositionAndStepSizesResponsively(){
@@ -19,15 +19,10 @@ export default class extends Phaser.State {
         this.gridStartY = Math.round(this.game.height * this.gameContext.grid_board_top_left_y_percentage)
     }
 
-    getInstructionFromWorkspace() {
-        let startBlock = this.game.workspace.getTopBlocks()[0]
-        let code = Blockly.JavaScript[startBlock.type](startBlock)
-        document.getElementById('instructions').innerHTML = code
-        return code
-    }
-
     getCurrentAnimationContext() {
-        console.log('Blockly Instruction: ' + this.getInstructionFromWorkspace())
+        let instruction = getInstruction(this.game.workspace)
+        console.log('Blockly Instruction: ' + instruction)
+        setReadableCode(instruction)
         return {
             sprite: this.knight,
             startGridX: this.taskContext.character_starting_grid_x,
@@ -43,7 +38,7 @@ export default class extends Phaser.State {
             items: this.taskContext.items,
             interactiveItems: this.taskContext.interactionItems,
             interactiveItemSprites: this.interactiveItemSprites,
-            instruction: this.getInstructionFromWorkspace()
+            instruction: instruction
         }
     }
 
@@ -311,10 +306,14 @@ export default class extends Phaser.State {
     loadToolbox() {
         let tree = Blockly.Xml.textToDom(this.taskContext.toolbox)
         this.game.workspace.updateToolbox(tree)
+        document.getElementById('instructions').innerHTML = ''
     }
 
     init() {
         console.log('KnightAnimationBoard Init.')
+        if (this.game.global.preTaskIndex !== this.game.global.currentTaskIndex) {
+            this.created = false
+        }
     }
 
     preload() {

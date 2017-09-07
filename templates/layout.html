@@ -8,6 +8,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Mindlinker v0.2</title>
+        <link rel="icon" href="assets/images/logo.png">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css">
@@ -31,24 +32,26 @@
     </head>
   <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top" id="nav" role="navigation", style="padding-left: 50px">
-      <a class="navbar-brand" href="#">Mindlinker</a>
-      <ul class="nav navbar-nav">
+    <nav class="navbar navbar-default navbar-fixed-top" id="nav" role="navigation", style="height: 50px;">
+      <a class="navbar-brand" href="/game" style="height: 50px;">
+          <img src="assets/images/logo.png" style="margin-top: -10px;margin-left: 10px;">
+      </a>
+      <ul class="nav navbar-nav" style="float: right;">
         {% if current_user.is_authenticated %}
         <li>
-          <a href="#">{{current_user.email}}</a>
+          <a href="#" style="float: right;">{{current_user.email}}</a>
         </li>
         <li>
-          <a href="/logout">登出</a>
+          <a href="/logout" style="float: right;">登出</a>
         </li>
         {% else %}
-        <li><a href="/login">登录</a></li>
-        <li><a href="/register">注册</a></li>
+        <li><a href="/login" style="float: right;">登录</a></li>
+        <li><a href="/register" style="float: right;">注册</a></li>
         {% endif %}
       </ul>
     </nav>
    {% block main %}{% endblock %}
-   {% block scripts %}
+    {% block scripts %}
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js

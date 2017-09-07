@@ -44,3 +44,39 @@ export function repositionText (y, height, width) {
     text_container_style.height = Math.round(height).toString() + 'px'
     text_container_style.width = Math.round(width).toString() + 'px'
 }
+
+export function getInstruction (workspace) {
+    let startBlock = workspace.getTopBlocks()[0]
+    return Blockly.JavaScript[startBlock.type](startBlock)
+}
+
+export function setReadableCode (code) {
+    let rawCode = JSON.parse(code)
+    let readableCode = ''
+    let currentIndent = 0
+    for (let i = 0; i < rawCode.length; i++) {
+        let statement = rawCode[i]
+        if (statement.name === 'RepeatEnd') {
+            currentIndent -= 1
+            continue
+        }
+        readableCode += '  '.repeat(currentIndent)
+        if (statement.name === 'RepeatStart') {
+            readableCode += 'for i in range(' + statement.count + '):\n'
+            currentIndent += 1
+            continue
+        }
+        readableCode += statement.name + '('
+        for (let k in statement) {
+            if (k === 'name') {
+                continue
+            }
+            readableCode += k + '=' + statement[k] + ','
+        }
+        if (readableCode[readableCode.length - 1] === ','){
+            readableCode = readableCode.substring(0, readableCode.length - 1)
+        }
+        readableCode += ')\n'
+    }
+    document.getElementById('instructions').innerHTML = readableCode
+}

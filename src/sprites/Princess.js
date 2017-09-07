@@ -31,7 +31,16 @@ export default class extends Phaser.Sprite {
             }
         } else if (this.start && this.actionQueue.length === 0 && this.playingAnimation !== null && this.playingAnimation.isFinished) {
             this.drawLine()
+            this.playFinalSound()
             this.showButtons()
+        }
+    }
+
+    playFinalSound() {
+        if (this.taskCompleted) {
+            this.game.sound.play('victory')
+        } else {
+            this.game.sound.play('fail')
         }
     }
 
@@ -81,12 +90,14 @@ export default class extends Phaser.Sprite {
     restart() {
         this.game.sound.play('press')
         this.destroyAllButtons()
+        this.game.global.preTaskIndex = this.game.global.currentTaskIndex
         this.game.state.start('PrincessTaskBoot')
     }
 
     nextGame() {
         this.game.sound.play('press')
         this.destroyAllButtons()
+        this.game.global.preTaskIndex = this.game.global.currentTaskIndex
         this.game.global.currentTaskIndex = this.game.global.currentTaskIndex + 1
         this.game.state.start('PrincessTaskBoot')
     }

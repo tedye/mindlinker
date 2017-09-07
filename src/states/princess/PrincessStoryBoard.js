@@ -26,6 +26,7 @@ export default class extends Phaser.State {
     loadStoryAudios() {
         for (let i = 0; i < this.gameContext.audios.length; i++) {
             let audio = this.gameContext.audios[i]
+            console.log('Load sound ' + audio.key + ' from ' + audio.file)
             this.game.load.audio(audio.key, audio.file)
         }
     }

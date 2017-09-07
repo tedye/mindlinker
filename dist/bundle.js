@@ -1550,8 +1550,8 @@ module.exports = exporter;
 
 /***/ }),
 /* 47 */
-/* exports provided: setScaleAndAnchorForObject, hideBlock, showBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText */
-/* exports used: setScaleAndAnchorForObject, hideBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText, showBlock */
+/* exports provided: setScaleAndAnchorForObject, hideBlock, showBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText, getInstruction, setReadableCode */
+/* exports used: setScaleAndAnchorForObject, hideBlock, createLoadingText, loadStart, fileComplete, getInstruction, setReadableCode, repositionBlock, repositionText, showBlock */
 /*!***********************!*\
   !*** ./src/UIUtil.js ***!
   \***********************/
@@ -1560,12 +1560,14 @@ module.exports = exporter;
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = setScaleAndAnchorForObject;
 /* harmony export (immutable) */ __webpack_exports__["b"] = hideBlock;
-/* harmony export (immutable) */ __webpack_exports__["h"] = showBlock;
+/* harmony export (immutable) */ __webpack_exports__["j"] = showBlock;
 /* harmony export (immutable) */ __webpack_exports__["c"] = createLoadingText;
 /* harmony export (immutable) */ __webpack_exports__["d"] = loadStart;
 /* harmony export (immutable) */ __webpack_exports__["e"] = fileComplete;
-/* harmony export (immutable) */ __webpack_exports__["f"] = repositionBlock;
-/* harmony export (immutable) */ __webpack_exports__["g"] = repositionText;
+/* harmony export (immutable) */ __webpack_exports__["h"] = repositionBlock;
+/* harmony export (immutable) */ __webpack_exports__["i"] = repositionText;
+/* harmony export (immutable) */ __webpack_exports__["f"] = getInstruction;
+/* harmony export (immutable) */ __webpack_exports__["g"] = setReadableCode;
 function setScaleAndAnchorForObject(obj, sX, sY, aX, aY) {
     obj.scale.setTo(sX, sY);
     obj.anchor.setTo(aX, aY);
@@ -1611,6 +1613,42 @@ function repositionText(y, height, width) {
     text_container_style.top = Math.round(y + 50).toString() + 'px';
     text_container_style.height = Math.round(height).toString() + 'px';
     text_container_style.width = Math.round(width).toString() + 'px';
+}
+
+function getInstruction(workspace) {
+    let startBlock = workspace.getTopBlocks()[0];
+    return Blockly.JavaScript[startBlock.type](startBlock);
+}
+
+function setReadableCode(code) {
+    let rawCode = JSON.parse(code);
+    let readableCode = '';
+    let currentIndent = 0;
+    for (let i = 0; i < rawCode.length; i++) {
+        let statement = rawCode[i];
+        if (statement.name === 'RepeatEnd') {
+            currentIndent -= 1;
+            continue;
+        }
+        readableCode += '  '.repeat(currentIndent);
+        if (statement.name === 'RepeatStart') {
+            readableCode += 'for i in range(' + statement.count + '):\n';
+            currentIndent += 1;
+            continue;
+        }
+        readableCode += statement.name + '(';
+        for (let k in statement) {
+            if (k === 'name') {
+                continue;
+            }
+            readableCode += k + '=' + statement[k] + ',';
+        }
+        if (readableCode[readableCode.length - 1] === ',') {
+            readableCode = readableCode.substring(0, readableCode.length - 1);
+        }
+        readableCode += ')\n';
+    }
+    document.getElementById('instructions').innerHTML = readableCode;
 }
 
 /***/ }),
@@ -4853,12 +4891,14 @@ function play(animationContext) {
     restart() {
         this.game.sound.play('press');
         this.destroyAllButtons();
+        this.game.global.preTaskIndex = this.game.global.currentTaskIndex;
         this.game.state.start('KnightTaskBoot');
     }
 
     nextGame() {
         this.game.sound.play('press');
         this.destroyAllButtons();
+        this.game.global.preTaskIndex = this.game.global.currentTaskIndex;
         this.game.global.currentTaskIndex = this.game.global.currentTaskIndex + 1;
         this.game.state.start('KnightTaskBoot');
     }
@@ -4911,7 +4951,16 @@ function play(animationContext) {
             }
         } else if (this.start && this.actionQueue.length === 0 && this.playingAnimation !== null && this.playingAnimation.isFinished) {
             this.drawLine();
+            this.playFinalSound();
             this.showButtons();
+        }
+    }
+
+    playFinalSound() {
+        if (this.taskCompleted) {
+            this.game.sound.play('victory');
+        } else {
+            this.game.sound.play('fail');
         }
     }
 
@@ -4961,12 +5010,14 @@ function play(animationContext) {
     restart() {
         this.game.sound.play('press');
         this.destroyAllButtons();
+        this.game.global.preTaskIndex = this.game.global.currentTaskIndex;
         this.game.state.start('PrincessTaskBoot');
     }
 
     nextGame() {
         this.game.sound.play('press');
         this.destroyAllButtons();
+        this.game.global.preTaskIndex = this.game.global.currentTaskIndex;
         this.game.global.currentTaskIndex = this.game.global.currentTaskIndex + 1;
         this.game.state.start('PrincessTaskBoot');
     }
@@ -5192,15 +5243,10 @@ function play(animationContext) {
         this.gridStartY = Math.round(this.game.height * this.gameContext.grid_board_top_left_y_percentage);
     }
 
-    getInstructionFromWorkspace() {
-        let startBlock = this.game.workspace.getTopBlocks()[0];
-        let code = Blockly.JavaScript[startBlock.type](startBlock);
-        document.getElementById('instructions').innerHTML = code;
-        return code;
-    }
-
     getCurrentAnimationContext() {
-        console.log('Blockly Instruction: ' + this.getInstructionFromWorkspace());
+        let instruction = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["f" /* getInstruction */])(this.game.workspace);
+        console.log('Blockly Instruction: ' + instruction);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["g" /* setReadableCode */])(instruction);
         return {
             sprite: this.knight,
             startGridX: this.taskContext.character_starting_grid_x,
@@ -5216,7 +5262,7 @@ function play(animationContext) {
             items: this.taskContext.items,
             interactiveItems: this.taskContext.interactionItems,
             interactiveItemSprites: this.interactiveItemSprites,
-            instruction: this.getInstructionFromWorkspace()
+            instruction: instruction
         };
     }
 
@@ -5446,8 +5492,8 @@ function play(animationContext) {
         let grid_bottom_left_x = Math.round(this.gridStartX);
         let grid_height = this.gameContext.grid_y_size * this.step_height_in_pixel;
         let grid_bottom_left_y = Math.round(this.gridStartY + grid_height);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["f" /* repositionBlock */])(grid_bottom_left_x, grid_bottom_left_y, this.game.height);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["g" /* repositionText */])(this.gridStartY, grid_height, grid_bottom_left_x);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["h" /* repositionBlock */])(grid_bottom_left_x, grid_bottom_left_y, this.game.height);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["i" /* repositionText */])(this.gridStartY, grid_height, grid_bottom_left_x);
         console.log('Block div x: ' + grid_bottom_left_x + ' yt: ' + grid_bottom_left_y + ' h: ' + this.game.height);
         let options = {
             comments: false,
@@ -5484,10 +5530,14 @@ function play(animationContext) {
     loadToolbox() {
         let tree = Blockly.Xml.textToDom(this.taskContext.toolbox);
         this.game.workspace.updateToolbox(tree);
+        document.getElementById('instructions').innerHTML = '';
     }
 
     init() {
         console.log('KnightAnimationBoard Init.');
+        if (this.game.global.preTaskIndex !== this.game.global.currentTaskIndex) {
+            this.created = false;
+        }
     }
 
     preload() {
@@ -5541,7 +5591,7 @@ function play(animationContext) {
         }
         this.game.workspace.clear();
         this.loadToolbox();
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["h" /* showBlock */])();
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__UIUtil__["j" /* showBlock */])();
     }
 });
 
@@ -5805,25 +5855,20 @@ function play(animationContext) {
 /* harmony default export */ __webpack_exports__["a"] = (class extends __WEBPACK_IMPORTED_MODULE_0_phaser___default.a.State {
     calculateCharacterStartingPositionResponsively() {
         console.log('Game width: ' + this.game.width + ' height: ' + this.game.height);
-        this.characterStartX = Math.round(this.game.width * this.taskContext.character_starting_x_percentage);
-        this.characterStartY = Math.round(this.game.height * this.taskContext.character_starting_y_percentage);
-    }
-
-    getInstructionFromWorkspace() {
-        let startBlock = this.game.workspace.getTopBlocks()[0];
-        let code = Blockly.JavaScript[startBlock.type](startBlock);
-        document.getElementById('instructions').innerHTML = code;
-        return code;
+        this.characterStartX = Math.round(this.game.width / 2);
+        this.characterStartY = Math.round(this.game.height / 2);
     }
 
     getCurrentAnimationContext() {
-        console.log('Blockly Instruction: ' + this.getInstructionFromWorkspace());
+        let instruction = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["f" /* getInstruction */])(this.game.workspace);
+        console.log('Blockly Instruction: ' + instruction);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["g" /* setReadableCode */])(instruction);
         return {
             sprite: this.princess,
             startClockPosition: this.taskContext.character_starting_clock_position,
             maxSteps: this.taskContext.maxSteps,
             passPath: this.taskContext.passPath,
-            instruction: this.getInstructionFromWorkspace()
+            instruction: instruction
         };
     }
 
@@ -5850,8 +5895,8 @@ function play(animationContext) {
     }
 
     drawMainCharacterAtStartingPosition() {
-        let startX = this.characterStartX;
-        let startY = this.characterStartY - Math.round(this.taskContext.character_height_in_pixel / 3);
+        let startX = this.characterStartX + this.taskContext.character_x_offset;
+        let startY = this.characterStartY - Math.round(this.taskContext.character_height_in_pixel / 3) + this.taskContext.character_y_offset;
         let frames = ["animation/walk-0/walk-0-0000", "animation/walk-1/walk-1-0000", "animation/walk-2/walk-2-0000", "animation/walk-3/walk-3-0000", "animation/walk-4/walk-4-0000", "animation/walk-5/walk-5-0000", "animation/walk-6/walk-6-0000", "animation/walk-7/walk-7-0000", "animation/walk-8/walk-8-0000", "animation/walk-9/walk-9-0000", "animation/walk-10/walk-10-0000", "animation/walk-11/walk-11-0000"];
         console.log('Draw main character at location: x = ' + startX + ' and y = ' + startY);
         console.log('The starting sprite image is ' + frames[this.taskContext.character_starting_clock_position]);
@@ -5915,8 +5960,8 @@ function play(animationContext) {
 
     addWorkspace() {
         /* Reposition block div first */
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["f" /* repositionBlock */])(252, 744, this.game.height);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["g" /* repositionText */])(429, 315, 252);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["h" /* repositionBlock */])(252, 744, this.game.height);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["i" /* repositionText */])(429, 315, 252);
         let options = {
             comments: false,
             disable: false,
@@ -5947,10 +5992,14 @@ function play(animationContext) {
     loadToolbox() {
         let tree = Blockly.Xml.textToDom(this.taskContext.toolbox);
         this.game.workspace.updateToolbox(tree);
+        document.getElementById('instructions').innerHTML = '';
     }
 
     init() {
         console.log('PrincessAnimationBoard Init.');
+        if (this.game.global.preTaskIndex !== this.game.global.currentTaskIndex) {
+            this.created = false;
+        }
     }
 
     preload() {
@@ -5996,7 +6045,7 @@ function play(animationContext) {
         }
         this.game.workspace.clear();
         this.loadToolbox();
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["h" /* showBlock */])();
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__UIUtil__["j" /* showBlock */])();
     }
 
     loadComplete() {
@@ -6086,6 +6135,7 @@ function play(animationContext) {
     loadStoryAudios() {
         for (let i = 0; i < this.gameContext.audios.length; i++) {
             let audio = this.gameContext.audios[i];
+            console.log('Load sound ' + audio.key + ' from ' + audio.file);
             this.game.load.audio(audio.key, audio.file);
         }
     }
@@ -12336,7 +12386,7 @@ module.exports = __webpack_require__(/*! ./modules/_core */ 25);
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */122);
-module.exports = __webpack_require__(/*! /Users/tedye/pg/repos/forked/mindlinker/src/main.js */121);
+module.exports = __webpack_require__(/*! /Users/tedye/pg/repos/mindlinker/src/main.js */121);
 
 
 /***/ })
