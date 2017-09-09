@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import datetime
+
 from app import db
+
 
 class User(db.Document):
 	email = db.EmailField(unique=True)
@@ -8,4 +10,3 @@ class User(db.Document):
 	active = db.BooleanField(default=True)
 	isAdmin = db.BooleanField(default=False)
 	timestamp = db.DateTimeField(default=datetime.datetime.now())
-    

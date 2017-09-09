@@ -4,19 +4,23 @@ from flask import flash
 from flask import render_template
 from flask import request
 from flask import redirect
-from flask.ext.login import current_user
-from flask.ext.login import login_required
-from flask.ext.login import login_user
-from flask.ext.login import logout_user
-from flask.ext.login import confirm_login
-from flask.ext.login import fresh_login_required
+from flask_login import current_user
+from flask_login import login_required
+from flask_login import login_user
+from flask_login import logout_user
+from flask_login import confirm_login
+from flask_login import fresh_login_required
 from jinja2 import TemplateNotFound
 
 import forms
+import models
+from app import admin
 from app import app
 from app import login_manager
 from app import flask_bcrypt
 from libs.User import User
+from libs.User import AdminModelView
+
 
 
 # Configure routes
@@ -42,11 +46,9 @@ def login():
         ):
             remember = request.form.get('remember', 'no') == 'yes'
             if login_user(user, remember=remember):
-                print '登录成功'
                 flash('登录成功!')
                 return redirect('/game')
             else:
-                print '登录失败'
                 flash('登录失败!')
     return render_template('/auth/login.html')
 
@@ -57,7 +59,6 @@ def register():
     current_app.logger.info(request.form)
     if request.method == 'POST' and not register_form.validate():
         current_app.logger.info(register_form.errors)
-        print '注册失败！'
         return '注册失败！'
     elif request.method == 'POST' and register_form.validate():
         email = request.form['email']
@@ -70,13 +71,11 @@ def register():
         try:
             user.save()
             if login_user(user, remember='no'):
-                print '登录成功!'
                 flash('登录成功!')
                 return redirect('/game')
             else:
                 flash('登录失败!')
         except:
-            print '无法注册此电子邮箱地址！'
             flash('无法注册此电子邮箱地址！')
             current_app.logger.error(
                 'Error on Registration - possible duplicate emails.'
@@ -116,3 +115,7 @@ def load_user(id):
 @login_required
 def game():
     return render_template('/index.html')
+
+
+# Add model to flask-admin
+admin.add_view(AdminModelView(models.User))

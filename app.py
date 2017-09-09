@@ -2,11 +2,11 @@
 import os
 
 from flask import Flask
-from flask.ext.mongoengine import MongoEngine
-from flask.ext.mongoengine import MongoEngineSessionInterface
-from flask.ext.login import LoginManager
-from flask.ext.bcrypt import Bcrypt
-
+from flask_admin import Admin
+from flask_mongoengine import MongoEngine
+from flask_mongoengine import MongoEngineSessionInterface
+from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
 
 
 # Create the main app
@@ -26,3 +26,6 @@ flask_bcrypt = Bcrypt()
 # Connect to login manager
 login_manager = LoginManager()
 login_manager.init_app(app)
+# Connect to admin
+admin = Admin(name='mindmaster', template_mode='bootstrap3')
+admin.init_app(app)
