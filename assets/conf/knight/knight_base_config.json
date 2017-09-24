@@ -3,10 +3,8 @@
    "grid_y_size":5,
    "grid_image_width":120,
    "grid_image_height":60,
-   "grid_board_top_left_x_percentage":0.15,
-   "grid_board_top_left_y_percentage":0.4,
-   "step_x_percentage":0.08,
-   "step_y_percentage":0.067,
+   "grid_board_top_left_x":217,
+   "grid_board_top_left_y":299,
    "character_width_in_pixel":143,
    "character_height_in_pixel":173,
    "spritesheets":[  
@@ -459,10 +457,12 @@
          ]
       }
    ],
-   "background_image":"assets/images/knight/background/background.jpg",
+   "background_image":"assets/images/knight/background/background.png",
    "foreground_image":"assets/images/knight/background/foreground.png",
    "shadow_image":"assets/images/knight/background/shadow.png",
    "grid_image":"assets/images/knight/background/grid.png",
+   "info_image":"assets/images/knight/background/info.png",
+   "title_image":"assets/images/title.png",
    "audios":[  
       {  
          "key":"walk",

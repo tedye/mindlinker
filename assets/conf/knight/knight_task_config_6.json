@@ -48,7 +48,9 @@
       "path":[],
       "interactions": []
    },
-   "hint":"控制骑士避开石头行走至战旗位置。",
+   "title":"第六关\n卵石迷宫",
+   "info":"嘿，勇敢的骑士哟。\n绕过大量石块的阻挡到达战旗位置\n使用各个方向的\"前进\"和\"循环\"命令，\n控制自己走到战旗位置。\n不要迷路哦！\n如果有疑问，可以点击Hints获得帮助哦。",
+   "hint":"石块较多，请准确规划好路径再拖拽命令块。",
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":6},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"}]",
    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_up\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_down\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

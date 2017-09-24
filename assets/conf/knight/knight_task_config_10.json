@@ -238,7 +238,9 @@
          }
       ]
    },
-   "hint":"控制骑士避开石头，跳过障碍物，攻击两个木桩并行走至战旗位置。",
+   "title":"第十关\n综合训练",
+   "info":"嘿，勇敢的骑士哟。\n欢迎来到综合训练场\n你可以使用所学命令，攻击所有的木桩，\n最终到达战旗处。\n勇敢的接受最终的试炼吧！\n如果有疑问，可以点击Hints获得帮助哦。",
+   "hint":"该教的都已经教给你了，\n现在看你的了。",
    "testScript":"[{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkDown\"},{\"name\":\"RepeatEnd\"},{\"name\":\"RepeatStart\", \"count\":2},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Attack\"},{\"name\":\"WalkUp\"},{\"name\":\"WalkRight\"},{\"name\":\"JumpRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkUp\"},{\"name\":\"Attack\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkDown\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"}]",
    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_attack\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_up\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_down\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_jump_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

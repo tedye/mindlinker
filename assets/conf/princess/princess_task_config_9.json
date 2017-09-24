@@ -75,6 +75,8 @@
 }
     ],
     "passCommand":"[{\"name\":\"RepeatStart\", \"count\": 4}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":60, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":120, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":60, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":150, \"turnRight\": false}, {\"name\":\"RepeatEnd\"}]",
-    "hint":"控制公主画出图示四个平行四边形。",
+    "title":"第九关\n四个菱形",
+    "info":"嘿，美丽的公主啊。\n请走出如图所示的四个菱形。\n使用\"前进\"，\"循环\"和\"旋转\"命令，\n控制自己按照图例走出四个菱形。\n如果有疑问，可以点击Hints获得帮助哦。",
+    "hint":"菱形边角为120度和60度。\n相邻菱形间隔为30度。",
     "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">104</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">60</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">120</field></shadow></value></block><block type=\"statement_turn_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">90</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

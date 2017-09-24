@@ -79,7 +79,9 @@
       ],
       "interactions": []
    },
-   "hint":"控制骑士在两面战旗之间来回走3次。",
+   "title":"第四关\n往返奔袭",
+   "info":"嘿，勇敢的骑士哟。\n在两个战旗之间来回奔跑三次\n使用\"前进\"， \"循环\"和\"转向\"命令，\n控制自己在两个战旗间往返奔跑。\n赶紧开始吧！\n如果有疑问，可以点击Hints获得帮助哦。",
+   "hint":"在命令区域拖拽转身命令可以让角色转向。",
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":3}, {\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatStart\", \"count\":4},{\"name\":\"WalkLeft\"},{\"name\":\"RepeatEnd\"},{\"name\":\"Turn\"},{\"name\":\"RepeatEnd\"}]",
    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_turn\"></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

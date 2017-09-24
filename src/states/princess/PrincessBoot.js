@@ -3,20 +3,29 @@
  */
 import Phaser from 'phaser'
 import PrincessStoryState from './PrincessStoryBoard'
+import {logDebugInfo} from '../../Logger'
 
 export default class extends Phaser.State {
     init() {
-        console.log('Princess Boot Init.')
+        logDebugInfo('Princess Boot Init.')
     }
 
     preload() {
-        console.log('Princess Boot Preload.')
+        logDebugInfo('Princess Boot Preload.')
+        this.loadGameContextAndAddStoryState();
+    }
+
+    loadGameContextAndAddStoryState() {
         this.game.load.text('gameContext', this.game.global.currentStoryConfig)
         this.game.state.add('PrincessStoryBoard', PrincessStoryState, false)
     }
 
     render() {
-        console.log('Princess Boot Render.')
+        logDebugInfo('Princess Boot Render.')
+        this.navigateToStoryState();
+    }
+
+    navigateToStoryState() {
         this.state.start('PrincessStoryBoard')
     }
 }

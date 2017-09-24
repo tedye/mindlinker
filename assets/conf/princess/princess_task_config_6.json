@@ -43,6 +43,8 @@
       }
     ],
     "passCommand":"[{\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}, {\"name\":\"Turn\", \"degree\":180, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":136}]",
-    "hint":"控制公主画出图示十字形。",
+    "title":"第六关\n十字行走",
+    "info":"嘿，美丽的公主啊。\n请走出如图所示的十字形。\n使用\"前进\"，\"循环\"和\"旋转\"命令，\n控制自己按照图例走出十字形。\n如果有疑问，可以点击Hints获得帮助哦。",
+    "hint":"旋转180度行走可以让角色回到原点。",
     "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">136</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">90</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">180</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

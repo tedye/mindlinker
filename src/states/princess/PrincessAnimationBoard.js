@@ -2,22 +2,22 @@
  * Created by kfang on 7/23/17.
  */
 import Phaser from 'phaser'
-import config from '../../config'
 import Princess from '../../sprites/Princess'
 import PrincessAnimationPlayer from '../../animation/PrincessAnimationPlayer'
 import TooltipBuilder from '../../util/TooltipBuilder'
-import {showBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText, getInstruction, setReadableCode} from '../../UIUtil'
+import {showBlock, hideBlock, createLoadingText, loadStart, fileComplete, repositionBlock, repositionText, getInstruction, setReadableCode, rescaleObject, rescaleXOffset, rescaleYOffset} from '../../UIUtil'
+import {logDebugInfo} from '../../Logger'
 
 export default class extends Phaser.State {
     calculateCharacterStartingPositionResponsively() {
-        console.log('Game width: ' + this.game.width + ' height: ' + this.game.height)
-        this.characterStartX = Math.round(this.game.width / 2)
-        this.characterStartY = Math.round(this.game.height / 2)
+        logDebugInfo('Game width: ' + this.game.width + ' height: ' + this.game.height)
+        this.characterStartX = this.game.world.centerX
+        this.characterStartY = this.game.world.centerY
     }
 
     getCurrentAnimationContext() {
         let instruction = getInstruction(this.game.workspace)
-        console.log('Blockly Instruction: ' + instruction)
+        logDebugInfo('Blockly Instruction: ' + instruction)
         setReadableCode(instruction)
         return {
             sprite: this.princess,
@@ -29,7 +29,7 @@ export default class extends Phaser.State {
     }
 
     play() {
-        console.log('play blocks')
+        logDebugInfo('play blocks')
         this.game.sound.play('press')
         let animationContext = this.getCurrentAnimationContext(this.gameContext)
         this.princess.start = true
@@ -38,37 +38,43 @@ export default class extends Phaser.State {
     }
 
     drawBackground() {
-        this.game.add.sprite(0, 0, 'background').scale.setTo(this.game.width/config.backgroundWidth, this.game.height/config.backgroundHeight)
+        let background = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'background')
+        rescaleObject(background, this.game, 1, 1.2)
+        background.anchor.setTo(0.5, 0.5)
+    }
+
+    drawForeGround() {
+        let foreground = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'foreground')
+        rescaleObject(foreground, this.game, 1, 1.2)
+        foreground.anchor.setTo(0.5, 0.5)
     }
 
     drawBoardButtons() {
-        this.homeButton = this.game.add.button(10, 0, 'Buttons', this.onBackHome, this, 'buttons/home/hover', 'buttons/home/normal', 'buttons/home/click', 'buttons/home/disabled')
-        this.hintButton = this.game.add.button(this.homeButton.width + 20, 0, 'Buttons', null, this, 'buttons/info/hover', 'buttons/info/normal', 'buttons/info/click', 'buttons/info/disabled')
-        this.startButton = this.game.add.button(this.homeButton.width + this.hintButton.width + 40, 0, 'Buttons', this.play, this, 'buttons/start/hover', 'buttons/start/normal', 'buttons/start/click', 'buttons/start/disabled')
+        let x = rescaleXOffset(80, this.game)
+        let y = rescaleYOffset(80, this.game)
+        let spacer = rescaleXOffset(20, this.game)
+        this.backToTasksButton = this.game.add.button(x, y, 'Buttons', this.onBackToTasks, this, 'buttons/star/hover', 'buttons/star/normal', 'buttons/star/click', 'buttons/star/disabled')
+        x += rescaleXOffset(this.backToTasksButton.width, this.game)
+        x += spacer
+        this.hintButton = this.game.add.button(x, y, 'Buttons', this.showInformationBoard, this, 'buttons/info/hover', 'buttons/info/normal', 'buttons/info/click', 'buttons/info/disabled')
+        x += rescaleXOffset(this.hintButton.width, this.game)
+        x += spacer
+        this.startButton = this.game.add.button(x, y, 'Buttons', this.play, this, 'buttons/start/hover', 'buttons/start/normal', 'buttons/start/click', 'buttons/start/disabled')
+        rescaleObject(this.backToTasksButton, this.game, 1, 1)
+        rescaleObject(this.hintButton, this.game, 1, 1)
+        rescaleObject(this.startButton, this.game, 1, 1)
+        this.backToTasksButton.anchor.setTo(0.5, 0.5)
+        this.hintButton.anchor.setTo(0.5, 0.5)
+        this.startButton.anchor.setTo(0.5, 0.5)
         TooltipBuilder(this.game, this.startButton, '开始', 'bottom')
-        TooltipBuilder(this.game, this.hintButton, this.taskContext.hint, 'bottom')
-        TooltipBuilder(this.game, this.homeButton, '返回主界面', 'bottom')
+        TooltipBuilder(this.game, this.hintButton, '关卡信息', 'bottom')
+        TooltipBuilder(this.game, this.backToTasksButton, '返回关卡选择页面', 'bottom')
     }
 
     drawMainCharacterAtStartingPosition() {
-        let startX = this.characterStartX + this.taskContext.character_x_offset
-        let startY = this.characterStartY - Math.round(this.taskContext.character_height_in_pixel / 3) + this.taskContext.character_y_offset
-        let frames = [
-            "animation/walk-0/walk-0-0000",
-            "animation/walk-1/walk-1-0000",
-            "animation/walk-2/walk-2-0000",
-            "animation/walk-3/walk-3-0000",
-            "animation/walk-4/walk-4-0000",
-            "animation/walk-5/walk-5-0000",
-            "animation/walk-6/walk-6-0000",
-            "animation/walk-7/walk-7-0000",
-            "animation/walk-8/walk-8-0000",
-            "animation/walk-9/walk-9-0000",
-            "animation/walk-10/walk-10-0000",
-            "animation/walk-11/walk-11-0000"
-        ]
-        console.log('Draw main character at location: x = ' + startX + ' and y = ' + startY)
-        console.log('The starting sprite image is ' + frames[this.taskContext.character_starting_clock_position])
+        let startX = this.characterStartX + rescaleXOffset(this.taskContext.character_x_offset, this.game)
+        let startY = this.characterStartY + rescaleYOffset(this.taskContext.character_y_offset - Math.round(this.taskContext.character_height_in_pixel * 0.405), this.game)
+        logDebugInfo('Draw main character at location: x = ' + startX + ' and y = ' + startY)
         let sprite = new Princess({
             game: this.game,
             name: 'princess',
@@ -80,6 +86,11 @@ export default class extends Phaser.State {
             frame: 0
         })
         this.princess = this.game.add.existing(sprite)
+        rescaleObject(this.princess, this.game, 1, 1)
+        this.initPrincessPosition()
+    }
+
+    initPrincessPosition() {
         this.princess.actionQueue.push({
             name: 'TurnRight0_' + this.taskContext.character_starting_clock_position,
             xOffset: 0,
@@ -89,9 +100,9 @@ export default class extends Phaser.State {
     }
 
     drawPath() {
-        console.log('Draw task path.')
-        console.log('Path center: x = ' + Math.round(this.game.width/2) + ' y = ' + Math.round(this.game.height/2))
-        let path = this.game.add.sprite(Math.round(this.game.width/2), Math.round(this.game.height/2), 'taskPath')
+        logDebugInfo('Draw task path.')
+        let path = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'taskPath')
+        rescaleObject(path, this.game, 1, 1)
         path.anchor.setTo(0.5, 0.5)
     }
 
@@ -104,7 +115,7 @@ export default class extends Phaser.State {
     }
 
     loadPath() {
-        console.log('Load path image: ' + this.taskContext.pathImage)
+        logDebugInfo('Load path image: ' + this.taskContext.pathImage)
         this.game.load.image('taskPath', this.taskContext.pathImage)
     }
 
@@ -114,7 +125,7 @@ export default class extends Phaser.State {
             sprite.loadTexture(spritesheet.key)
             for (let j = 0; j < spritesheet.animations.length; j++) {
                 let animation = spritesheet.animations[j]
-                console.log('Add animation: ' + animation.name + ' for sprite: ' + sprite.name)
+                logDebugInfo('Add animation: ' + animation.name + ' for sprite: ' + sprite.name)
                 sprite.animations.add(animation.name, animation.frames, animation.rate, animation.loop, false)
             }
         }
@@ -128,9 +139,11 @@ export default class extends Phaser.State {
     }
 
     addWorkspace() {
+        let scaleFactor = this.scale.scaleFactor
+        logDebugInfo('scale factor x: ' + scaleFactor.x + ' scale factor y: ' + scaleFactor.y)
         /* Reposition block div first */
-        repositionBlock(252, 744, this.game.height)
-        repositionText(429, 315, 252)
+        repositionBlock(rescaleXOffset(250, this.game) / scaleFactor.x, rescaleYOffset(600, this.game) / scaleFactor.y, this.game.height / scaleFactor.y)
+        repositionText(rescaleYOffset(300, this.game) / scaleFactor.y, rescaleYOffset(300, this.game) / scaleFactor.y, rescaleXOffset(250, this.game) / scaleFactor.x)
         let options = {
             comments: false,
             disable: false,
@@ -165,26 +178,26 @@ export default class extends Phaser.State {
     }
 
     init() {
-        console.log('PrincessAnimationBoard Init.')
+        logDebugInfo('PrincessAnimationBoard Init.')
         if (this.game.global.preTaskIndex !== this.game.global.currentTaskIndex) {
             this.created = false
         }
     }
 
     preload() {
-        console.log('PrincessAnimationBoard Preload.')
+        logDebugInfo('PrincessAnimationBoard Preload.')
         this.setCurrentGameContexts()
         this.setCurrentTaskContext()
     }
 
     loadAssets() {
-        console.log('Load assets.')
+        logDebugInfo('Load assets.')
         this.loadPath()
         this.game.load.start()
     }
 
     create() {
-        console.log('PrincessAnimationBoard Create.')
+        logDebugInfo('PrincessAnimationBoard Create.')
         if (!this.created) {
             this.loadingText = createLoadingText(this.game)
             this.game.load.onLoadStart.addOnce(loadStart, this);
@@ -196,16 +209,29 @@ export default class extends Phaser.State {
         }
     }
 
-    onBackHome() {
-        this.game.state.start('MainMenu')
+    onBackToTasks() {
+        hideBlock()
+        this.game.state.start('PrincessStoryBoard')
+    }
+
+    drawTitle() {
+        let titleboard = this.game.add.sprite(this.game.world.centerX, 0, 'titleboard')
+        rescaleObject(titleboard, this.game, 1, 1)
+        titleboard.anchor.setTo(0.5, 0)
+        titleboard.alpha = 0.8
+        let title = this.game.add.text(this.game.world.centerX, rescaleYOffset(20, this.game), this.taskContext.title, {font: 'bold 30px Arial', fill: '#3399FF', align: 'center'})
+        rescaleObject(title, this.game, 1, 1)
+        title.anchor.setTo(0.5, 0)
     }
 
     renderState() {
         this.calculateCharacterStartingPositionResponsively()
         this.drawBackground()
+        this.drawForeGround()
         this.drawPath()
         this.drawBoardButtons()
         this.drawMainCharacterAtStartingPosition()
+        this.drawTitle()
         this.addAnimationsForSprite(this.princess, this.gameContext.spritesheets)
         this.addAudios()
         if (typeof this.game.workspace === "undefined"){
@@ -221,5 +247,31 @@ export default class extends Phaser.State {
         this.renderState()
         this.loadingText.destroy()
         this.created = true
+    }
+
+    showInformationBoard() {
+        if (!this.infoBoard) {
+            this.infoBoard = this.game.add.image(Math.round(this.game.width / 2), Math.round(this.game.height / 2)-rescaleYOffset(100, this.game),'info')
+            rescaleObject(this.infoBoard, this.game, 0.7, 0.7)
+            this.infoBoard.anchor.setTo(0.5, 0.5)
+            this.infoBoard.alpha = 0.8
+            this.info = this.game.add.text(Math.round(this.game.width / 2), Math.round(this.game.height / 2)-rescaleYOffset(100, this.game), this.taskContext.info + '\nHints:\n' + this.taskContext.hint, {font: 'bold 20px Arial', fill: '#FFFFFF', align: 'left'})
+            rescaleObject(this.info, this.game, 0.7, 0.7)
+            this.info.anchor.setTo(0.5, 0.5)
+            this.closeButton = this.game.add.button(Math.round(this.game.width / 2)+rescaleXOffset(270, this.game), Math.round(this.game.height / 2)-rescaleYOffset(285, this.game), 'Buttons', this.hideInformationBoard, this, 'buttons/restart/hover', 'buttons/restart/normal', 'buttons/restart/click', 'buttons/restart/disabled')
+            rescaleObject(this.closeButton, this.game, 0.5, 0.5)
+            this.closeButton.anchor.setTo(0.5, 0.5)
+            TooltipBuilder(this.game, this.closeButton, '返回', 'bottom')
+        } else {
+            this.infoBoard.visible = true
+            this.info.visible = true
+            this.closeButton.visible = true
+        }
+    }
+
+    hideInformationBoard() {
+        this.infoBoard.visible = false
+        this.info.visible = false
+        this.closeButton.visible = false
     }
 }

@@ -48,7 +48,9 @@
       "path":[],
       "interactions": []
    },
-   "hint":"运用循环模块控制骑士行走至战旗位置。",
+   "title":"第三关\n长途奔袭",
+   "info":"嘿，勇敢的骑士哟。\n前方的路有些远哦。\n使用\"前进\"和\"循环\"命令，控制自己走到战旗下。\n开始你的长跑吧！\n如果有疑问，可以点击Hints获得帮助哦。",
+   "hint":"在命令区域拖拽循环命令块，\n并将前进命令块拖拽进循环命令块中，\n设置要循环的次数。",
    "testScript": "[{\"name\":\"RepeatStart\", \"count\":6},{\"name\":\"WalkRight\"},{\"name\":\"RepeatEnd\"}]",
    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<br>
+<div align="center">
+<form action="{{ url_for('getStudentGameStatuses') }}" method="get">
+    <input type="hidden" value="1" name="teacherUserId"/>
+    <div class="pull-left">
+        <button type="submit" class="btn btn-primary">查看学生进度</button>
+    </div>
+</form>
+<form action="{{ url_for('game') }}" method="get">
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary">进入游戏</button>
+    </div>
+</form>
+</div>
+<br>
+<h1 align="center">任务进度</h1>
+<br>
+<div class="table-responsive">
+  <table class="table table-striped table-inverse">
+        <tr>
+        	<th align="center">游戏名称</th>
+        	<th align="center">第一关</th> 
+        	<th align="center">第二关</th>
+        	<th align="center">第三关</th> 
+        	<th align="center">第四关</th>
+        	<th align="center">第五关</th> 
+        	<th align="center">第六关</th>
+        	<th align="center">第七关</th> 
+        	<th align="center">第八关</th>
+        	<th align="center">第九关</th> 
+        	<th align="center">第十关</th>       
+        </tr>
+    {% for game in Profile.games %}
+        <tr>
+            <td> {{ game.name }}</td>
+            {% for task in game.tasks %}
+            <td> 
+                {% if task.status %}
+                    <img src="assets/images/done.png" style="width:50px;height:50px;">
+                {% else %}
+                    <img src="assets/images/notdone.png" style="width:50px;height:50px;">
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+  </table>
+</div>
+<br>
+{% endblock %}

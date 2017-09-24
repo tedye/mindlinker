@@ -2,12 +2,15 @@
  * Created by kfang on 7/1/17.
  */
 import Phaser from 'phaser'
+import {logDebugInfo} from '../Logger'
+import { rescaleXOffset, rescaleYOffset } from '../UIUtil'
 
 export default class extends Phaser.Sprite {
     constructor({game, name, x, y, asset, frame}) {
-        console.log('Create interactive item sprite ' + name + ' at x = ' + x + ' y = ' + y)
+        logDebugInfo('Create interactive item sprite ' + name + ' at x = ' + x + ' y = ' + y)
         super(game, x, y, asset, frame)
         this.name = name
+        this.anchor.setTo(0.5, 0.5)
         this.actionQueue = []
         this.playingAnimation = null
         this.status = null
@@ -22,9 +25,9 @@ export default class extends Phaser.Sprite {
 
     playNextAction() {
         let nextAction = this.actionQueue.shift()
-        console.log('Update: play animation ' + nextAction.name + ' with xOffset: ' + nextAction.xOffset + ' and yOffset: ' + nextAction.yOffset + ' with sprite key: ' + nextAction.spriteKey)
-        let newX = this.x + nextAction.xOffset
-        let newY = this.y + nextAction.yOffset
+        logDebugInfo('Update: play animation ' + nextAction.name + ' with xOffset: ' + nextAction.xOffset + ' and yOffset: ' + nextAction.yOffset + ' with sprite key: ' + nextAction.spriteKey)
+        let newX = this.x + rescaleXOffset(nextAction.xOffset, this.game)
+        let newY = this.y + rescaleYOffset(nextAction.yOffset, this.game)
         if (nextAction.spriteKey !== this.key) {
             this.loadTexture(nextAction.spriteKey, 0)
         }

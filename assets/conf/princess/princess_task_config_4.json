@@ -59,6 +59,8 @@
       }
     ],
     "passCommand":"[{\"name\":\"RepeatStart\", \"count\": 3}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104}, {\"name\":\"Turn\", \"degree\":90, \"turnRight\": true}, {\"name\":\"Walk\", \"distance\":104},{\"name\":\"Turn\", \"degree\":150, \"turnRight\": false}, {\"name\":\"RepeatEnd\"}]",
-    "hint":"控制公主画出如图所示的三个正方形。",
+    "title":"第四关\n三个正方形",
+    "info":"嘿，美丽的公主啊。\n请走出三个间隔为30度的正方形。\n使用\"前进\"，\"循环\"和\"旋转\"命令，\n控制自己按照图例走出3个正方形。\n如果有疑问，可以点击Hints获得帮助哦。",
+    "hint":"正方形四个角都为直角。\n正方形之间间隔为30度。",
     "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">104</field></shadow></value></block><block type=\"statement_turn_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">90</field></shadow></value></block><block type=\"statement_turn_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">120</field></shadow></value></block><block type=\"statement_repeat\"><value name=\"TIMES\"><shadow type=\"math_positive_number\"><field name=\"NUM\">2</field></shadow></value></block></xml>"
 }

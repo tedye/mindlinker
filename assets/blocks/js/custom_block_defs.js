@@ -1,4 +1,7 @@
 'use strict';
+let hScale = Math.max(window.screen.availWidth, window.screen.availHeight) / 1440
+let vScale = (Math.min(window.screen.availWidth, window.screen.availHeight) - 50) / 900
+
 Blockly.Blocks['statement_start'] = {
     init: function() {
         this.jsonInit({
@@ -8,8 +11,8 @@ Blockly.Blocks['statement_start'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/start.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "start",
                     "flip_rtl": true
                 }
@@ -33,8 +36,8 @@ Blockly.Blocks['statement_walk'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/walk.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "walk"
                 },
                 {
@@ -63,8 +66,8 @@ Blockly.Blocks['statement_walk_right'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/walk_right.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "walk_right"
                 },
                 {
@@ -93,8 +96,8 @@ Blockly.Blocks['statement_walk_left'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/walk_left.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "walk left"
                 },
                 {
@@ -123,8 +126,8 @@ Blockly.Blocks['statement_walk_up'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/walk_up.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "walk up"
                 },
                 {
@@ -153,8 +156,8 @@ Blockly.Blocks['statement_walk_down'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/walk_down.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "walk down"
                 },
                 {
@@ -183,8 +186,8 @@ Blockly.Blocks['statement_run_right'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/run_right.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "run right"
                 },
                 {
@@ -213,8 +216,8 @@ Blockly.Blocks['statement_run_left'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/run_left.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "run left"
                 },
                 {
@@ -243,8 +246,8 @@ Blockly.Blocks['statement_run_up'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/run_up.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "run up"
                 },
                 {
@@ -273,8 +276,8 @@ Blockly.Blocks['statement_run_down'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/run_down.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "run down"
                 },
                 {
@@ -303,8 +306,8 @@ Blockly.Blocks['statement_attack'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/attack.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "attack"
                 },
                 {
@@ -333,8 +336,8 @@ Blockly.Blocks['statement_defense'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/defense.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "defense"
                 },
                 {
@@ -363,8 +366,8 @@ Blockly.Blocks['statement_jump'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/jump.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "jump"
                 },
                 {
@@ -393,8 +396,8 @@ Blockly.Blocks['statement_jump_right'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/jump_right.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "jump right"
                 },
                 {
@@ -423,8 +426,8 @@ Blockly.Blocks['statement_jump_left'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/jump_left.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "jump"
                 },
                 {
@@ -453,8 +456,8 @@ Blockly.Blocks['statement_turn'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/turn.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "turn"
                 }
             ],
@@ -478,8 +481,8 @@ Blockly.Blocks['statement_turn_left'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/turn_left.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "turn_left"
                 },
                 {
@@ -508,8 +511,8 @@ Blockly.Blocks['statement_turn_right'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/turn_right.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "turn_right"
                 },
                 {
@@ -546,8 +549,8 @@ Blockly.Blocks['statement_repeat'] = {
                 {
                     "type": "field_image",
                     "src": Blockly.mainWorkspace.options.pathToMedia + "icons/repeat.svg",
-                    "width": 40,
-                    "height": 40,
+                    "width": Math.round(40 * hScale),
+                    "height": Math.round(40 * vScale),
                     "alt": "*",
                     "flip_rtl": true
                 },

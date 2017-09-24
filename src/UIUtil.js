@@ -16,6 +16,7 @@ export function showBlock() {
 export function createLoadingText(game) {
     let loadingText = game.add.text(game.world.centerX, game.world.centerY, '努力加载中...', { font: "65px Arial", fill: "#F3FF33", align: "center" })
     loadingText.anchor.set(0.5)
+    rescaleObject(loadingText, game, 1, 1)
     return loadingText
 }
 
@@ -79,4 +80,31 @@ export function setReadableCode (code) {
         readableCode += ')\n'
     }
     document.getElementById('instructions').innerHTML = readableCode
+}
+
+export function sendHttpRequest(callback, operation, url, params) {
+    console.log('Send http request to ' + url + ' with operation ' + operation + ' and params: ' + params)
+    let http = new XMLHttpRequest();
+    http.open(operation, url, true);
+    http.setRequestHeader("Content-type", "application/json; charset=utf-8");
+    http.onreadystatechange = callback
+    http.send(params);
+}
+
+export function printHttpResponse() {
+    if(this.readyState == 4 && this.status == 200) {
+        alert(this.responseText);
+    }
+}
+
+export function rescaleObject(obj, game, sX, sY) {
+    obj.scale.setTo(sX * game.global.hScale, sY * game.global.vScale)
+}
+
+export function rescaleXOffset(offset, game) {
+    return Math.round(offset * game.global.hScale)
+}
+
+export function rescaleYOffset(offset, game) {
+    return Math.round(offset * game.global.vScale)
 }

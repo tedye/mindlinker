@@ -53,7 +53,9 @@
       "path":[],
       "interactions": []
    },
-   "hint":"控制骑士绕过石头行走至战旗位置。",
+   "title":"第二关\n绕过障碍",
+   "info":"嘿，勇敢的骑士哟。\n前面有个大石块，要绕过它哦。\n使用各个方向的\"前进\"命令，控制自己走到战旗下。\n巧妙的绕过障碍吧！\n如果有疑问，可以点击Hints获得帮助哦。",
+   "hint":"在命令区域拖拽命令块控制角色向各个方向走动。",
    "testScript": "[{\"name\":\"WalkDown\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkRight\"},{\"name\":\"WalkUp\"}]",
    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_walk_right\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_left\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_up\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block><block type=\"statement_walk_down\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block></xml>"
 }

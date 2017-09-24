@@ -2,6 +2,7 @@
  * Created by kfang on 6/16/17.
  */
 import SupportedBlocks from './SupportedBlocks'
+import {logDebugInfo} from '../Logger'
 
 export default function play(animationContext) {
     let stepCount = 0
@@ -26,7 +27,7 @@ export default function play(animationContext) {
     let isBlocked = function (xOffset, yOffset) {
         let xP = currentGridX + xOffset
         let yP = currentGridY + yOffset
-        console.log('Check valid step: ' + xP + ' , ' + yP + ' , ' + gridWidth + ' , ' + gridHeight)
+        logDebugInfo('Check valid step: ' + xP + ' , ' + yP + ' , ' + gridWidth + ' , ' + gridHeight)
         if (xP >= gridWidth || yP >= gridHeight) {
             return true
         }
@@ -45,7 +46,7 @@ export default function play(animationContext) {
     }
 
     let addNewActionToMainSpriteActionQueue = function (name, xOffset, yOffset, spriteKey, audio, spriteToActivate) {
-        console.log('Add action to main sprite action queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
+        logDebugInfo('Add action to main sprite action queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
         sprite.actionQueue.push({
             name: name,
             xOffset: xOffset,
@@ -61,7 +62,7 @@ export default function play(animationContext) {
     }
 
     let MakeATurn = function () {
-        console.log('Animation Played: Turn')
+        logDebugInfo('Animation Played: Turn')
         if (faceRight) {
             addNewActionToMainSpriteActionQueue('TurnToLeft', 0, 0, forwardSpriteKey, 'turn', null)
         } else {
@@ -72,7 +73,7 @@ export default function play(animationContext) {
     }
 
     let WalkRight = function (step) {
-        console.log('Animation Played: Move Right')
+        logDebugInfo('Animation Played: Move Right')
         if (isBlocked(1, 0)) {
             playFailure()
         } else {
@@ -82,7 +83,7 @@ export default function play(animationContext) {
     }
 
     let WalkLeft = function (step) {
-        console.log('Animation Played: Move Left')
+        logDebugInfo('Animation Played: Move Left')
         if (isBlocked(-1, 0)) {
             playFailure()
         } else {
@@ -92,7 +93,7 @@ export default function play(animationContext) {
     }
 
     let WalkUp = function (step) {
-        console.log('Animation Played: Move Up')
+        logDebugInfo('Animation Played: Move Up')
         if (isBlocked(0, -1)) {
             playFailure()
         } else {
@@ -102,7 +103,7 @@ export default function play(animationContext) {
     }
 
     let WalkDown = function (step) {
-        console.log('Animation Played: Move Down')
+        logDebugInfo('Animation Played: Move Down')
         if (isBlocked(0, 1)) {
             playFailure()
         } else {
@@ -112,7 +113,7 @@ export default function play(animationContext) {
     }
 
     let RunRight = function (step) {
-        console.log('Animation Played: Move Right' + ' step: ' + step)
+        logDebugInfo('Animation Played: Move Right' + ' step: ' + step)
         if (isBlocked(1, 0)) {
             playFailure()
         } else {
@@ -122,7 +123,7 @@ export default function play(animationContext) {
     }
 
     let RunLeft = function (step) {
-        console.log('Animation Played: Move Left')
+        logDebugInfo('Animation Played: Move Left')
         if (isBlocked(-1, 0)) {
             playFailure()
         } else {
@@ -132,7 +133,7 @@ export default function play(animationContext) {
     }
 
     let RunUp = function (step) {
-        console.log('Animation Played: Move Up')
+        logDebugInfo('Animation Played: Move Up')
         if (isBlocked(0, -1)) {
             playFailure()
         } else {
@@ -142,7 +143,7 @@ export default function play(animationContext) {
     }
 
     let RunDown = function (step) {
-        console.log('Animation Played: Move Down')
+        logDebugInfo('Animation Played: Move Down')
         if (isBlocked(0, 1)) {
             playFailure()
         } else {
@@ -164,12 +165,12 @@ export default function play(animationContext) {
     }
 
     let attack = function () {
-        console.log('Animation Played: Attack')
+        logDebugInfo('Animation Played: Attack')
         let interactiveSpriteDef = findItemSpriteDefinitionByPositionOffset(faceRight ? 1 : -1, 0)
         let spriteToActivate = null
         if (interactiveSpriteDef !== null) {
             let interactiveSprite = findItemSpriteBySpriteName(interactiveSpriteDef.spriteKey)
-            console.log('Add action to sprite: ' + interactiveSprite.name)
+            logDebugInfo('Add action to sprite: ' + interactiveSprite.name)
             interactiveSprite.actionQueue.push({
                 name: interactiveSpriteDef.animationKey,
                 xOffset: 0,
@@ -185,26 +186,26 @@ export default function play(animationContext) {
     }
 
     let victory = function () {
-        console.log('Animation Played: Victory')
+        logDebugInfo('Animation Played: Victory')
         sprite.taskCompleted = true
         addNewActionToMainSpriteActionQueue(faceRight ? 'Victory' : 'VictoryBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'victory', null)
     }
 
     let playFailure = function () {
-        console.log('Animation Played: Fail')
+        logDebugInfo('Animation Played: Fail')
         failed = true
         sprite.taskCompleted = false
         addNewActionToMainSpriteActionQueue(faceRight ? 'Fail' : 'FailBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'fail', null)
     }
 
     let Jump = function () {
-        console.log('Animation Played: Jump')
+        logDebugInfo('Animation Played: Jump')
         addNewActionToMainSpriteActionQueue(faceRight ? 'Jump' : 'JumpBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'jump', null)
         Pause()
     }
 
     let JumpRight = function (step) {
-        console.log('Animation Played: Jump Right')
+        logDebugInfo('Animation Played: Jump Right')
         if (isBlocked(2, 0)) {
             playFailure()
         } else {
@@ -214,7 +215,7 @@ export default function play(animationContext) {
     }
 
     let JumpLeft = function (step) {
-        console.log('Animation Played: Jump Left')
+        logDebugInfo('Animation Played: Jump Left')
         if (isBlocked(-2, 0)) {
             playFailure()
         } else {
@@ -224,12 +225,12 @@ export default function play(animationContext) {
     }
 
     let Standby = function () {
-        console.log('Animation Played: Standby')
+        logDebugInfo('Animation Played: Standby')
         addNewActionToMainSpriteActionQueue(faceRight ? 'Standby' : 'StandbyBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, null, null)
     }
 
     let Defense = function () {
-        console.log('Animation Played: Defense')
+        logDebugInfo('Animation Played: Defense')
         addNewActionToMainSpriteActionQueue(faceRight ? 'Defense' : 'DefenseBack', 0, 0, faceRight ? forwardSpriteKey : backwardSpriteKey, 'defense', null)
         Pause()
     }
@@ -237,7 +238,7 @@ export default function play(animationContext) {
      * Execute the animation given an action JSON object.
      */
     let playAnimation = function (name) {
-        console.log('Play animation for ' + name)
+        logDebugInfo('Play animation for ' + name)
         switch (name) {
             case SupportedBlocks.WalkLeft:
                 WalkLeft(xDistPerStep)
@@ -381,7 +382,7 @@ export default function play(animationContext) {
                 case SupportedBlocks.Standby:
                 case SupportedBlocks.JumpRight:
                 case SupportedBlocks.JumpLeft:
-                    console.log('Play Block: ' + block.name)
+                    logDebugInfo('Play Block: ' + block.name)
                     playAnimation(block.name)
                     i++
                     break
@@ -405,10 +406,10 @@ export default function play(animationContext) {
     }
 
     let findItemSpriteBySpriteName = function (name) {
-        console.log('Locating interactive sprite ' + name)
+        logDebugInfo('Locating interactive sprite ' + name)
         for (let i = 0; i < interactiveItemSprites.length; i++) {
             let itemSprite = interactiveItemSprites[i]
-            console.log('Checking interactive sprite ' + itemSprite.name)
+            logDebugInfo('Checking interactive sprite ' + itemSprite.name)
             if (itemSprite.name === name) {
                 return itemSprite
             }
@@ -417,11 +418,11 @@ export default function play(animationContext) {
     }
 
     let passConditionMatched = function () {
-        console.log('Check final condition at position x = ' + currentGridX + ' y = ' + currentGridY + ' victory x = ' + passCondition.destinationXGrid + ' y = ' + passCondition.destinationYGrid)
+        logDebugInfo('Check final condition at position x = ' + currentGridX + ' y = ' + currentGridY + ' victory x = ' + passCondition.destinationXGrid + ' y = ' + passCondition.destinationYGrid)
         let stepCheck = stepCount < maxSteps
         let positionCheck = currentGridX + '_' + currentGridY === passCondition.destinationXGrid + '_' + passCondition.destinationYGrid
         if (passCondition.pathMatched) {
-            console.log(path.toString())
+            logDebugInfo(path.toString())
             let targetPath = passCondition.path
             for (let i = 0; i < targetPath.length; i++) {
                 let offset = targetPath[i]

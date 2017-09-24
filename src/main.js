@@ -5,7 +5,7 @@ import RootBootState from './states/RootBoot'
 
 class Game extends Phaser.Game {
     constructor() {
-        super(window.screen.availWidth, window.screen.availHeight, Phaser.CANVAS, 'content', null)
+        super(Math.max(window.screen.availWidth, window.screen.availHeight), Math.min(window.screen.availWidth, window.screen.availHeight) - 50, Phaser.CANVAS, 'content', null)
 
         this.state.add('RootBoot', RootBootState, false)
         this.state.start('RootBoot')

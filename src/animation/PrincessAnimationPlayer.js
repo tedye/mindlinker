@@ -2,6 +2,7 @@
  * Created by kfang on 7/23/17.
  */
 import SupportedBlocks from './SupportedBlocks'
+import {logDebugInfo} from '../Logger'
 
 export default function play(animationContext) {
     let stepCount = 0
@@ -15,7 +16,7 @@ export default function play(animationContext) {
     let currentClockPosition = animationContext.startClockPosition
 
     let addNewActionToMainSpriteActionQueue = function (name, xOffset, yOffset, audio) {
-        console.log('Add action to main sprite action queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
+        logDebugInfo('Add action to main sprite action queue: ' + name + ' xOffset: ' + xOffset + ' yOffset: ' + yOffset)
         sprite.actionQueue.push({
             name: name,
             xOffset: xOffset,
@@ -25,12 +26,12 @@ export default function play(animationContext) {
     }
 
     let Turn = function (turnKey) {
-        console.log('Animation Played: ' + turnKey)
+        logDebugInfo('Animation Played: ' + turnKey)
         addNewActionToMainSpriteActionQueue(turnKey, 0, 0, 'turn')
     }
 
     let Walk = function (walkKey, xOffset, yOffset) {
-        console.log('Animation Played: ' + walkKey)
+        logDebugInfo('Animation Played: ' + walkKey)
         addNewActionToMainSpriteActionQueue(walkKey, xOffset, yOffset, 'walk')
     }
 
@@ -47,7 +48,7 @@ export default function play(animationContext) {
     }
 
     let getOffsets = function (dist) {
-    console.log('Calculate Offset for position ' + currentClockPosition + ' and distance ' + dist)
+    logDebugInfo('Calculate Offset for position ' + currentClockPosition + ' and distance ' + dist)
         return {
             x : Math.round(Math.cos(anglesNumber[currentClockPosition]) * dist),
             y : Math.round(-1 * Math.sin(anglesNumber[currentClockPosition]) * dist)
@@ -72,12 +73,12 @@ export default function play(animationContext) {
      * Execute the animation given an action JSON object.
      */
     let playAnimation = function (block) {
-        console.log('Play animation for ' + block.name)
+        logDebugInfo('Play animation for ' + block.name)
         switch (block.name) {
             case SupportedBlocks.Walk:
                 let distance = block.distance
                 let offsets = getOffsets(distance)
-                console.log('The offset is x = ' + offsets.x + ' and y = ' + offsets.y)
+                logDebugInfo('The offset is x = ' + offsets.x + ' and y = ' + offsets.y)
                 Walk(getWalkKey(), offsets.x, offsets.y)
                 path.push({
                     position: currentClockPosition,
@@ -92,9 +93,9 @@ export default function play(animationContext) {
                     nextAngle += 360
                 if (nextAngle >= 360)
                     nextAngle -= 360
-                console.log('Next angle is: ' + nextAngle)
+                logDebugInfo('Next angle is: ' + nextAngle)
                 let nextClockPosition = getClosestClockPositionForAngle(nextAngle)
-                console.log('Next clock position is: ' + nextClockPosition)
+                logDebugInfo('Next clock position is: ' + nextClockPosition)
                 let turnKey = getTurnKey(currentClockPosition, nextClockPosition, turnRight)
                 Turn(turnKey)
                 currentClockPosition = nextClockPosition
@@ -164,7 +165,7 @@ export default function play(animationContext) {
             switch (block.name) {
                 case SupportedBlocks.Walk:
                 case SupportedBlocks.Turn:
-                    console.log('Play Block: ' + block.name)
+                    logDebugInfo('Play Block: ' + block.name)
                     playAnimation(block)
                     i++
                     break
@@ -188,17 +189,17 @@ export default function play(animationContext) {
     }
 
     let passConditionMatched = function () {
-        console.log('Check final condition.')
-        console.log('Actual Path: ')
+        logDebugInfo('Check final condition.')
+        logDebugInfo('Actual Path: ')
         for (let i = 0; i < path.length; i++) {
             let p = path[i]
-            console.log('Position: ' + p.position + ' Distance: ' + p.dist)
+            logDebugInfo('Position: ' + p.position + ' Distance: ' + p.dist)
         }
 
-        console.log('Target Path: ')
+        logDebugInfo('Target Path: ')
         for (let i = 0; i < passPath.length; i++) {
             let p = passPath[i]
-            console.log('Position: ' + p.position + ' Distance: ' + p.dist)
+            logDebugInfo('Position: ' + p.position + ' Distance: ' + p.dist)
         }
 
         let stepCheck = stepCount < maxSteps
@@ -213,9 +214,9 @@ export default function play(animationContext) {
             }
             pathCheck = true
         } else {
-            console.log('Action sizes are not the same.')
+            logDebugInfo('Action sizes are not the same.')
         }
-        console.log('Step check: ' + stepCheck + ' path check: ' + pathCheck)
+        logDebugInfo('Step check: ' + stepCheck + ' path check: ' + pathCheck)
         return stepCheck && pathCheck
     }
 

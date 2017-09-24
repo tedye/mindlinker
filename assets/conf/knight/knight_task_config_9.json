@@ -68,7 +68,9 @@
          }
       ]
    },
-   "hint":"控制骑士攻击木桩。",
+   "title":"第九关\n挥剑练习",
+   "info":"嘿，勇敢的骑士哟。\n挥舞你的宝剑，对着木桩练习剑法吧。\n使用\"攻击\"命令，攻击前方的木桩。\n小心划到手哦！\n如果有疑问，可以点击Hints获得帮助哦。",
+   "hint":"攻击命令块并不会让你移动。",
    "testScript":"[{\"name\":\"Attack\"}]",
    "toolbox": "<xml id=\"toolbox-knight\" style=\"display: none\"><block type=\"statement_start\"></block><block type=\"statement_attack\"><value name=\"STEPS\"><shadow type=\"math_positive_number\"><field name=\"NUM\">1</field></shadow></value></block></xml>"
 }

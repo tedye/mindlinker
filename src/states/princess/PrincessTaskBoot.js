@@ -5,6 +5,7 @@
  * Created by kfang on 6/27/17.
  */
 import Phaser from 'phaser'
+import {logDebugInfo} from '../../Logger'
 
 export default class extends Phaser.State {
     setCurrentGameContext() {
@@ -12,23 +13,23 @@ export default class extends Phaser.State {
     }
 
     init() {
-        console.log('PrincessTaskBoot Init.')
+        logDebugInfo('PrincessTaskBoot Init.')
         this.setCurrentGameContext()
     }
 
     loadCurrentTaskConfig() {
         let taskIndex = this.game.global.currentTaskIndex
-        console.log('Current task conf: ' + this.gameContext.task_configs.tasks[taskIndex].taskConf)
+        logDebugInfo('Current task conf: ' + this.gameContext.task_configs.tasks[taskIndex].taskConf)
         this.game.load.text('taskContext', this.gameContext.task_configs.tasks[taskIndex].taskConf)
     }
 
     preload() {
-        console.log('PrincessTaskBoot Preload.')
+        logDebugInfo('PrincessTaskBoot Preload.')
         this.loadCurrentTaskConfig()
     }
 
     render() {
-        console.log('PrincessTaskBoot Render.')
+        logDebugInfo('PrincessTaskBoot Render.')
         this.state.start('PrincessAnimationBoard')
     }
 }

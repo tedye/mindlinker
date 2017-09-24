@@ -7,15 +7,16 @@ from flask_mongoengine import MongoEngine
 from flask_mongoengine import MongoEngineSessionInterface
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+from flask_compress import Compress
 
 
 # Create the main app
-app = Flask('Mindlinker_v02', static_folder="assets")
+app = Flask('Mindlinker_v03', static_folder="assets")
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 # Establish Database connection
 app.config['MONGODB_SETTINGS'] = {
     'HOST': os.environ.get('MONGODB_URI'),
-    'DB': 'FlaskLogin',
+    'DB': 'mindlinker_tables',
 }
 db = MongoEngine(app)
 app.session_interface = MongoEngineSessionInterface(db)
@@ -29,3 +30,5 @@ login_manager.init_app(app)
 # Connect to admin
 admin = Admin(name='mindmaster', template_mode='bootstrap3')
 admin.init_app(app)
+compress = Compress()
+compress.init_app(app)
