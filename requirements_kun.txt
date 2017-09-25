@@ -1,0 +1,6 @@
+Flask
+flask-admin
+Flask-Bcrypt
+flask-login
+flask-compress
+requests

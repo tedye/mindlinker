@@ -80,8 +80,10 @@ class User(UserMixin):
     @classmethod
     def from_user_id(cls, user_id):
         """create User object from doc retrieved by id."""
-        #try:
-        doc = models.User.objects.get(user_id=user_id)
+        try:
+            doc = models.User.objects.get(user_id=user_id)
+        except:
+            doc = None
         if doc:
             return cls(
                 user_id=doc.user_id,
